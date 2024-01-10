@@ -1,0 +1,247 @@
+@import "constants";
+@import "villas";
+@import "specialOffer";
+@import "user";
+@import "navBar";
+@import "aboutVillaHaven";
+@import "facilities";
+@import "amenities";
+@import "favourites";
+@import "breadCrumbs";
+@import "testimonials";
+@import "footer";
+
+@font-face {
+  font-family: "Open-sans";
+  src: url("../../public/fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Open-sans";
+  src: url("../../public/fonts/OpenSans-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Open-sans";
+  src: url("../../public/fonts/OpenSans-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+* {
+  font-family: "Open-Sans";
+  padding: 0;
+  margin: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+}
+
+.main-container {
+  padding: 0rem 1rem;
+}
+.video-modal--container {
+  min-height: 100vh;
+  min-width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: brightness(15%);
+  z-index: 1000;
+  overflow: hidden;
+  div {
+    position: relative;
+    box-shadow: 0px 0px 20px 5px rgba($color: $color-dark--1, $alpha: 0.5);
+    iframe {
+      border: none;
+      width: 88.9rem;
+      height: 50rem;
+    }
+    button {
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      color: $color-light;
+      font-size: 1.2rem;
+      top: -5%;
+      right: -10%;
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+  }
+}
+.slider-container {
+  position: relative;
+  overflow: hidden;
+
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    img {
+      object-fit: cover;
+      width: 100%;
+      min-width: 100%;
+      height: inherit;
+      box-sizing: border-box;
+    }
+  }
+
+  .arrows {
+    .arrow-next {
+      top: 46%;
+      right: 2%;
+    }
+
+    .arrow-previous {
+      top: 46%;
+      left: 2%;
+    }
+    button {
+      position: absolute;
+      border-radius: 50%;
+      border: none;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      opacity: 0.8;
+      transition: opacity 0.3s ease-in-out;
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .slide-count-wrapper {
+    position: absolute;
+    bottom: 3%;
+    width: 100%;
+    .slide-count {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      div {
+        width: 0.8rem;
+        height: 0.8rem;
+        background-color: $color-dark--1;
+        border-radius: 50%;
+      }
+    }
+  }
+  .count-active {
+    padding: 0.15rem;
+  }
+  .count-inactive {
+    opacity: 0.5;
+  }
+}
+@media (max-width: 1779px) {
+  .video-modal--container {
+    div {
+      button {
+        right: -5%;
+      }
+    }
+  }
+}
+@media (max-width: 1584px) {
+  .video-modal--container {
+    div {
+      iframe {
+        width: 80rem;
+        height: 45rem;
+      }
+      button {
+        top: -10%;
+      }
+    }
+  }
+}
+@media (max-width: 1407px) {
+  .video-modal--container {
+    div {
+      iframe {
+        width: 70rem;
+        height: 39.4rem;
+      }
+      button {
+        top: -10%;
+      }
+    }
+  }
+}
+@media (max-width: 1237px) {
+  .video-modal--container {
+    div {
+      iframe {
+        width: 60rem;
+        height: 33.8rem;
+      }
+      button {
+        top: -9%;
+        right: -3%;
+      }
+    }
+  }
+}
+@media (max-width: 1019px) {
+  .video-modal--container {
+    div {
+      iframe {
+        width: 50rem;
+        height: 28.1rem;
+      }
+      button {
+        top: -9%;
+        right: -3%;
+      }
+    }
+  }
+}
+@media (max-width: 849px) {
+  .video-modal--container {
+    width: 100%;
+    height: 100%;
+    div {
+      iframe {
+        width: 40rem;
+        height: 22.5rem;
+      }
+      button {
+        top: -9%;
+        right: -3%;
+      }
+    }
+  }
+  .main-container {
+    padding: 0rem 0.7rem;
+  }
+}
+
+@keyframes loading {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2rem;
+    height: 5em;
+  }
+}

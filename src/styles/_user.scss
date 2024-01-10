@@ -1,0 +1,209 @@
+@import "constants";
+@import "mixins";
+
+.login-container {
+  min-height: 110vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../assets/user-page/user-page-1.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .user-wrapper {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba($color: $color-light, $alpha: 0.2);
+    padding: 2rem;
+    h1 {
+      margin-bottom: 1rem;
+      color: $color-light;
+    }
+    form {
+      box-sizing: border-box;
+
+      display: flex;
+      gap: 1.2rem;
+      flex-direction: column;
+      color: $color-dark--1;
+      .pass-wrapper {
+        position: relative;
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          a {
+            color: $color-brand--1;
+            font-size: 0.7rem;
+          }
+        }
+        .pass-toggle-icon {
+          position: absolute;
+          top: 52%;
+          right: 4%;
+          cursor: pointer;
+          z-index: 100;
+        }
+      }
+      div {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.3rem;
+        label {
+          font-weight: bold;
+          font-size: 1rem;
+          color: #fff;
+        }
+        input {
+          @include inputFields();
+        }
+        input[type="radio"] {
+          outline: none;
+          cursor: pointer;
+        }
+      }
+      button {
+        @include btns(0.8rem 0.8rem, $color-brand--1);
+        border: none;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .user-redirect {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    p {
+      color: $color-light;
+    }
+    a {
+      color: $color-brand--1;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.register-container {
+  @extend .login-container;
+  form {
+    div {
+      &:nth-child(4) {
+        gap: 0.5rem;
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          div {
+            display: flex;
+            justify-content: flex-start;
+            label {
+              font-weight: 400;
+              font-size: 0.9rem;
+            }
+            input {
+              width: 0.9rem;
+            }
+            &:nth-child(2) {
+              justify-content: center;
+            }
+            &:nth-child(3) {
+              justify-content: flex-end;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.reset-password-container {
+  @extend .login-container;
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+  p {
+    &:nth-child(2) {
+      margin-bottom: 1rem;
+      color: $color-light;
+    }
+  }
+}
+
+.verify-otp-container {
+  @extend .reset-password-container;
+  form {
+    div {
+      &:first-child {
+        label {
+          text-align: start;
+          font-size: 0.7rem;
+          letter-spacing: 0.05rem;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+.verification-timer-container {
+  margin-bottom: 1rem;
+  p {
+    font-size: 1.3rem;
+    color: $color-light;
+  }
+}
+.popup {
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .login-container {
+    .user-wrapper {
+      padding: 1.5rem;
+
+      h1 {
+        font-size: 1.8rem;
+      }
+      form {
+        gap: 0.8rem;
+
+        div {
+          input {
+            width: 16rem;
+            padding: 0.65rem 0.65rem;
+            &::placeholder {
+              font-size: 0.9rem;
+            }
+          }
+        }
+        button {
+          @include btns(0.65rem 0.65rem, $color-brand--1);
+        }
+      }
+    }
+  }
+  .reset-password-container {
+    p {
+      &:nth-child(2) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .verification-timer-container {
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}

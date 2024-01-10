@@ -1,0 +1,297 @@
+@import "constants";
+@import "mixins";
+
+.our-villas-container {
+  padding: 5rem 4rem 7rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .our-villas-head-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 77rem;
+    margin-bottom: 2rem;
+    div {
+      width: 45%;
+      h2 {
+        font-size: 2rem;
+        color: $color-dark--1;
+        margin-bottom: 0.8rem;
+      }
+      p {
+        color: $color-dark--2;
+        font-size: 1.1rem;
+      }
+    }
+    a {
+      text-decoration: none;
+    }
+    .villas-btn {
+      @include btns(0.9rem 1.5rem, $color-brand--1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      gap: 0.3rem;
+    }
+  }
+
+  .villa-wrapper {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(22rem, 25rem));
+    gap: 2rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1411px) {
+  .our-villas-container {
+    padding: 2rem 3rem 3rem;
+    .our-villas-head-wrapper {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1284px) {
+  .our-villas-container {
+    padding: 2rem 2rem 3rem;
+
+    .villa-wrapper {
+      grid-template-columns: repeat(2, minmax(22rem, 25rem));
+      gap: 2rem;
+    }
+  }
+}
+
+@media (max-width: 839px) {
+  .our-villas-container {
+    .villa-wrapper {
+      grid-template-columns: repeat(1, minmax(22rem, 25rem));
+      gap: 2rem;
+    }
+  }
+}
+
+@media (max-width: 816px) {
+  .our-villas-container {
+    padding: 2rem 1rem 3rem;
+    .our-villas-head-wrapper {
+      div {
+        width: 65%;
+        h2 {
+          font-size: 1.6rem;
+        }
+        p {
+          font-size: 0.95rem;
+        }
+      }
+      .villas-btn {
+        @include btns(0.65rem 0.9rem, $color-brand--1);
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .our-villas-container {
+    padding: 2rem 0rem 3rem;
+  }
+}
+
+.villas-page-container {
+  margin-bottom: 7rem;
+  .villas-text {
+    text-align: center;
+    padding-left: 250px;
+    padding-right: 250px;
+    font-size: 30px;
+    margin-top: 150px;
+    line-height: 20px;
+    margin-bottom: 50px;
+    h2 {
+      color: $color-dark--1;
+      margin-bottom: 3rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+  .villas-content-wrapper {
+    padding: 0rem 3rem;
+
+    .villas-container {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(22rem, 25rem));
+      justify-content: center;
+      grid-template-rows: 1fr;
+      gap: 2rem;
+    }
+  }
+}
+
+.villa-container {
+  display: inline-block;
+  padding: 1rem;
+  transition: all 0.2s ease;
+  div {
+    &:first-of-type {
+      min-width: 19rem;
+      max-width: 23rem;
+      height: 27rem;
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      button {
+        position: absolute;
+        bottom: 4%;
+        left: 5%;
+        border: none;
+        border-radius: 100px;
+        box-shadow: 0px 3px 10px 0px rgba($color: $color-dark--1, $alpha: 0.5);
+        padding: 0.5rem 1rem;
+        background-color: $color-light;
+        font-weight: bold;
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: $color-brand--3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  .villa-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    h2 {
+      color: $color-dark--1;
+      margin-top: 0.4rem;
+    }
+
+    p {
+      color: $color-dark--2;
+      font-weight: bold;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      span {
+        padding-right: 0.25rem;
+      }
+    }
+
+    span {
+      color: $color-orange;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 5px 10px 0px rgba($color: $color-dark--1, $alpha: 0.4);
+    transform: translateY(-1%);
+  }
+}
+
+@media (max-width: 1688px) {
+  .villas-page-container {
+    .villas-content-wrapper {
+      .villas-container {
+        grid-template-columns: repeat(3, minmax(22rem, 25rem));
+      }
+    }
+  }
+}
+@media (max-width: 1232px) {
+  .villas-page-container {
+    .villas-content-wrapper {
+      padding: 0rem 2rem;
+      .villas-container {
+        grid-template-columns: repeat(2, minmax(22rem, 25rem));
+      }
+    }
+  }
+}
+@media (max-width: 842px) {
+  .villas-page-container {
+    .villas-content-wrapper {
+      padding: 0rem 1rem;
+      .villas-container {
+        grid-template-columns: repeat(1, minmax(22rem, 25rem));
+      }
+    }
+  }
+  .villa-container {
+    padding: 0.8rem;
+    div {
+      &:first-of-type {
+        min-width: 17rem;
+        max-width: 23rem;
+        height: 27rem;
+        position: relative;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        button {
+          position: absolute;
+          bottom: 4%;
+          left: 5%;
+          border: none;
+          border-radius: 100px;
+          box-shadow: 0px 3px 10px 0px rgba($color: $color-dark--1, $alpha: 0.5);
+          padding: 0.5rem 1rem;
+          background-color: $color-light;
+          font-weight: bold;
+          font-size: 0.9rem;
+          cursor: pointer;
+          text-transform: uppercase;
+          color: $color-brand--3;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .villa-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      h2 {
+        color: $color-dark--1;
+        margin-top: 0.4rem;
+      }
+
+      p {
+        color: $color-dark--2;
+        font-weight: bold;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        span {
+          padding-right: 0.25rem;
+        }
+      }
+
+      span {
+        color: $color-orange;
+        font-weight: bold;
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

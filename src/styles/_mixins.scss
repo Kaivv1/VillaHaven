@@ -1,0 +1,32 @@
+@import "constants";
+
+@mixin btns($padding, $bg-color) {
+  outline: none;
+  color: $color-dark--1;
+  font-weight: bold;
+  padding: $padding;
+  background-color: $bg-color;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin inputFields() {
+  padding: 0.8rem 0.8rem;
+  font-size: 1rem;
+  width: 20rem;
+  border: none;
+  font-family: "Open Sans", sans-serif;
+  color: $color-dark--1;
+
+  &::placeholder {
+    color: $color-dark--1;
+  }
+  &:focus {
+    outline: 2px solid $color-brand--1;
+  }
+}

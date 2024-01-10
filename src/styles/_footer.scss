@@ -1,0 +1,238 @@
+@import "constants";
+@import "mixins";
+
+footer {
+  background-color: $color-dark--1;
+  padding: 6rem 15rem 1.5rem;
+  color: $color-light;
+  .footer-wrapper {
+    border-bottom: 1px solid $color-dark--2;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    .footer-support-box {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("../assets/more-images/pricing\ page.jpg") no-repeat;
+      background-size: cover;
+      background-position: center;
+      padding: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      box-sizing: border-box;
+      div {
+        h4 {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+    .footer-mid {
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        max-width: 40%;
+        h3 {
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+        }
+        p {
+          font-size: 0.9rem;
+        }
+      }
+
+      .footer-subscribe {
+        min-width: fit-content;
+        h4 {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+        p {
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+        }
+        form {
+          display: flex;
+          gap: 1rem;
+          justify-content: space-between;
+          input {
+            @include inputFields();
+          }
+
+          .footer-btn {
+            background-color: $color-brand--1;
+            color: $color-dark--1;
+          }
+        }
+      }
+    }
+
+    .footer-end {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      padding-bottom: 3rem;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        h4 {
+          font-size: 1.2rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+          &:hover {
+            color: $color-brand--1;
+          }
+        }
+        .footer-links {
+          flex-direction: row;
+
+          a {
+            text-decoration: none;
+            background-color: $color-brand--2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.2rem;
+            border-radius: 50%;
+            color: $color-dark--1;
+            &:hover {
+              background-color: $color-hover--socials;
+            }
+          }
+        }
+      }
+    }
+  }
+  .copy-right {
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.footer-btn {
+  @include btns(1rem 1.2rem, $color-dark--1);
+  color: $color-light;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  box-sizing: border-box;
+  min-width: fit-content;
+}
+
+@media (max-width: 1440px) {
+  footer {
+    padding: 6rem 5rem 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  footer {
+    padding: 6rem 3rem 1.5rem;
+    .footer-wrapper {
+      .footer-mid {
+        .footer-subscribe {
+          form {
+            input {
+              width: 14rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 840px) {
+  footer {
+    .footer-wrapper {
+      .footer-support-box {
+        text-align: center;
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .footer-mid {
+        flex-direction: column;
+        gap: 2rem;
+        div {
+          max-width: 100%;
+          text-align: center;
+        }
+
+        .footer-subscribe {
+          p {
+            margin-bottom: 1rem;
+          }
+          form {
+            justify-content: center;
+          }
+        }
+      }
+
+      .footer-end {
+        justify-content: space-between;
+        gap: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 6rem 1.7rem 1.5rem;
+  }
+}
+@media (max-width: 700px) {
+  footer {
+    padding: 6rem 0.7rem 1.5rem;
+  }
+}
+@media (max-width: 575px) {
+  footer {
+    .footer-wrapper {
+      .footer-mid {
+        div {
+          h3 {
+            font-size: 1.8rem;
+          }
+        }
+
+        .footer-subscribe {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          form {
+            flex-direction: column;
+            align-items: normal;
+          }
+        }
+      }
+
+      .footer-end {
+        flex-direction: column;
+        align-items: center;
+        div {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .footer-btn {
+    padding: 0.8rem;
+  }
+}
