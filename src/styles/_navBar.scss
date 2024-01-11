@@ -26,35 +26,6 @@
       .active {
         color: $color-brand--1;
       }
-      p {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: $color-light;
-        cursor: pointer;
-        font-weight: bold;
-        text-align: center;
-        position: relative;
-      }
-      .dropdown {
-        position: absolute;
-        list-style: none;
-        background-color: $color-light;
-        bottom: -360%;
-        right: 19%;
-        z-index: 100;
-        li {
-          padding: 0.6rem 0.9rem;
-          border-bottom: 1px solid $color-dark--2;
-          a {
-            color: $color-dark--1;
-          }
-
-          &:hover {
-            background-color: $color-brand--1;
-          }
-        }
-      }
     }
 
     .hamburger {
@@ -67,17 +38,18 @@
         position: absolute;
         list-style: none;
         background-color: $color-light;
-        bottom: -992%;
+        bottom: -700%;
         right: 0%;
         z-index: 100;
-        width: 7rem;
         li {
-          padding: 0.6rem 0.9rem;
-          border-bottom: 1px solid $color-dark--2;
           a {
+            padding: 0.5rem 0.6rem;
+            border-bottom: 1px solid $color-dark--2;
             color: $color-dark--1;
             text-decoration: none;
             font-weight: bold;
+            display: inline-block;
+            width: 5rem;
           }
 
           &:hover {
@@ -104,11 +76,12 @@
       z-index: 100;
 
       li {
-        padding: 0.7rem;
         a {
+          padding: 0.7rem;
           color: $color-dark--1;
           text-decoration: none;
           font-weight: bold;
+          display: inline-block;
         }
 
         &:hover {
@@ -448,8 +421,8 @@
           bottom: -884%;
           width: 6.5rem;
           li {
-            padding: 0.45rem 0.9rem;
             a {
+              padding: 0.45rem 0.9rem;
               font-size: 0.9rem;
             }
           }

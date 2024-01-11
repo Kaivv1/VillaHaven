@@ -1,5 +1,5 @@
 import AboutVillaHaven from "../components/AboutVillaHaven";
-import Amenities from "../components/Amenities/Amenities";
+import OtherAmenities from "../components/Amenities/OtherAmenities";
 import Facilities from "../components/Facilities";
 import OurVillas from "../components/OurVillas";
 import SpecialOffer from "../components/SpecialOffer/SpecialOffer";
@@ -10,7 +10,7 @@ const HomePage = () => {
       <OurVillas />
       <AboutVillaHaven />
       <Facilities />
-      <Amenities />
+      <OtherAmenities />
       <SpecialOffer />
       <Testimonials />
     </>

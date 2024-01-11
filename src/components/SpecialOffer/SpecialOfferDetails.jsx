@@ -27,9 +27,6 @@ const SpecialOfferDetails = ({ data }) => {
     supportFull,
     waitressFull,
   ];
-  // const iconsFolder = require.context("../../../src/assets/icons/full", true);
-  // const iconsFolderKeys = iconsFolder.keys();
-  // const icons = iconsFolderKeys.map((icon) => iconsFolder(icon));
 
   return (
     <div className="special-offer--details">

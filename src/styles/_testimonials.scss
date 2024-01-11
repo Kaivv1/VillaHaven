@@ -1,6 +1,6 @@
 @import "constants";
 .testimonials-container {
-  padding: 3rem 15rem 8rem;
+  padding: 3rem 15rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,7 +206,7 @@
 
 @media (max-width: 500px) {
   .testimonials-container {
-    padding: 3rem 0rem 5rem;
+    padding: 3rem 0rem 0rem;
     .testimonials-wrapper {
       .slider-container {
         width: 22rem;

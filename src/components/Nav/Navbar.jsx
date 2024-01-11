@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../../ui/Logo";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useEffect, useRef, useState } from "react";
 import DropDown from "./DropDown";
 import User from "./User";
@@ -14,7 +13,6 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const isLaptop = useIsMobile(1470);
   const isMobile = useIsMobile(425);
-  const pagesRef = useRef(null);
   const hamburgerRef = useRef(null);
   const handleToggleDropDown = () => {
     setIsClicked((prevIsClicked) => !prevIsClicked);
@@ -22,18 +20,6 @@ const Navbar = () => {
   const handleCloseDropDown = () => {
     setIsClicked(false);
   };
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (pagesRef.current && !pagesRef.current.contains(e.target)) {
-        handleCloseDropDown();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -63,7 +49,7 @@ const Navbar = () => {
                 strokeWidth={isMobile ? 2 : 3}
                 animationDuration={0.3}
               />
-              {isClicked && <DropDown isLaptop={isLaptop} />}
+              {isClicked && <DropDown />}
             </div>
           </>
         ) : (
@@ -73,11 +59,7 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about">About</NavLink>
               <NavLink to="/villas">Our Villas</NavLink>
-              <p ref={pagesRef} onClick={handleToggleDropDown}>
-                <span>Pages </span>
-                <KeyboardArrowDownIcon />
-              </p>
-              {isClicked && <DropDown />}
+              <NavLink to="/faq">FAQ</NavLink>
               <NavLink to="/contact">Contacts</NavLink>
             </nav>
             <User />

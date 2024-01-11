@@ -1,59 +1,52 @@
-import { useEffect } from "react";
-import {
-  chefEmpty,
-  waitressEmpty,
-  parkingEmpty,
-  fitnessEmpty,
-  laundryEmpty,
-  securityEmpty,
-  supportEmpty,
-  chefFull,
-  waitressFull,
-  parkingFull,
-  fitnessFull,
-  laundryFull,
-  securityFull,
-  supportFull,
-} from "../../assetsExports";
-import { useRefs } from "../../contexts/RefContext";
-import AmenitiesIcon from "./AmenitiesIcon";
-import { useIsInViewPort } from "../../hooks/isInViewPort";
+import DoneIcon from "@mui/icons-material/Done";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 const Amenities = () => {
-  const icons = [
-    { name: "chef", empty: chefEmpty, full: chefFull },
-    { name: "waitress", empty: waitressEmpty, full: waitressFull },
-    { name: "parking", empty: parkingEmpty, full: parkingFull },
-    { name: "fitness", empty: fitnessEmpty, full: fitnessFull },
-    { name: "laundry", empty: laundryEmpty, full: laundryFull },
-    { name: "security", empty: securityEmpty, full: securityFull },
-    { name: "support", empty: supportEmpty, full: supportFull },
+  const amenities = [
+    {
+      title: "Trusted",
+      text: "Book with confidence, our handpicked villas are hosted by trusted partners with stellar reviews.",
+    },
+    {
+      title: "Maintenance",
+      text: "Enjoy worry-free stays – our villas undergo regular maintenance for your comfort.",
+    },
+    {
+      title: "Easy Booking",
+      text: "Simple booking, delightful stays – our user-friendly platform makes it a breeze.",
+    },
+    {
+      title: "Help Services",
+      text: "Assistance at your fingertips – our 24/7 support team is ready to help.",
+    },
   ];
-  const { amenitiesRef } = useRefs();
-  const isIntersecting = useIsInViewPort(amenitiesRef);
-  useEffect(() => {
-    if (isIntersecting) {
-      amenitiesRef.current
-        .querySelectorAll(".amenities-icon")
-        .forEach((icon) => icon.classList.add("amenities-animation"));
-    }
-  }, [amenitiesRef, isIntersecting]);
+  const isMobile = useIsMobile(816);
 
   return (
-    <div className="amenities-container" ref={amenitiesRef}>
-      <div>
-        <h1>Other amenities</h1>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident
-          consequuntur commodi ipsum, obcaecati id reprehenderit neque labore,
-          iste
-        </p>
-      </div>
-
+    <div className="amenities-container">
       <div className="amenities-wrapper">
-        {icons.map((icon, i) => (
-          <AmenitiesIcon icon={icon} key={i} />
-        ))}
+        <div className="amenities-header">
+          <h1>Amenities</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
+            obcaecati placeat, eveniet recusandae nam praesentium ea est culpa
+            rem cumque!
+          </p>
+        </div>
+
+        <div className="amenities-card-wrapper">
+          {amenities.map((amenity, i) => (
+            <div key={i} className="amenities-card">
+              <div>
+                <span>
+                  <DoneIcon fontSize={isMobile ? "small" : "medium"} />
+                </span>
+                <h3>{amenity.title}</h3>
+              </div>
+              <p>{amenity.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
