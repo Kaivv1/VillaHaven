@@ -85,9 +85,6 @@
       h1 {
         margin-bottom: 1.5rem;
       }
-
-      p {
-      }
     }
 
     .amenities-card-wrapper {
@@ -99,6 +96,16 @@
       .amenities-card {
         background-color: $color-light;
         padding: 2rem;
+        opacity: 0;
+        transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+        &:nth-child(2),
+        &:nth-child(4) {
+          transform: translateX(50%);
+        }
+        &:nth-child(1),
+        &:nth-child(3) {
+          transform: translateX(-50%);
+        }
         div {
           display: flex;
           gap: 1rem;
@@ -115,12 +122,15 @@
             justify-content: center;
             align-items: center;
           }
-          h3 {
-          }
         }
         p {
           color: $color-dark--2;
         }
+      }
+      .amenities-card.amenities-card--animation {
+        transform: translateX(0);
+        opacity: 1;
+        transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
       }
     }
   }

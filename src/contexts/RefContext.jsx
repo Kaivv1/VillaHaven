@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useRef } from "react";
+/*eslint-disable react/prop-types */
+
+import { createContext, useContext, useRef } from "react";
 
 const RefContext = createContext();
 
@@ -9,6 +11,7 @@ const RefProvider = ({ children }) => {
   const footerRef = useRef(null);
   const pageHeaderRef = useRef(null);
   const counterRef = useRef(null);
+  const otherAmenitiesRef = useRef(null);
   const amenitiesRef = useRef(null);
   return (
     <RefContext.Provider
@@ -19,6 +22,7 @@ const RefProvider = ({ children }) => {
         footerRef,
         pageHeaderRef,
         counterRef,
+        otherAmenitiesRef,
         amenitiesRef,
       }}
     >

@@ -1,5 +1,8 @@
 import DoneIcon from "@mui/icons-material/Done";
 import { useIsMobile } from "../../hooks/useIsMobile";
+import { useRefs } from "../../contexts/RefContext";
+import { useEffect } from "react";
+import { useIsInViewPort } from "../../hooks/isInViewPort";
 
 const Amenities = () => {
   const amenities = [
@@ -21,6 +24,18 @@ const Amenities = () => {
     },
   ];
   const isMobile = useIsMobile(816);
+  const { amenitiesRef } = useRefs();
+  const isIntersecting = useIsInViewPort(amenitiesRef);
+
+  useEffect(() => {
+    if (isIntersecting) {
+      amenitiesRef.current
+        .querySelectorAll(".amenities-card")
+        .forEach((card) => {
+          card.classList.add("amenities-card--animation");
+        });
+    }
+  }, [isIntersecting, amenitiesRef]);
 
   return (
     <div className="amenities-container">
@@ -34,7 +49,7 @@ const Amenities = () => {
           </p>
         </div>
 
-        <div className="amenities-card-wrapper">
+        <div className="amenities-card-wrapper" ref={amenitiesRef}>
           {amenities.map((amenity, i) => (
             <div key={i} className="amenities-card">
               <div>

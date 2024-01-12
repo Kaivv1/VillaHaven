@@ -29,18 +29,18 @@ const OtherAmenities = () => {
     { name: "security", empty: securityEmpty, full: securityFull },
     { name: "support", empty: supportEmpty, full: supportFull },
   ];
-  const { amenitiesRef } = useRefs();
-  const isIntersecting = useIsInViewPort(amenitiesRef);
+  const { otherAmenitiesRef } = useRefs();
+  const isIntersecting = useIsInViewPort(otherAmenitiesRef);
   useEffect(() => {
     if (isIntersecting) {
-      amenitiesRef.current
+      otherAmenitiesRef.current
         .querySelectorAll(".other-amenities-icon")
         .forEach((icon) => icon.classList.add("other-amenities-animation"));
     }
-  }, [amenitiesRef, isIntersecting]);
+  }, [otherAmenitiesRef, isIntersecting]);
 
   return (
-    <div className="other-amenities-container" ref={amenitiesRef}>
+    <div className="other-amenities-container" ref={otherAmenitiesRef}>
       <div>
         <h1>Other amenities</h1>
         <p>
