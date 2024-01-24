@@ -1,3 +1,4 @@
+/* eslint no-undef: */
 const Register = require("../Models/Register");
 const errorHandler = require("../utils/error");
 const updateUser = async (req, res, next) => {

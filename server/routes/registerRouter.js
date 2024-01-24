@@ -1,22 +1,9 @@
+/* eslint no-undef: */
 const express = require("express");
 const Register = require("../Models/Register");
 const registerRouter = express.Router();
 const bcryptjs = require("bcryptjs");
 const errorHandler = require("../utils/error");
-registerRouter.get("/", (req, res) => {
-  Register.find()
-    .then((register) => res.json(register))
-    .catch((err) => {
-      console.log("ERROR", err);
-      res.status(500).json({ error: "Server Error" });
-    });
-});
-
-registerRouter.get("/:id", (req, res) => {
-  Register.find()
-    .then((register) => res.json(register))
-    .catch((err) => console.log("ERROR", err));
-});
 
 registerRouter.post("/", async (req, res, next) => {
   const { email, password } = req.body;

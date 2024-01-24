@@ -1,3 +1,4 @@
+/* eslint no-undef: */
 const errorHandler = require("../utils/error");
 const Register = require("../Models/Register");
 const bcryptjs = require("bcryptjs");

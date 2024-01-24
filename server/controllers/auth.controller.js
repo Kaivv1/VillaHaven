@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: */
+/* eslint no-undef: */
 const jwt = require("jsonwebtoken");
 const errorHandler = require("../utils/error");
 const Register = require("../Models/Register");

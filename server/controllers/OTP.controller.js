@@ -1,3 +1,4 @@
+/* eslint no-undef: */
 const otpGenerator = require("otp-generator");
 const errorHandler = require("../utils/error");
 const OTP = require("../Models/OTP");

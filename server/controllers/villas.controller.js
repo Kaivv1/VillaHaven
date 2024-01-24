@@ -1,3 +1,4 @@
+/* eslint no-undef: */
 const Register = require("../Models/Register");
 const Villa = require("../Models/Villa");
 const errorHandler = require("../utils/error");

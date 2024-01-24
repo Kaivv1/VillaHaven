@@ -1,7 +1,8 @@
+/* eslint no-undef: */
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let registerSchema = new Schema(
+const registerSchema = new Schema(
   {
     firstName: {
       type: String,

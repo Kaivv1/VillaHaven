@@ -1,5 +1,5 @@
+/* eslint no-undef: */
 const mongoose = require("mongoose");
-
 const villaModel = new mongoose.Schema({
   picture: {
     type: String,

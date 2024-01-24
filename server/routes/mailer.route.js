@@ -1,3 +1,5 @@
+/* eslint no-undef: */
+
 const express = require("express");
 const sendEmail = require("../controllers/mailer.controller");
 

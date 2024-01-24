@@ -1,3 +1,4 @@
+/* eslint no-undef: */
 const mongoose = require("mongoose");
 
 const OTPModel = new mongoose.Schema(

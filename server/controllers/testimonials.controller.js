@@ -1,3 +1,4 @@
+/* eslint no-undef: */
 const Testimonial = require("../Models/Testimonial");
 const errorHandler = require("../utils/error");
 

@@ -1,3 +1,6 @@
+/* eslint no-unused-vars: */
+/* eslint no-undef: */
+
 const nodemailer = require("nodemailer");
 const errorHandler = require("../utils/error");
 const Mailgen = require("mailgen");

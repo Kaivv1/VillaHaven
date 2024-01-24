@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: */
+/* eslint no-undef: */
 const Register = require("../Models/Register");
 const errorHandler = require("../utils/error");
 

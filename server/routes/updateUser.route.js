@@ -1,3 +1,4 @@
+/* eslint no-undef: */
 const express = require("express");
 const updateUserRouter = express.Router();
 const updateUser = require("../controllers/update.controller");
