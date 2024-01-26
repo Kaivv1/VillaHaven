@@ -1,26 +1,66 @@
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
+
 const Button = ({
   children,
   onClick,
   className,
   icon,
   iconColor = "#222222",
+  to = "",
+  isLoading,
+  isLoadingMsg = "",
 }) => {
   return (
-    <button className={className} onClick={onClick}>
-      {children}
-      {icon && (
-        <span
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: iconColor,
-          }}
-        >
-          {icon}
-        </span>
+    <>
+      {to ? (
+        <Link to={`${to}`}>
+          <button className={className} onClick={onClick} disabled={isLoading}>
+            {isLoading ? (
+              isLoadingMsg
+            ) : (
+              <>
+                {children}
+                {icon && (
+                  <span
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      color: iconColor,
+                    }}
+                  >
+                    {icon}
+                  </span>
+                )}
+              </>
+            )}
+          </button>
+        </Link>
+      ) : (
+        <button className={className} onClick={onClick} disabled={isLoading}>
+          {isLoading ? (
+            isLoadingMsg
+          ) : (
+            <>
+              {children}
+              {icon && (
+                <span
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: iconColor,
+                  }}
+                >
+                  {icon}
+                </span>
+              )}
+            </>
+          )}
+        </button>
       )}
-    </button>
+    </>
   );
 };
 

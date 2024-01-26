@@ -8,7 +8,6 @@ const Testimonials = () => {
     const fetchTestimonials = async () => {
       const data = await getTestimonials();
       setTestimonials(data);
-      console.log(data);
     };
 
     fetchTestimonials();

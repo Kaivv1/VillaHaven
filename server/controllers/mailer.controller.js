@@ -24,11 +24,11 @@ const MailGenerator = new Mailgen({
 });
 
 const sendEmail = async (req, res, next) => {
-  const { firstName, userEmail, text, subject } = req.body;
+  const { name, userEmail, text, subject } = req.body;
 
   const email = {
     body: {
-      name: firstName,
+      name: name,
       intro: text,
       outro:
         "Need help, or have question? Just reply to this email, we'd love to help.",

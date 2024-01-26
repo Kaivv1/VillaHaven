@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import LocationSVG from "../ui/svgs/LocationSVG";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";

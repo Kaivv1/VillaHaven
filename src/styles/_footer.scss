@@ -58,13 +58,13 @@ footer {
           margin-bottom: 0.5rem;
         }
         form {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1fr;
           gap: 1rem;
-          justify-content: space-between;
           input {
             @include inputFields();
+            width: calc(100% - 26px);
           }
-
           .footer-btn {
             background-color: $color-brand--1;
             color: $color-dark--1;
@@ -142,17 +142,6 @@ footer {
 @media (max-width: 1024px) {
   footer {
     padding: 6rem 3rem 1.5rem;
-    .footer-wrapper {
-      .footer-mid {
-        .footer-subscribe {
-          form {
-            input {
-              width: 14rem;
-            }
-          }
-        }
-      }
-    }
   }
 }
 @media (max-width: 840px) {
@@ -175,9 +164,6 @@ footer {
         .footer-subscribe {
           p {
             margin-bottom: 1rem;
-          }
-          form {
-            justify-content: center;
           }
         }
       }
@@ -209,19 +195,7 @@ footer {
             font-size: 1.8rem;
           }
         }
-
-        .footer-subscribe {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          form {
-            flex-direction: column;
-            align-items: normal;
-          }
-        }
       }
-
       .footer-end {
         flex-direction: column;
         align-items: center;

@@ -3,9 +3,6 @@ import ErrorPage from "./ErrorPage";
 import ContactsPage from "./ContactPage";
 import AboutPage from "./AboutPage";
 
-import FAQPage from "./PagesMenu/FAQPage";
-import OurStaffPage from "./PagesMenu/OurStaffPage";
-import PricingPage from "./PagesMenu/PricingPage";
 import FavouriteVillasPage from "./FavouriteVillasPage";
 
 import VillaDetailsPage from "./OurVillas/VillaDetailsPage";
@@ -21,9 +18,6 @@ export {
   ErrorPage,
   ContactsPage,
   AboutPage,
-  FAQPage,
-  OurStaffPage,
-  PricingPage,
   VillaDetailsPage,
   VillasPage,
   LoginPage,

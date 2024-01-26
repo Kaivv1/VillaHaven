@@ -25,9 +25,6 @@ const DropDown = () => {
         <Link to="/favorites">Favorites</Link>
       </li>
       <li>
-        <Link to="/faq">FAQ</Link>
-      </li>
-      <li>
         <Link to="/contact">Contacts</Link>
       </li>
       <li>

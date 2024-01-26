@@ -1,27 +1,20 @@
-let express = require("express");
-let path = require("path");
-let cookieParser = require("cookie-parser");
-let logger = require("morgan");
-let mongoose = require("mongoose");
+/* eslint no-unused-vars: */
+/* eslint no-undef: */
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const registerRouter = require("./routes/registerRouter");
-const loginRouter = require("./routes/signin.route");
-const { userRouter, userByTokenRouter } = require("./routes/getUser.route");
-const updateUserRouter = require("./routes/updateUser.route");
 const {
   generateOTPRouter,
   verifyOTPRouter,
   resendOTPRouter,
   deleteOTPRouter,
 } = require("./routes/OTP.route");
-const resetPassRouter = require("./routes/resetPassword.route");
-const sendEmailRouter = require("./routes/mailer.route");
-const passport = require("./passport-config/passportConfig");
-const secretKeyRouter = require("./routes/secret.route");
-
 const {
   getVillasRouter,
   uploadVillasRouter,
@@ -33,7 +26,15 @@ const {
   uploadTestimonialRouter,
   getTestimonialsRouter,
 } = require("./routes/testimonials.route");
-
+const { userRouter, userByTokenRouter } = require("./routes/getUser.route");
+const { createFAQRouter, getFAQsRouter } = require("./routes/FAQs.route");
+const { secretKeyRouter, secretEmailRouter } = require("./routes/secret.route");
+const registerRouter = require("./routes/registerRouter");
+const loginRouter = require("./routes/signin.route");
+const updateUserRouter = require("./routes/updateUser.route");
+const resetPassRouter = require("./routes/resetPassword.route");
+const sendEmailRouter = require("./routes/mailer.route");
+const passport = require("./passport-config/passportConfig");
 const app = express();
 
 app.use(passport.initialize());
@@ -63,6 +64,9 @@ app.use("/removefavoritevilla", deleteFavoriteVillaRouter);
 app.use("/getuser", userByTokenRouter);
 app.use("/uploadtestimonial", uploadTestimonialRouter);
 app.use("/gettestimonials", getTestimonialsRouter);
+app.use("/createFAQ", createFAQRouter);
+app.use("/getFAQs", getFAQsRouter);
+app.use("/getappemail", secretEmailRouter);
 
 app.use(function (err, req, res, next) {
   const message = err.message || "Internal Server Error";

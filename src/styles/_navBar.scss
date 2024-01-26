@@ -278,9 +278,11 @@
       div {
         p {
           margin-bottom: 2rem;
+          transform: translateX(-10%);
         }
         h1 {
           font-size: 3.5rem;
+          transform: translateY(30%);
         }
       }
     }

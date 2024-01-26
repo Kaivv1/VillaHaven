@@ -1,0 +1,230 @@
+@import "constants";
+@import "mixins";
+.contacts-container {
+  background-color: $color-dark--3;
+  padding: 3rem 15rem;
+  header {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+    h1 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .accordions-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 3rem 0rem;
+    .accordion-container {
+      background-color: #fff;
+      padding: 3rem;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0px 2px 10px 0px rgba($color: $color-dark--1, $alpha: 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: space-between;
+      box-sizing: border-box;
+      height: 33rem;
+      .FAQ {
+        cursor: pointer;
+        .label {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 0.5rem;
+
+          .arrow-down {
+            transition: transform 0.2s ease-in-out;
+          }
+        }
+        .label.active {
+          h3 {
+            color: $color-brand--3;
+          }
+          .arrow-down {
+            transform: rotate(180deg);
+            transition: transform 0.2s ease-in-out;
+            color: $color-brand--3;
+          }
+        }
+        h3,
+        p {
+          padding-right: 2rem;
+        }
+        .answer {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.2s ease-in-out;
+          p {
+            margin-bottom: 1rem;
+          }
+        }
+        .answer.active {
+          max-height: 10rem;
+          height: fit-content;
+          transition: max-height 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+  .support-wrapper {
+    display: flex;
+    margin-top: 3rem;
+    .support-image {
+      background: url("../assets/more-images/customer-service.png") no-repeat;
+      background-size: auto;
+      background-position: center;
+      width: 100%;
+      // min-width: calc(100% - 40%);
+      height: auto;
+    }
+
+    .submitQuestionForm {
+      background-color: $color-dark--1;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      gap: 1rem;
+      min-width: 30%;
+      .form-header {
+        color: #fff;
+        h2 {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      input {
+        @include inputFields();
+        width: calc(100% - 25.7px);
+      }
+
+      textarea {
+        @include inputFields();
+        width: calc(100% - 25.7px);
+        resize: none;
+      }
+
+      .submit-question-btn {
+        @include btns(1rem 1.2rem, $color-brand--1);
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1752px) {
+  .contacts-container {
+    padding: 3rem 10rem;
+  }
+}
+@media (max-width: 1440px) {
+  .contacts-container {
+    padding: 3rem 5rem;
+    .accordions-wrapper {
+      gap: 1rem;
+
+      .accordion-container {
+        height: 35rem;
+      }
+    }
+  }
+}
+@media (max-width: 1172px) {
+  .contacts-container {
+    padding: 3rem;
+    header {
+      width: 100%;
+    }
+    .accordions-wrapper {
+      grid-template-columns: 1fr;
+      .accordion-container {
+        height: 28rem;
+      }
+    }
+    .support-wrapper {
+      flex-direction: column;
+      margin-top: 0rem;
+      .support-image {
+        height: 30rem;
+        background-size: cover;
+      }
+
+      .submitQuestionForm {
+        .form-header {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .contacts-container {
+    padding: 1rem;
+    header {
+      width: 100%;
+    }
+    .accordions-wrapper {
+      .accordion-container {
+        height: unset;
+      }
+    }
+  }
+}
+@media (max-width: 565px) {
+  .contacts-container {
+    .accordions-wrapper {
+      .accordion-container {
+        padding: 1rem;
+        .FAQ {
+          .label {
+            h3 {
+              font-size: 1.05rem;
+            }
+          }
+          .label.active {
+            h3 {
+              color: $color-brand--3;
+            }
+          }
+          h3,
+          p {
+            padding-right: 2rem;
+          }
+          .answer {
+            p {
+              margin-bottom: 1rem;
+              font-size: 0.95rem;
+            }
+          }
+          .answer.active {
+            max-height: 10rem;
+            height: fit-content;
+            transition: max-height 0.3s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .contacts-container {
+    .support-wrapper {
+      .support-image {
+        height: 30rem;
+        background-size: cover;
+      }
+      .submitQuestionForm {
+        padding: 1rem;
+      }
+    }
+  }
+}

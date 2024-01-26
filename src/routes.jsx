@@ -4,9 +4,6 @@ import {
   ErrorPage,
   ContactsPage,
   AboutPage,
-  FAQPage,
-  OurStaffPage,
-  PricingPage,
   VillaDetailsPage,
   VillasPage,
   LoginPage,
@@ -53,30 +50,6 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <VillaDetailsPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/pricing",
-        element: (
-          <ProtectedRoute>
-            <PricingPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/staff",
-        element: (
-          <ProtectedRoute>
-            <OurStaffPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/faq",
-        element: (
-          <ProtectedRoute>
-            <FAQPage />
           </ProtectedRoute>
         ),
       },

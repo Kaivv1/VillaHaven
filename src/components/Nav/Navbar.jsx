@@ -11,7 +11,7 @@ import HamburgerMenu from "react-hamburger-menu";
 const Navbar = () => {
   const [isClicked, setIsClicked] = useState(false);
   const { pathname } = useLocation();
-  const isLaptop = useIsMobile(1470);
+  const isTablet = useIsMobile(1024);
   const isMobile = useIsMobile(425);
   const hamburgerRef = useRef(null);
   const handleToggleDropDown = () => {
@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar">
-        {isLaptop ? (
+        {isTablet ? (
           <>
             <Logo isMobile={isMobile} />
             <div className="hamburger" ref={hamburgerRef}>
@@ -59,7 +59,6 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about">About</NavLink>
               <NavLink to="/villas">Our Villas</NavLink>
-              <NavLink to="/faq">FAQ</NavLink>
               <NavLink to="/contact">Contacts</NavLink>
             </nav>
             <User />
@@ -82,10 +81,10 @@ const Navbar = () => {
       {pathname === "/staff" && (
         <PageHeader smallTitle="staff" largeTitle="our staff" />
       )}
-      {pathname === "/faq" && <PageHeader smallTitle="faq" largeTitle="faq" />}
       {pathname === "/favorites" && (
         <PageHeader smallTitle="favorites" largeTitle="favorite villas" />
       )}
+      {pathname === "/faq" && <PageHeader smallTitle="faq" largeTitle="FAQ" />}
     </div>
   );
 };

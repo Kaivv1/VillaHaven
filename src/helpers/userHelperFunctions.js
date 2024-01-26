@@ -1,62 +1,13 @@
-const setHeader = (method, body, token) => {
-  if (method === "GET") {
-    return {
+/* eslint no-useless-catch: */
+
+export const getUser = async (email) => {
+  try {
+    const res = await fetch(`http://localhost:4000/user/${email}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-    };
-  }
-
-  if (method === "POST") {
-    if (method === "POST" && token) {
-      return {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-      };
-    }
-
-    return {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    };
-  }
-
-  if (method === "PUT") {
-    if (method === "PUT" && token) {
-      return {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-      };
-    }
-
-    return {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    };
-  }
-};
-
-export const getUser = async (email) => {
-  try {
-    const res = await fetch(
-      `http://localhost:4000/user/${email}`,
-      setHeader("GET")
-    );
+    });
 
     const data = await res.json();
     if (data.success === false) return;
@@ -71,7 +22,12 @@ export const generateOTP = async (email) => {
   try {
     const codeResponse = await fetch(
       `http://localhost:4000/generateOTP?email=${email}`,
-      setHeader("GET")
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
     const codeData = await codeResponse.json();
 
@@ -82,16 +38,19 @@ export const generateOTP = async (email) => {
     } = await getUser(email);
 
     const messageData = {
-      firstName,
+      name: firstName,
       userEmail: email,
       text: `Your verification code is ${codeData.code}.`,
       subject: "Password recovery",
     };
 
-    const emailResponse = await fetch(
-      "http://localhost:4000/sendEmail",
-      setHeader("POST", messageData)
-    );
+    const emailResponse = await fetch("http://localhost:4000/sendEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(messageData),
+    });
     const data = await emailResponse.json();
 
     if (data.success === false) return;
@@ -106,7 +65,12 @@ export const resendOTP = async (email) => {
   try {
     const codeResponse = await fetch(
       `http://localhost:4000/resendOTP?email=${email}`,
-      setHeader("GET")
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
 
     const codeData = await codeResponse.json();
@@ -116,16 +80,17 @@ export const resendOTP = async (email) => {
     } = await getUser(email);
 
     const messageData = {
-      firstName,
+      name: firstName,
       userEmail: email,
       text: `Your verification code is ${codeData.code}.`,
       subject: "Password recovery",
     };
 
-    const emailResponse = await fetch(
-      "http://localhost:4000/sendEmail",
-      setHeader("POST", messageData)
-    );
+    const emailResponse = await fetch("http://localhost:4000/sendEmail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(messageData),
+    });
     await emailResponse.json();
 
     return Promise.resolve({ codeData });
@@ -136,10 +101,12 @@ export const resendOTP = async (email) => {
 
 export const deleteOTP = async (email) => {
   try {
-    const res = await fetch(
-      `http://localhost:4000/deleteOTP?email=${email}`,
-      setHeader("GET")
-    );
+    const res = await fetch(`http://localhost:4000/deleteOTP?email=${email}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     await res.json();
   } catch (error) {
@@ -151,7 +118,12 @@ export const verifyOTP = async (email, code) => {
   try {
     const res = await fetch(
       `http://localhost:4000/verifyOTP?email=${email}&code=${code}`,
-      setHeader("GET")
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
 
     const data = await res.json();
@@ -176,10 +148,13 @@ export const getSecret = async () => {
 
 export const resetPassword = async (email, password) => {
   try {
-    const res = await fetch(
-      "http://localhost:4000/resetPassword",
-      setHeader("PUT", { email, password })
-    );
+    const res = await fetch("http://localhost:4000/resetPassword", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
     const data = await res.json();
 

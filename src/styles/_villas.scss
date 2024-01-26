@@ -105,29 +105,26 @@
 }
 
 .villas-page-container {
-  margin-bottom: 7rem;
-  .villas-text {
-    text-align: center;
-    padding-left: 250px;
-    padding-right: 250px;
-    font-size: 30px;
-    margin-top: 150px;
-    line-height: 20px;
-    margin-bottom: 50px;
-    h2 {
-      color: $color-dark--1;
-      margin-bottom: 3rem;
-    }
-    p {
-      font-size: 1rem;
-    }
-  }
+  margin: 3rem 0rem 3rem;
   .villas-content-wrapper {
     padding: 0rem 3rem;
+
+    .villas-header {
+      margin: 0 auto;
+      text-align: center;
+      width: 80%;
+      h2 {
+        margin-bottom: 1rem;
+      }
+      p {
+        color: $color-dark--2;
+      }
+    }
 
     .villas-container {
       position: relative;
       display: grid;
+      margin-top: 3rem;
       grid-template-columns: repeat(4, minmax(22rem, 25rem));
       justify-content: center;
       grid-template-rows: 1fr;
@@ -291,6 +288,16 @@
         color: $color-orange;
         font-weight: bold;
         font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .villas-page-container {
+    .villas-content-wrapper {
+      .villas-header {
+        width: 100%;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchVillas } from "../helpers/villaHelperFunctions";
 import Button from "./Button";
 import Villa from "./Villa";
@@ -27,7 +27,11 @@ const OurVillas = () => {
             venenatis eget pulnivar ipsum quisque non arcu nulla
           </p>
         </div>
-        <Button className="villas-btn" icon={<EastIcon fontSize="small" />}>
+        <Button
+          className="villas-btn"
+          icon={<EastIcon fontSize="small" />}
+          to="/villas"
+        >
           view all
         </Button>
       </div>
