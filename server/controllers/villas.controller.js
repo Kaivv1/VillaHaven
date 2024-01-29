@@ -1,20 +1,29 @@
 /* eslint no-undef: */
+/*eslint no-unused-vars: */
 const Register = require("../Models/Register");
 const Villa = require("../Models/Villa");
+const { generateImageName, uploadFile } = require("../s3Bucket");
 const errorHandler = require("../utils/error");
 
 const uploadVilla = async (req, res, next) => {
   try {
-    const { picture, villaName, location, price, favorite } = req.body;
+    const picturesUrls = await Promise.all(
+      req.files.map(async (file) => {
+        const imageName = generateImageName();
+        await uploadFile(file.buffer, imageName, file.mimetype);
 
-    const newVilla = new Villa({
-      picture,
-      villaName,
-      location,
-      price,
-      favorite,
+        return imageName;
+      })
+    ).catch((err) => {
+      return next(errorHandler(404, "Files failed to upload"));
     });
 
+    const newVilla = new Villa({
+      pictures: picturesUrls,
+      ...req.body,
+    });
+
+    console.log(newVilla);
     await newVilla.save();
 
     res.status(201).json("villa uploaded");

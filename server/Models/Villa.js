@@ -1,21 +1,45 @@
 /* eslint no-undef: */
 const mongoose = require("mongoose");
 const villaModel = new mongoose.Schema({
-  picture: {
-    type: String,
-    required: true,
-  },
+  pictures: [{ type: String }],
   villaName: {
     type: String,
-    required: true,
   },
   location: {
     type: String,
-    required: true,
   },
   price: {
     type: String,
-    required: true,
+  },
+  specialPrice: {
+    type: String,
+  },
+  garages: {
+    type: Number,
+  },
+  bedrooms: {
+    type: Number,
+  },
+  bathrooms: {
+    type: Number,
+  },
+  propertyType: {
+    type: String,
+  },
+  propertyStatus: {
+    type: String,
+  },
+  yearBuilt: {
+    type: String,
+  },
+  pool: {
+    type: Boolean,
+  },
+  backyard: {
+    type: Boolean,
+  },
+  rating: {
+    type: Number,
   },
 });
 

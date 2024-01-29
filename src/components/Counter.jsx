@@ -1,3 +1,5 @@
+/*eslint-disable react/prop-types*/
+
 import React, { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 

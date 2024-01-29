@@ -1,8 +1,7 @@
 /* eslint no-undef: */
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const registerSchema = new Schema(
+const registerSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -27,7 +26,7 @@ const registerSchema = new Schema(
     },
     favorites: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Villa",
       },
     ],

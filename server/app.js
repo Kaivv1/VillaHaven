@@ -1,4 +1,5 @@
 /* eslint no-unused-vars: */
+
 /* eslint no-undef: */
 const express = require("express");
 const path = require("path");
@@ -6,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
+
 const dotenv = require("dotenv");
 dotenv.config();
 
