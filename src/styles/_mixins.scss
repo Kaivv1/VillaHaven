@@ -8,10 +8,15 @@
   background-color: $bg-color;
   cursor: pointer;
   text-transform: uppercase;
-
+  transition: 0.2s ease-in-out;
+  border-radius: $border-radius;
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: $color-brand--1-hover;
   }
 }
 
@@ -22,7 +27,7 @@
   border: none;
   font-family: "Open Sans", sans-serif;
   color: $color-dark--1;
-
+  border-radius: $border-radius;
   &::placeholder {
     color: $color-dark--1;
   }

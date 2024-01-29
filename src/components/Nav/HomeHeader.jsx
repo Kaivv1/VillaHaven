@@ -9,7 +9,8 @@ const HomeHeader = () => {
   useEffect(() => {
     const getVillas = async () => {
       const data = await fetchVillas();
-      setVillas(data);
+      const updatedData = data.map((el) => el._doc);
+      setVillas(updatedData);
     };
 
     getVillas();

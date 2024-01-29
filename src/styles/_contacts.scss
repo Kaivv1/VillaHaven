@@ -3,6 +3,7 @@
 .contacts-container {
   background-color: $color-dark--3;
   padding: 3rem 15rem;
+
   header {
     width: 60%;
     text-align: center;
@@ -28,6 +29,8 @@
       justify-content: space-between;
       box-sizing: border-box;
       height: 33rem;
+      border-radius: $border-radius;
+
       .FAQ {
         cursor: pointer;
         .label {
@@ -73,6 +76,7 @@
   .support-wrapper {
     display: flex;
     margin-top: 3rem;
+
     .support-image {
       background: url("../assets/more-images/customer-service.png") no-repeat;
       background-size: auto;
@@ -80,6 +84,8 @@
       width: 100%;
       // min-width: calc(100% - 40%);
       height: auto;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
     }
 
     .submitQuestionForm {
@@ -90,6 +96,8 @@
       box-sizing: border-box;
       gap: 1rem;
       min-width: 30%;
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
       .form-header {
         color: #fff;
         h2 {
@@ -153,11 +161,17 @@
       flex-direction: column;
       margin-top: 0rem;
       .support-image {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+        border-bottom-left-radius: unset;
         height: 30rem;
         background-size: cover;
       }
 
       .submitQuestionForm {
+        border-top-right-radius: unset;
+
+        border-bottom-left-radius: $border-radius;
         .form-header {
           text-align: center;
         }

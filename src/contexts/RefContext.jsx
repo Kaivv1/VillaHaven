@@ -5,7 +5,6 @@ import { createContext, useContext, useRef } from "react";
 const RefContext = createContext();
 
 const RefProvider = ({ children }) => {
-  const specialOfferRef = useRef(null);
   const customerReviewRef = useRef(null);
   const latestBlogsRef = useRef(null);
   const footerRef = useRef(null);
@@ -16,7 +15,6 @@ const RefProvider = ({ children }) => {
   return (
     <RefContext.Provider
       value={{
-        specialOfferRef,
         customerReviewRef,
         latestBlogsRef,
         footerRef,

@@ -65,6 +65,7 @@
       border: none;
       width: 88.9rem;
       height: 50rem;
+      border-radius: $border-radius;
     }
     button {
       border: none;
@@ -86,6 +87,7 @@
 .slider-container {
   position: relative;
   overflow: hidden;
+  border-radius: $border-radius;
 
   .slides {
     display: flex;

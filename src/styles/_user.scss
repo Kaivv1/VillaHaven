@@ -20,6 +20,8 @@
     align-items: center;
     background-color: rgba($color: $color-light, $alpha: 0.2);
     padding: 2rem;
+    border-radius: $border-radius;
+
     h1 {
       margin-bottom: 1rem;
       color: $color-light;

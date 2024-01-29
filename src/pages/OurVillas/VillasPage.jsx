@@ -13,8 +13,8 @@ const VillasPage = () => {
         });
 
         const data = await res.json();
-
-        setVillas(data);
+        const updatedData = data.map((el) => el._doc);
+        setVillas(updatedData);
       } catch (error) {
         console.log(error);
       }

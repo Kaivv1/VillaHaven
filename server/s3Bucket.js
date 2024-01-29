@@ -1,6 +1,11 @@
 /*eslint-disable no-undef */
 
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const {
+  S3Client,
+  PutObjectCommand,
+  GetObjectCommand,
+} = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const crypto = require("crypto");
 
 const uploadMulterSetup = () => {
@@ -27,10 +32,6 @@ const s3 = new S3Client({
   region: bucket.region,
 });
 
-const getFullS3Url = (key) => {
-  return `https://${bucket.name}.s3.amazonaws.com/${key}`;
-};
-
 const uploadFile = async (fileBuffer, fileName, mimetype) => {
   const params = {
     Bucket: bucket.name,
@@ -44,12 +45,25 @@ const uploadFile = async (fileBuffer, fileName, mimetype) => {
   return s3.send(command);
 };
 
+const getFile = async (fileName) => {
+  const params = {
+    Bucket: bucket.name,
+    Key: fileName,
+  };
+
+  const command = new GetObjectCommand(params);
+
+  const url = await getSignedUrl(s3, command, { expiresIn: 600000 });
+
+  return url;
+};
+
 module.exports = {
   uploadMulterSetup,
   generateImageName,
+  getFile,
   bucket,
   s3,
-  getFullS3Url,
   uploadFile,
 };
 

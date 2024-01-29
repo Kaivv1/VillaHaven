@@ -41,6 +41,8 @@
         bottom: -700%;
         right: 0%;
         z-index: 100;
+        border-radius: $border-radius;
+
         li {
           a {
             padding: 0.5rem 0.6rem;
@@ -74,6 +76,7 @@
       bottom: -153%;
       right: 70%;
       z-index: 100;
+      border-radius: $border-radius;
 
       li {
         a {
@@ -145,6 +148,8 @@
       background-color: rgba($color: $color-light, $alpha: 0.2);
       padding: 3rem 2rem;
       width: 27rem;
+      border-radius: $border-radius;
+
       h3,
       p {
         color: $color-light;

@@ -11,7 +11,8 @@ const OurVillas = () => {
   useEffect(() => {
     const handleVillas = async () => {
       const data = await fetchVillas();
-      setVillas(data);
+      const updatedData = data.map((el) => el._doc);
+      setVillas(updatedData);
     };
 
     handleVillas();

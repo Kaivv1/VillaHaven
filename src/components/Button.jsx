@@ -14,7 +14,7 @@ const Button = ({
   return (
     <>
       {to ? (
-        <Link to={`${to}`}>
+        <Link to={`${to}`} style={{ textDecoration: "none" }}>
           <button className={className} onClick={onClick} disabled={isLoading}>
             {isLoading ? (
               isLoadingMsg

@@ -23,7 +23,11 @@ const Facilities = () => {
           </p>
         </div>
 
-        <Button className="facilities-btn" icon={<EastIcon fontSize="small" />}>
+        <Button
+          className="facilities-btn"
+          icon={<EastIcon fontSize="small" />}
+          to="/villas"
+        >
           Book now
         </Button>
       </div>

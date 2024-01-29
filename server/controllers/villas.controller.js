@@ -2,7 +2,7 @@
 /*eslint no-unused-vars: */
 const Register = require("../Models/Register");
 const Villa = require("../Models/Villa");
-const { generateImageName, uploadFile } = require("../s3Bucket");
+const { generateImageName, uploadFile, getFile } = require("../s3Bucket");
 const errorHandler = require("../utils/error");
 
 const uploadVilla = async (req, res, next) => {
@@ -35,8 +35,25 @@ const uploadVilla = async (req, res, next) => {
 const getVillas = async (req, res, next) => {
   try {
     const villas = await Villa.find();
+    if (!villas) return next(errorHandler(404, "Couldn't get villas"));
 
-    res.status(201).json(villas);
+    const updatedVillas = await Promise.all(
+      villas.map(async (villa) => {
+        const updatedPictures = await Promise.all(
+          villa.pictures.map(async (picture) => {
+            const url = await getFile(picture);
+
+            return url;
+          })
+        );
+
+        villa.pictures = updatedPictures;
+        return {
+          ...villa,
+        };
+      })
+    );
+    res.status(201).json(updatedVillas);
   } catch (error) {
     next(errorHandler(500, error));
   }

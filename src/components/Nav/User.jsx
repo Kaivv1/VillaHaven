@@ -53,8 +53,8 @@ const User = () => {
   }, []);
 
   return (
-    <div className="user-container">
-      <span ref={userIconRef} onClick={toggleDropDown}>
+    <div className="user-container" ref={userIconRef}>
+      <span onClick={toggleDropDown}>
         <AccountCircleIcon fontSize="large" className="user-icon" />
       </span>
       {isClicked && <UserDropDown onClose={closeDropDown} />}
