@@ -19,3 +19,8 @@ $color-hover--socials: #92a074;
 $color-brand--1-hover: #eab308;
 
 $border-radius: 0.3rem;
+$box-shadow: 0px 5px 10px 0px
+  rgba(
+    $color: $color-dark--1,
+    $alpha: 0.4,
+  );

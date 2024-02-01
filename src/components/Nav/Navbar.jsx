@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import Logo from "../../ui/Logo";
 import { useEffect, useRef, useState } from "react";
 import DropDown from "./DropDown";
@@ -14,6 +14,7 @@ const Navbar = () => {
   const isTablet = useIsMobile(1024);
   const isMobile = useIsMobile(425);
   const hamburgerRef = useRef(null);
+  const { villaID } = useParams();
   const handleToggleDropDown = () => {
     setIsClicked((prevIsClicked) => !prevIsClicked);
   };
@@ -85,6 +86,9 @@ const Navbar = () => {
         <PageHeader smallTitle="favorites" largeTitle="favorite villas" />
       )}
       {pathname === "/faq" && <PageHeader smallTitle="faq" largeTitle="FAQ" />}
+      {pathname === `/villas/${villaID}` && (
+        <PageHeader smallTitle="villa details" largeTitle="villa" />
+      )}
     </div>
   );
 };

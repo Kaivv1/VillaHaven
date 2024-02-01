@@ -107,10 +107,45 @@ const removeFavoriteVilla = async (req, res, next) => {
   }
 };
 
+const getVillaById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const villa = await Villa.findById(id);
+
+    if (!villa) return next(errorHandler(404, "Villa not found"));
+
+    const picturesWithUrl = await Promise.all(
+      villa.pictures.map(async (picture) => {
+        const url = await getFile(picture);
+
+        return url;
+      })
+    );
+    villa.pictures = picturesWithUrl;
+    res.status(200).json(villa);
+  } catch (error) {
+    next(errorHandler(500, "Internal Server Error"));
+  }
+};
+
+const updateVillaById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const body = req.body;
+    const villa = await Villa.updateOne({ _id: id }, body);
+
+    res.status(200).json({ msg: "Villa Updated Successfully", villa });
+  } catch (error) {
+    next(errorHandler(500, "Internal Server Error"));
+  }
+};
+
 module.exports = {
   uploadVilla,
   getVillas,
   setFavoriteVilla,
   getUserFavoriteVillas,
   removeFavoriteVilla,
+  getVillaById,
+  updateVillaById,
 };

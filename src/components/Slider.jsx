@@ -1,3 +1,5 @@
+/*eslint-disable react-hooks/exhaustive-deps */
+/*eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -39,7 +41,7 @@ const Slider = ({ children: slides, autoSlide = false, interval = 4000 }) => {
       </div>
       <div className="slide-count-wrapper">
         <div className="slide-count">
-          {slides.map((_, i) => (
+          {slides?.map((_, i) => (
             <div
               key={i}
               className={`${

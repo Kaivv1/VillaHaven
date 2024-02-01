@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types*/
 
-import Loader from "../ui/Loader";
+import Loading from "../ui/Loading";
 import ErrorMessage from "./ErrorMessage";
 import FAQBox from "./FAQBox";
 
 const Accordion = ({ FAQs, isLoading, error }) => {
   return (
     <div className="accordion-container">
-      {isLoading && <Loader />}
+      {isLoading && <Loading />}
       {error && (
         <ErrorMessage msg="We are sorry, we currently have an issue with loading the frequently asked questions.." />
       )}

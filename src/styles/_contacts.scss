@@ -22,7 +22,7 @@
       background-color: #fff;
       padding: 3rem;
       transition: all 0.3s ease-in-out;
-      box-shadow: 0px 2px 10px 0px rgba($color: $color-dark--1, $alpha: 0.4);
+      box-shadow: $box-shadow;
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -76,7 +76,7 @@
   .support-wrapper {
     display: flex;
     margin-top: 3rem;
-
+    box-shadow: $box-shadow;
     .support-image {
       background: url("../assets/more-images/customer-service.png") no-repeat;
       background-size: auto;

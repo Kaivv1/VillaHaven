@@ -127,7 +127,7 @@ footer {
 }
 
 .footer-btn {
-  @include btns(1rem 1.2rem, $color-dark--1);
+  @include btns(0.8rem, $color-dark--1);
   color: $color-light;
   display: flex;
   gap: 0.5rem;

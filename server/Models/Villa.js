@@ -27,7 +27,7 @@ const villaModel = new mongoose.Schema({
     type: String,
   },
   propertyStatus: {
-    type: String,
+    type: Boolean,
   },
   yearBuilt: {
     type: String,
@@ -40,6 +40,17 @@ const villaModel = new mongoose.Schema({
   },
   rating: {
     type: Number,
+  },
+  description: {
+    type: String,
+  },
+  coordinates: {
+    lat: {
+      type: String,
+    },
+    lng: {
+      type: String,
+    },
   },
 });
 

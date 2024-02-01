@@ -28,10 +28,10 @@ const BreadCrumbs = () => {
   return (
     <nav className="breadcrumbs">
       <ul>
-        <span style={{ marginRight: "5px" }}>
+        <span>
           <HomeIcon fontSize="medium" className="home-icon" />
         </span>
-        <li style={{ marginRight: "5px" }}>
+        <li>
           <Link to="/">{labels["/"]}</Link>
         </li>
         {pathnames.length === 1 && (

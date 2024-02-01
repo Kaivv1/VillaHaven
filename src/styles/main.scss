@@ -46,6 +46,7 @@
 .main-container {
   padding: 1rem;
 }
+
 .video-modal--container {
   min-height: 100vh;
   min-width: 100vw;
@@ -88,7 +89,6 @@
   position: relative;
   overflow: hidden;
   border-radius: $border-radius;
-
   .slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
