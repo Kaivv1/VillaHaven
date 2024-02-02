@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import UserDropDown from "./UserDropDown";
-
+import Button from "../Button";
+import LogoutIcon from "@mui/icons-material/Logout";
 const User = () => {
   const [user, setUser] = useState({});
   const [isClicked, setIsClicked] = useState(false);
@@ -54,12 +55,17 @@ const User = () => {
 
   return (
     <div className="user-container" ref={userIconRef}>
+      {isClicked && <UserDropDown onClose={closeDropDown} />}
       <span onClick={toggleDropDown}>
         <AccountCircleIcon fontSize="large" className="user-icon" />
       </span>
-      {isClicked && <UserDropDown onClose={closeDropDown} />}
       <p>Hello, {firstName}</p>
-      <button onClick={() => handleLogout()}>Logout</button>
+      <Button
+        onClick={() => handleLogout()}
+        icon={<LogoutIcon sx={{ fontSize: "1rem" }} />}
+      >
+        Logout
+      </Button>
     </div>
   );
 };

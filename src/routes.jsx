@@ -15,6 +15,9 @@ import {
 } from "./pages/exports";
 import Layout from "./Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import UserLayout from "./ui/UserLayout";
+import UserProfile from "./pages/UserProfile";
+import UserReservations from "./pages/UserReservations";
 
 const router = createBrowserRouter([
   {
@@ -79,7 +82,24 @@ const router = createBrowserRouter([
         ),
       },
 
-      { path: "/error", element: <ErrorPage /> },
+      {
+        element: (
+          <ProtectedRoute>
+            <UserLayout />
+          </ProtectedRoute>
+        ),
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: "/user/profile",
+            element: <UserProfile />,
+          },
+          {
+            path: "/user/reservations",
+            element: <UserReservations />,
+          },
+        ],
+      },
     ],
   },
 ]);

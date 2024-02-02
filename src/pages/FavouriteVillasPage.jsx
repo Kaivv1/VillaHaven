@@ -1,12 +1,11 @@
-import FavouriteVilla from "../components/FavouriteVilla";
+import Villa from "../components/Villa";
 import { useUser } from "../contexts/UserContext";
 
 const FavouriteVillasPage = () => {
   const { favorites } = useUser();
-
   return (
     <div className="favourite-villas--container">
-      <div>
+      <div className="favorite-villas-line">
         <h1>Favorite Villas</h1>
         <span>
           {favorites?.length} {favorites?.length === 1 ? "villa" : "villas"}
@@ -18,7 +17,7 @@ const FavouriteVillasPage = () => {
       ) : (
         <div className="favourite-villas--wrapper">
           {favorites?.map((villa) => (
-            <FavouriteVilla villa={villa} key={villa._id} />
+            <Villa villa={villa} key={villa._id} />
           ))}
         </div>
       )}

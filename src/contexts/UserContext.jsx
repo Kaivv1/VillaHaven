@@ -1,5 +1,5 @@
-import React, { useContext, createContext, useState, useEffect } from "react";
-
+/*eslint-disable react/prop-types */
+import { useContext, createContext, useState, useEffect } from "react";
 import {
   fetchFavoriteVillas,
   removeUserFavorite,

@@ -82,11 +82,25 @@ const getUserFavoriteVillas = async (req, res, next) => {
     const existingUserFavorites = await Register.findById(userId).populate(
       "favorites"
     );
-
     if (!existingUserFavorites)
       return next(errorHandler(404, "No user favorites"));
 
-    res.status(201).json(existingUserFavorites.favorites);
+    const favoriteVillas = existingUserFavorites.favorites;
+    const updatedFavoriteVillas = await Promise.all(
+      favoriteVillas.map(async (villa) => {
+        const updatedPictures = await Promise.all(
+          villa.pictures.map(async (picture) => {
+            const url = await getFile(picture);
+
+            return url;
+          })
+        );
+
+        villa.pictures = updatedPictures;
+        return villa;
+      })
+    );
+    res.status(201).json(updatedFavoriteVillas);
   } catch (error) {
     next(errorHandler(500, error));
   }

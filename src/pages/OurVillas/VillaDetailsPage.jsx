@@ -14,7 +14,6 @@ const VillaDetailsPage = () => {
   const [villa, setVilla] = useState({});
   const [coordinates, setCoordinates] = useState({});
   const [mapInitialized, setMapInitialize] = useState(false);
-  console.log(coordinates);
   useEffect(() => {
     const fetchVilla = async () => {
       try {

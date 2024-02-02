@@ -18,6 +18,8 @@ const BreadCrumbs = () => {
     "/faq": "FAQ",
     "/contact": "CONTACTS",
     "/favorites": "FAVORITES",
+    "/user/profile": "PROFILE",
+    "/user/reservations": "PROFILE",
   };
 
   if (villaID) {

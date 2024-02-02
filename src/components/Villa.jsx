@@ -5,30 +5,43 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import SearchIcon from "@mui/icons-material/Search";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const Villa = ({ villa }) => {
   const { pictures, villaName, location, price, _id } = villa;
   const { addFavorite, removeFavorite, checkIsFavorite } = useUser();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const isFavorite = checkIsFavorite(_id);
 
   const mainPicture = pictures
     .filter((picture) => picture.includes("main-"))
     .join("");
+
+  const handleAddFavorite = async (id) => {
+    setIsLoading(true);
+    await addFavorite(id).then(() => setIsLoading(false));
+  };
   return (
     <div className="villa-container">
       <div>
         <img src={mainPicture} alt={villaName} />
         {isFavorite ? (
-          <button onClick={() => removeFavorite(_id)} className="bookmark-btn">
+          <button
+            onClick={() => removeFavorite(_id)}
+            className="bookmark-btn"
+            disabled={isLoading}
+          >
             <BookmarkIcon /> <span>Saved</span>
           </button>
         ) : (
           <button
-            onClick={async () => await addFavorite(_id)}
+            onClick={() => handleAddFavorite(_id)}
             className="bookmark-btn"
+            disabled={isLoading}
           >
-            <BookmarkBorderIcon /> <span>Save</span>
+            <BookmarkBorderIcon />
+            {isLoading ? <span>Saving..</span> : <span>Save</span>}
           </button>
         )}
         <button

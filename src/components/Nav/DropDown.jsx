@@ -2,6 +2,9 @@
 
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import LogoutIcon from "@mui/icons-material/Logout";
+import PersonIcon from "@mui/icons-material/Person";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 const DropDown = () => {
   const navigate = useNavigate();
 
@@ -13,6 +16,22 @@ const DropDown = () => {
   return (
     <ul className="dropdown-mobile">
       <li>
+        <Link to="/">
+          <span>
+            <PersonIcon fontSize="small" />
+          </span>
+          Profile
+        </Link>
+      </li>
+      <li>
+        <Link to="/favorites">
+          <span>
+            <BookmarkIcon fontSize="small" />
+          </span>
+          Favorites
+        </Link>
+      </li>
+      <li>
         <Link to="/">Home</Link>
       </li>
       <li>
@@ -22,13 +41,15 @@ const DropDown = () => {
         <Link to="/villas">Our Villas</Link>
       </li>
       <li>
-        <Link to="/favorites">Favorites</Link>
-      </li>
-      <li>
         <Link to="/contact">Contacts</Link>
       </li>
       <li>
-        <Link onClick={handleLogout}>Logout</Link>
+        <Link onClick={handleLogout}>
+          <span>
+            <LogoutIcon fontSize="small" />
+          </span>
+          Logout
+        </Link>
       </li>
     </ul>
   );
