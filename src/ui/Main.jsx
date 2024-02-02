@@ -1,5 +1,5 @@
 const Main = ({ children }) => {
-  return <div className="main-container">{children}</div>;
+  return <main className="main-container">{children}</main>;
 };
 
 export default Main;

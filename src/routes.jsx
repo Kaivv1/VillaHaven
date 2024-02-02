@@ -95,7 +95,7 @@ const router = createBrowserRouter([
             element: <UserProfile />,
           },
           {
-            path: "/user/reservations",
+            path: "/user/bookings",
             element: <UserReservations />,
           },
         ],

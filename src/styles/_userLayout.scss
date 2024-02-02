@@ -1,0 +1,56 @@
+@import "constants";
+@import "mixins";
+
+.user-layout {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  color: $color-dark--1;
+  min-height: 100vh;
+  .user-layout-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: $color-dark--3;
+    padding: 2rem;
+    border-radius: $border-radius;
+    min-width: 60%;
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: background-color 0.2s ease-in-out;
+      width: fit-content;
+      a {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        gap: 0.2rem;
+        border-radius: $border-radius;
+        font-weight: bold;
+        transition: all 0.2s ease-in-out;
+        &:visited {
+          color: $color-dark--1;
+        }
+        &:hover {
+          background-color: $color-brand--1-hover;
+          transition: all 0.2s ease-in-out;
+        }
+        span {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .active {
+        background-color: $color-brand--1;
+      }
+    }
+    main {
+      padding: 0rem 1rem;
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+}

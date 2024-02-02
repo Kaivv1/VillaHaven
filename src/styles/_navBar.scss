@@ -17,11 +17,13 @@
       align-items: center;
       gap: 1.5rem;
       position: relative;
+
       a {
         text-decoration: none;
         color: $color-light;
         font-weight: bold;
         margin-right: 0.3rem;
+        transition: color 0.2s ease-in-out;
       }
       .active {
         color: $color-brand--1;
@@ -45,7 +47,7 @@
         li {
           border-bottom: 1px solid $color-dark--2;
           width: 100%;
-
+          transition: all 0.2s ease-in-out;
           &:first-of-type {
             &:hover {
               border-top-left-radius: $border-radius;
@@ -91,14 +93,18 @@
       position: absolute;
       list-style: none;
       background-color: $color-light;
-      bottom: -210%;
+      bottom: -200%;
       left: 0%;
       z-index: 100;
       border-radius: $border-radius;
 
       li {
         border-bottom: 1px solid $color-dark--2;
+        transition: background-color 0.2s ease-in-out;
+
         &:first-of-type {
+          border-top-left-radius: $border-radius;
+          border-top-right-radius: $border-radius;
           &:hover {
             border-top-left-radius: $border-radius;
             border-top-right-radius: $border-radius;
@@ -106,6 +112,8 @@
         }
         &:last-of-type {
           border-bottom: none;
+          border-bottom-left-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
           &:hover {
             border-bottom-left-radius: $border-radius;
             border-bottom-right-radius: $border-radius;
@@ -119,6 +127,19 @@
           font-weight: bold;
           display: flex;
           gap: 0.3rem;
+
+          &:first-of-type {
+            &:hover {
+              border-top-left-radius: $border-radius;
+              border-top-right-radius: $border-radius;
+            }
+          }
+          &:last-of-type {
+            &:hover {
+              border-bottom-left-radius: $border-radius;
+              border-bottom-right-radius: $border-radius;
+            }
+          }
           span {
             display: flex;
             align-items: center;

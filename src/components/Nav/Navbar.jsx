@@ -89,7 +89,7 @@ const Navbar = () => {
       {pathname === `/villas/${villaID}` && (
         <PageHeader smallTitle="villa details" largeTitle="villa" />
       )}
-      {(pathname === "/user/profile" || pathname === "/user/reservations") && (
+      {(pathname === "/user/profile" || pathname === "/user/bookings") && (
         <PageHeader smallTitle="user profile" largeTitle="Profile" />
       )}
     </div>
