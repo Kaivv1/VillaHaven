@@ -48,8 +48,137 @@
     }
     main {
       padding: 0rem 1rem;
-      h1 {
-        text-align: center;
+      .user-profile-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .user-info-form {
+          margin: 1rem 0rem;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          input {
+            &:disabled {
+              cursor: not-allowed;
+              background-color: $color-light;
+            }
+          }
+          .avatar-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            label {
+              width: fit-content;
+              display: inline-block;
+              position: relative;
+              cursor: pointer;
+              .user-avatar {
+                border-radius: 50%;
+                width: 6rem;
+                height: 6rem;
+                object-fit: cover;
+                transition: 0.2s ease-in-out;
+              }
+              .user-icon {
+                width: 6rem;
+                height: 6rem;
+              }
+
+              &:hover {
+                .user-avatar,
+                .user-icon {
+                  transition: 0.2s ease-in-out;
+                  filter: brightness(50%);
+                }
+                &::after {
+                  content: "+";
+                  font-size: 4rem;
+                  color: #fff;
+                  transition: 0.2s ease-in-out;
+                  position: absolute;
+                  top: 47%;
+                  left: 51%;
+                  transform: translate(-50%, -50%);
+                  pointer-events: none;
+                  border-radius: 50%;
+                }
+              }
+            }
+            label.disabled {
+              cursor: not-allowed;
+            }
+            #avatar {
+              display: none;
+            }
+          }
+          .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            border-radius: $border-radius;
+            label {
+              font-weight: bold;
+            }
+            input {
+              @include inputFields();
+            }
+          }
+
+          .gender-wrapper {
+            p {
+              font-weight: bold;
+            }
+            .radio-inputs {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              div {
+                display: flex;
+                gap: 0.2rem;
+                align-items: center;
+              }
+            }
+          }
+
+          .form-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+
+            .cancel-btn {
+              @include btns(0.4rem 1rem, $color-light--red);
+
+              &:hover {
+                background-color: $color-red;
+              }
+            }
+            .save-btn {
+              @include btns(0.4rem 1rem, $color-green);
+              color: #fff;
+
+              &:hover {
+                background-color: $color-green-hover;
+              }
+            }
+            .edit-btn {
+              @extend .save-btn;
+            }
+
+            .change-pass-btn {
+              @extend .cancel-btn;
+            }
+          }
+          .edit-btn,
+          .cancel-btn,
+          .save-btn,
+          .change-pass-btn {
+            border: none;
+          }
+        }
       }
     }
   }

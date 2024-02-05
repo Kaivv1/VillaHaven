@@ -159,6 +159,13 @@
       .user-icon {
         cursor: pointer;
       }
+
+      .user-avatar {
+        cursor: pointer;
+        border-radius: 50%;
+        width: 2.6rem;
+        height: 2.6rem;
+      }
     }
 
     p {

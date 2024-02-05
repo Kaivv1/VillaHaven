@@ -32,11 +32,7 @@ const {
 } = require("./routes/testimonials.route");
 const { userRouter, userByTokenRouter } = require("./routes/getUser.route");
 const { createFAQRouter, getFAQsRouter } = require("./routes/FAQs.route");
-const {
-  secretKeyRouter,
-  secretEmailRouter,
-  secretMapApiRouter,
-} = require("./routes/secret.route");
+const { secretKeyRouter, secretEmailRouter } = require("./routes/secret.route");
 const registerRouter = require("./routes/registerRouter");
 const loginRouter = require("./routes/signin.route");
 const updateUserRouter = require("./routes/updateUser.route");
@@ -77,7 +73,7 @@ app.use("/getFAQs", getFAQsRouter);
 app.use("/getappemail", secretEmailRouter);
 app.use("/villa", getVillaByIdRouter);
 app.use("/updatevilla", updateVillaByIdRouter);
-app.use("/getmapAPI", secretMapApiRouter);
+
 app.use(function (err, req, res, next) {
   const message = err.message || "Internal Server Error";
   const statusCode = err.statusCode || 500;

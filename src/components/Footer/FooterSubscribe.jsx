@@ -1,32 +1,22 @@
 import { useEffect, useState } from "react";
 import Button from "../Button";
 import EmailIcon from "@mui/icons-material/Email";
-import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import { useFetchUser } from "../../hooks/useFetchUser";
 
 const FooterSubscribe = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const token = Cookies.get("access_token");
   const [firstName, setFirstName] = useState("");
+  const { user } = useFetchUser();
   useEffect(() => {
-    const fetchUser = async () => {
-      if (!token) return;
-      const res = await fetch(`http://localhost:4000/getuser`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const data = await res.json();
-      if (data === false) return;
-      setEmail(data.email);
-      setFirstName(data.firstName);
-    };
-    fetchUser();
-  }, [token]);
+    if (user) {
+      setEmail(user?.email);
+      setFirstName(user?.firstName);
+    } else {
+      return;
+    }
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

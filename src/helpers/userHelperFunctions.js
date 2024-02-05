@@ -18,6 +18,25 @@ export const getUser = async (email) => {
   }
 };
 
+export const getUserByToken = async (token) => {
+  try {
+    if (!token) return;
+    const res = await fetch(`http://localhost:4000/getuser`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export const generateOTP = async (email) => {
   try {
     const codeResponse = await fetch(

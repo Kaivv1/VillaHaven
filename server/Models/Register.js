@@ -30,6 +30,9 @@ const registerSchema = new mongoose.Schema(
         ref: "Villa",
       },
     ],
+    avatar: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

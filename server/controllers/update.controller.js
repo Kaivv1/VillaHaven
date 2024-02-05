@@ -1,21 +1,46 @@
 /* eslint no-undef: */
 const Register = require("../Models/Register");
 const errorHandler = require("../utils/error");
+const { deleteFile, generateImageName, uploadFile } = require("../s3Bucket");
+const sharp = require("sharp");
 const updateUser = async (req, res, next) => {
   try {
-    const { id } = req.user;
+    const { userId } = req.user;
 
-    if (id) {
-      const body = req.body;
-      await Register.updateOne({ _id: id }, body);
+    if (userId) {
+      const file = req.file;
+      const imageName = generateImageName();
+
+      if (file) {
+        const user = await Register.findById(userId);
+
+        if (user.avatar) {
+          await deleteFile(user.avatar);
+        }
+        const buffer = await sharp(file.buffer)
+          .resize({
+            height: 100,
+            width: 100,
+            fit: "contain",
+          })
+          .toBuffer();
+
+        await uploadFile(buffer, imageName, file.mimetype);
+
+        await Register.updateOne(
+          { _id: userId },
+          { avatar: imageName, ...req.body }
+        );
+      } else {
+        await Register.updateOne({ _id: userId }, req.body);
+      }
 
       res.status(201).json("User updated !");
-      console.log("User updated");
     } else {
-      next(errorHandler(401, "User not found !"));
+      next(errorHandler(401, "Wrong user id !"));
     }
   } catch (err) {
-    next(err);
+    next(errorHandler(500, "Internal Server Error"));
   }
 };
 

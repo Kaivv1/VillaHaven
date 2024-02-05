@@ -40,9 +40,16 @@ const BreadCrumbs = () => {
           <FontAwesomeIcon color="#f5f5f5" icon={faAngleRight} />
         )}
         {pathnames.map((_, i) => (
-          <li key={i} style={{ marginLeft: " 5px" }}>
+          <li key={i}>
             {pathnames.length - 1 > i && (
-              <FontAwesomeIcon icon={faAngleRight} />
+              <FontAwesomeIcon
+                icon={faAngleRight}
+                style={{
+                  marginRight: `${
+                    pathname === `/villas/${villaID}` ? "5px" : ""
+                  }`,
+                }}
+              />
             )}
             <Link to={`/${pathnames.slice(0, i + 1).join("/")}`}>
               {labels[`/${pathnames.slice(0, i + 1).join("/")}`]}

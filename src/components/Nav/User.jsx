@@ -5,29 +5,12 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import UserDropDown from "./UserDropDown";
 import Button from "../Button";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useFetchUser } from "../../hooks/useFetchUser";
 const User = () => {
-  const [user, setUser] = useState({});
   const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
-  const token = Cookies.get("access_token");
-  const { firstName } = user;
   const userIconRef = useRef(null);
-  useEffect(() => {
-    const fetchUser = async () => {
-      if (!token) return;
-      const res = await fetch(`http://localhost:4000/getuser`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const data = await res.json();
-      setUser(data);
-    };
-    fetchUser();
-  }, [token]);
+  const { user } = useFetchUser();
 
   const handleLogout = () => {
     Cookies.remove("access_token");
@@ -57,9 +40,13 @@ const User = () => {
     <div className="user-container" ref={userIconRef}>
       {isClicked && <UserDropDown onClose={closeDropDown} />}
       <span onClick={toggleDropDown}>
-        <AccountCircleIcon fontSize="large" className="user-icon" />
+        {user?.avatar ? (
+          <img src={user?.avatar} alt="" className="user-avatar" />
+        ) : (
+          <AccountCircleIcon fontSize="large" className="user-icon" />
+        )}
       </span>
-      <p>Hello, {firstName}</p>
+      <p>Hello,{user?.firstName}</p>
       <Button
         onClick={() => handleLogout()}
         icon={<LogoutIcon sx={{ fontSize: "1rem" }} />}

@@ -3,7 +3,6 @@ const express = require("express");
 
 const secretKeyRouter = express.Router();
 const secretEmailRouter = express.Router();
-const secretMapApiRouter = express.Router();
 secretKeyRouter.get("/", (req, res) => {
   const secret_value = process.env.TEMP_SECRET;
 
@@ -15,9 +14,4 @@ secretEmailRouter.get("/", (req, res) => {
   return res.status(201).json({ app_email });
 });
 
-secretMapApiRouter.get("/", (req, res) => {
-  const API = process.env.GOOGLE_MAPS_API_KEY;
-
-  res.status(200).json({ API });
-});
-module.exports = { secretKeyRouter, secretEmailRouter, secretMapApiRouter };
+module.exports = { secretKeyRouter, secretEmailRouter };

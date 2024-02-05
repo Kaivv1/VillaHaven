@@ -1,6 +1,7 @@
 /* eslint no-unused-vars: */
 /* eslint no-undef: */
 const Register = require("../Models/Register");
+const { getFile } = require("../s3Bucket");
 const errorHandler = require("../utils/error");
 
 const getUser = async (req, res, next) => {
@@ -17,16 +18,28 @@ const getUser = async (req, res, next) => {
 
     res.status(201).json({ data: rest });
   } catch (err) {
-    next(err);
+    next(errorHandler(500, "Internal Server Error"));
   }
 };
 
 const getUserByToken = async (req, res, next) => {
-  const { userId } = req.user;
+  try {
+    const { userId } = req.user;
 
-  const user = await Register.findById(userId);
+    const user = await Register.findById(userId);
+    if (!user) return next(errorHandler(404, "User not found"));
 
-  res.status(201).json(user);
+    const { password, ...rest } = user._doc;
+
+    if (user.avatar) {
+      const avatarWithUrl = await getFile(user.avatar);
+      const userWithAvatar = { ...rest, avatar: avatarWithUrl };
+      res.status(201).json(userWithAvatar);
+    }
+    res.status(201).json({ ...rest });
+  } catch (error) {
+    next(errorHandler(500, "Internal Server Error"));
+  }
 };
 
 module.exports = { getUser, getUserByToken };

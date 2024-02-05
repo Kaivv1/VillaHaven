@@ -10,12 +10,18 @@ const Button = ({
   to = "",
   isLoading,
   isLoadingMsg = "",
+  type = "button",
 }) => {
   return (
     <>
       {to ? (
         <Link to={`${to}`} style={{ textDecoration: "none" }}>
-          <button className={className} onClick={onClick} disabled={isLoading}>
+          <button
+            className={className}
+            onClick={onClick}
+            disabled={isLoading}
+            type={type}
+          >
             {isLoading ? (
               isLoadingMsg
             ) : (
@@ -38,7 +44,12 @@ const Button = ({
           </button>
         </Link>
       ) : (
-        <button className={className} onClick={onClick} disabled={isLoading}>
+        <button
+          className={className}
+          onClick={onClick}
+          disabled={isLoading}
+          type={type}
+        >
           {isLoading ? (
             isLoadingMsg
           ) : (

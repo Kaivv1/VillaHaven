@@ -23,7 +23,6 @@ const uploadVilla = async (req, res, next) => {
       ...req.body,
     });
 
-    console.log(newVilla);
     await newVilla.save();
 
     res.status(201).json("villa uploaded");
