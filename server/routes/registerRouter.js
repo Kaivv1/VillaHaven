@@ -16,9 +16,9 @@ registerRouter.post("/", async (req, res, next) => {
     const existingUser = await Register.findOne({ email });
     if (existingUser) return next(errorHandler(400, "User already exists"));
     await newUser.save();
-    res.status(201).json({ msg: "User created successfully" });
+    return res.status(201).json({ msg: "User created successfully" });
   } catch (error) {
-    next(error);
+    return next(errorHandler(500, "Internal Server Error"));
   }
 });
 

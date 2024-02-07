@@ -8,11 +8,11 @@ const createFAQ = async (req, res, next) => {
     const newFAQ = new Question({ ...req.body });
     await newFAQ.save();
 
-    res
+    return res
       .status(200)
       .json({ msg: "Frequently asked question created successfully" });
   } catch (error) {
-    next(errorHandler(404, "FAQ creation failed"));
+    return next(errorHandler(404, "FAQ creation failed"));
   }
 };
 
@@ -23,9 +23,11 @@ const getFAQs = async (req, res, next) => {
       next(errorHandler(404, "Couldn't find FAQs"));
     }
 
-    res.status(200).json({ msg: "FAQs retrieved successfully", data: FAQs });
+    return res
+      .status(200)
+      .json({ msg: "FAQs retrieved successfully", data: FAQs });
   } catch (error) {
-    next(errorHandler(500, "Internal Server Error"));
+    return next(errorHandler(500, "Internal Server Error"));
   }
 };
 

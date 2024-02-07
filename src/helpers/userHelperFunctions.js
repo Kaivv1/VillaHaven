@@ -37,6 +37,40 @@ export const getUserByToken = async (token) => {
   }
 };
 
+export const updateUserByToken = async (token, body) => {
+  try {
+    if (!token) return;
+    const res = await fetch("http://localhost:4000/updateuser", {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: body,
+    });
+    const data = await res.json();
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const sendEmail = async (message) => {
+  try {
+    const res = await fetch("http://localhost:4000/sendEmail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(message),
+    });
+
+    const data = await res.json();
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export const generateOTP = async (email) => {
   try {
     const codeResponse = await fetch(
@@ -48,6 +82,7 @@ export const generateOTP = async (email) => {
         },
       }
     );
+    if (!codeResponse) return;
     const codeData = await codeResponse.json();
 
     if (codeData.success === false) return;
@@ -56,21 +91,14 @@ export const generateOTP = async (email) => {
       data: { firstName },
     } = await getUser(email);
 
-    const messageData = {
+    const message = {
       name: firstName,
       userEmail: email,
       text: `Your verification code is ${codeData.code}.`,
       subject: "Password recovery",
     };
 
-    const emailResponse = await fetch("http://localhost:4000/sendEmail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(messageData),
-    });
-    const data = await emailResponse.json();
+    const data = await sendEmail(message);
 
     if (data.success === false) return;
 
@@ -91,26 +119,21 @@ export const resendOTP = async (email) => {
         },
       }
     );
-
+    if (!codeResponse) return;
     const codeData = await codeResponse.json();
 
     const {
       data: { firstName },
     } = await getUser(email);
 
-    const messageData = {
+    const message = {
       name: firstName,
       userEmail: email,
       text: `Your verification code is ${codeData.code}.`,
       subject: "Password recovery",
     };
 
-    const emailResponse = await fetch("http://localhost:4000/sendEmail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(messageData),
-    });
-    await emailResponse.json();
+    await sendEmail(message);
 
     return Promise.resolve({ codeData });
   } catch (error) {
@@ -144,7 +167,6 @@ export const verifyOTP = async (email, code) => {
         },
       }
     );
-
     const data = await res.json();
 
     return data;

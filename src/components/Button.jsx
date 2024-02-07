@@ -11,68 +11,71 @@ const Button = ({
   isLoading,
   isLoadingMsg = "",
   type = "button",
+  disabled,
 }) => {
-  return (
-    <>
-      {to ? (
-        <Link to={`${to}`} style={{ textDecoration: "none" }}>
-          <button
-            className={className}
-            onClick={onClick}
-            disabled={isLoading}
-            type={type}
-          >
-            {isLoading ? (
-              isLoadingMsg
-            ) : (
-              <>
-                {children}
-                {icon && (
-                  <span
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      color: iconColor,
-                    }}
-                  >
-                    {icon}
-                  </span>
-                )}
-              </>
+  if (type === "button" || type === "submit") {
+    return (
+      <button
+        className={className}
+        onClick={onClick}
+        disabled={isLoading || disabled}
+        type={type}
+      >
+        {isLoading ? (
+          isLoadingMsg
+        ) : (
+          <>
+            {children}
+            {icon && (
+              <span
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: iconColor,
+                }}
+              >
+                {icon}
+              </span>
             )}
-          </button>
-        </Link>
-      ) : (
-        <button
-          className={className}
-          onClick={onClick}
-          disabled={isLoading}
-          type={type}
-        >
-          {isLoading ? (
-            isLoadingMsg
-          ) : (
-            <>
-              {children}
-              {icon && (
-                <span
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    color: iconColor,
-                  }}
-                >
-                  {icon}
-                </span>
-              )}
-            </>
-          )}
-        </button>
-      )}
-    </>
-  );
+          </>
+        )}
+      </button>
+    );
+  }
+
+  if (type === "link") {
+    return (
+      <Link
+        to={`${to}`}
+        className={className}
+        style={{
+          textDecoration: "none",
+          cursor: `${isLoading || disabled ? "not-allowed" : ""}`,
+        }}
+      >
+        {isLoading ? (
+          isLoadingMsg
+        ) : (
+          <>
+            {children}
+            {icon && (
+              <span
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: iconColor,
+                }}
+              >
+                {icon}
+              </span>
+            )}
+          </>
+        )}
+      </Link>
+    );
+  }
 };
 
 export default Button;

@@ -28,11 +28,9 @@
         font-size: 1.1rem;
       }
     }
-    a {
-      text-decoration: none;
-    }
+
     .villas-btn {
-      @include btns(0.9rem 1.5rem, $color-brand--1);
+      @include linkBtns(0.9rem, $color-brand--1);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -382,13 +380,23 @@
           transform: rotate(20deg);
         }
       }
+
       button {
-        @include btns(0.7rem, $color-brand--1);
+        @include btns(0.8rem, $color-brand--1);
         border: none;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
+        border: none;
+        gap: 0.3rem;
+      }
+      a {
+        @include linkBtns(0.8rem, $color-brand--1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        gap: 0.3rem;
       }
     }
     .slider-container {

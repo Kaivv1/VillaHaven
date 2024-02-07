@@ -118,7 +118,7 @@
       }
 
       .submit-question-btn {
-        @include btns(1rem 1.2rem, $color-brand--1);
+        @include btns(0.8rem, $color-brand--1);
         border: none;
         display: flex;
         justify-content: center;

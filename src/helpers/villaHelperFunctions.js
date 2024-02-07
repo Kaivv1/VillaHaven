@@ -21,6 +21,19 @@ export const fetchVillas = async () => {
   }
 };
 
+export const fetchVillaById = async (villaID) => {
+  try {
+    const res = await fetch(`http://localhost:4000/villa/${villaID}`);
+
+    const data = await res.json();
+    if (data === false) return;
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export const fetchFavoriteVillas = async () => {
   try {
     const token = await getToken();

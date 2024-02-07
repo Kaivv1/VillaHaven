@@ -6,8 +6,9 @@ const { auth, verifyAuth } = require("../controllers/auth.controller");
 const { uploadMulterSetup } = require("../s3Bucket");
 
 const upload = uploadMulterSetup();
+
 updateUserRouter.put(
-  "/:id",
+  "/",
   auth,
   verifyAuth,
   upload.single("avatar"),

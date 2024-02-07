@@ -12,12 +12,13 @@ import {
   OTPVerificationPage,
   ResetPasswordPage,
   FavouriteVillasPage,
+  BookingPage,
+  UserProfile,
+  UserReservations,
 } from "./pages/exports";
 import Layout from "./Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UserLayout from "./ui/UserLayout";
-import UserProfile from "./pages/UserProfile";
-import UserReservations from "./pages/UserReservations";
 
 const router = createBrowserRouter([
   {
@@ -81,7 +82,14 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-
+      {
+        path: "/booking/:villaID",
+        element: (
+          <ProtectedRoute>
+            <BookingPage />
+          </ProtectedRoute>
+        ),
+      },
       {
         element: (
           <ProtectedRoute>

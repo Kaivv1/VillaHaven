@@ -25,9 +25,9 @@ const uploadVilla = async (req, res, next) => {
 
     await newVilla.save();
 
-    res.status(201).json("villa uploaded");
+    return res.status(201).json("villa uploaded");
   } catch (error) {
-    next(errorHandler(500, "Couldn't upload the villa"));
+    return next(errorHandler(500, "Couldn't upload the villa"));
   }
 };
 
@@ -52,9 +52,9 @@ const getVillas = async (req, res, next) => {
         };
       })
     );
-    res.status(201).json(updatedVillas);
+    return res.status(201).json(updatedVillas);
   } catch (error) {
-    next(errorHandler(500, error));
+    return next(errorHandler(500, error));
   }
 };
 
@@ -68,9 +68,9 @@ const setFavoriteVilla = async (req, res, next) => {
       { $addToSet: { favorites: villaId } }
     );
 
-    res.status(201).json("Villa set to favorite");
+    return res.status(201).json("Villa set to favorite");
   } catch (error) {
-    next(errorHandler(500, "Failed to set to favorite"));
+    return next(errorHandler(500, "Failed to set to favorite"));
   }
 };
 
@@ -99,9 +99,9 @@ const getUserFavoriteVillas = async (req, res, next) => {
         return villa;
       })
     );
-    res.status(201).json(updatedFavoriteVillas);
+    return res.status(201).json(updatedFavoriteVillas);
   } catch (error) {
-    next(errorHandler(500, error));
+    return next(errorHandler(500, error));
   }
 };
 
@@ -114,9 +114,9 @@ const removeFavoriteVilla = async (req, res, next) => {
       { $pull: { favorites: villaId } }
     );
 
-    res.status(201).json("Successfully removed from favorites");
+    return res.status(201).json("Successfully removed from favorites");
   } catch (error) {
-    next(errorHandler(500, error));
+    return next(errorHandler(500, error));
   }
 };
 
@@ -135,9 +135,9 @@ const getVillaById = async (req, res, next) => {
       })
     );
     villa.pictures = picturesWithUrl;
-    res.status(200).json(villa);
+    return res.status(200).json(villa);
   } catch (error) {
-    next(errorHandler(500, "Internal Server Error"));
+    return next(errorHandler(500, "Internal Server Error"));
   }
 };
 
@@ -147,9 +147,9 @@ const updateVillaById = async (req, res, next) => {
     const body = req.body;
     const villa = await Villa.updateOne({ _id: id }, body);
 
-    res.status(200).json({ msg: "Villa Updated Successfully", villa });
+    return res.status(200).json({ msg: "Villa Updated Successfully", villa });
   } catch (error) {
-    next(errorHandler(500, "Internal Server Error"));
+    return next(errorHandler(500, "Internal Server Error"));
   }
 };
 

@@ -10,9 +10,31 @@
   text-transform: uppercase;
   transition: 0.2s ease-in-out;
   border-radius: $border-radius;
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: $color-brand--1-hover;
+  }
+}
+@mixin linkBtns($padding, $bg-color) {
+  outline: none;
+  color: $color-dark--1;
+  font-weight: bold;
+  padding: $padding;
+  background-color: $bg-color;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.2s ease-in-out;
+  border-radius: $border-radius;
+  text-decoration: none;
+  font-size: 0.9rem;
+
+  &:visited {
+    color: $color-dark--1;
   }
 
   &:hover {

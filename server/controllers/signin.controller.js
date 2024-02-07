@@ -20,9 +20,9 @@ const signin = async (req, res, next) => {
     res.setHeader("Access-Control-Expose-Headers", "Authorization");
     res.setHeader("Authorization", `Bearer ${token}`);
 
-    res.status(200).json({ data: rest });
+    return res.status(200).json({ data: rest });
   } catch (err) {
-    next(errorHandler(505, "Internal Server Error"));
+    return next(errorHandler(505, "Internal Server Error"));
   }
 };
 

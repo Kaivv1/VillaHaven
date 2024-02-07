@@ -9,13 +9,13 @@ const OurVillas = () => {
   const randomVillas = villas.sort(() => Math.random() - 0.5).slice(0, 3);
 
   useEffect(() => {
-    const handleVillas = async () => {
+    const handleFetchVillas = async () => {
       const data = await fetchVillas();
       const updatedData = data.map((el) => el._doc);
       setVillas(updatedData);
     };
 
-    handleVillas();
+    handleFetchVillas();
   }, []);
 
   return (
@@ -32,6 +32,7 @@ const OurVillas = () => {
           className="villas-btn"
           icon={<EastIcon fontSize="small" />}
           to="/villas"
+          type="link"
         >
           view all
         </Button>

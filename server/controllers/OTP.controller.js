@@ -35,7 +35,7 @@ const generateOTP = async (req, res, next) => {
       });
     }
   } catch (error) {
-    next(errorHandler(500, "There was a problem generating your OTP"));
+    return next(errorHandler(500, "There was a problem generating your OTP"));
   }
 };
 
@@ -90,16 +90,16 @@ const verifyOTP = async (req, res, next) => {
       await OTP.deleteOne({ email });
       req.app.locals.resetSession = true;
 
-      res.status(201).json({
+      return res.status(201).json({
         success: true,
         status: 201,
         message: "Verification Successful",
       });
     } else {
-      next(errorHandler(400, "Invalid OTP"));
+      return next(errorHandler(400, "Invalid OTP"));
     }
   } catch (error) {
-    next(errorHandler(505, "Internal Server Error"));
+    return next(errorHandler(505, "Internal Server Error"));
   }
 };
 

@@ -5,10 +5,12 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import PopUp from "../components/PopUp";
 const Footer = () => {
   return (
     <footer>
       <div className="footer-wrapper">
+        <PopUp />
         <FooterSupportBox />
         <div className="footer-mid">
           <div>

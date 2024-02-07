@@ -8,25 +8,20 @@ import Button from "../../components/Button";
 import EastIcon from "@mui/icons-material/East";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { fetchVillaById } from "../../helpers/villaHelperFunctions";
 
 const VillaDetailsPage = () => {
   const { villaID } = useParams();
   const [villa, setVilla] = useState({});
   const [coordinates, setCoordinates] = useState({});
   const [mapInitialized, setMapInitialize] = useState(false);
+
   useEffect(() => {
     const fetchVilla = async () => {
-      try {
-        const res = await fetch(`http://localhost:4000/villa/${villaID}`);
-
-        const data = await res.json();
-        if (data === false) return;
-        data.pictures.reverse();
-        setVilla(data);
-        setCoordinates(data.coordinates);
-      } catch (error) {
-        console.error(error);
-      }
+      const data = await fetchVillaById(villaID);
+      data.pictures.reverse();
+      setVilla(data);
+      setCoordinates(data.coordinates);
     };
     fetchVilla();
   }, [villaID]);
@@ -108,7 +103,23 @@ const VillaDetailsPage = () => {
             {villa.price},00$ <span className="slash"></span>
             <span>night</span>
           </h2>
-          <Button icon={<EastIcon fontSize="small" />}>Book Now</Button>
+          {!villa.propertyStatus ? (
+            <Button
+              icon={<EastIcon fontSize="small" />}
+              disabled={!villa.propertyStatus}
+            >
+              Book Now
+            </Button>
+          ) : (
+            <Button
+              icon={<EastIcon fontSize="small" />}
+              disabled={!villa.propertyStatus}
+              to={`/booking/${villaID}`}
+              type="link"
+            >
+              Book Now
+            </Button>
+          )}
         </div>
       </div>
       <div className="map-container">

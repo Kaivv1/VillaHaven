@@ -1,32 +1,31 @@
+/*eslint no-unused-vars: */
 import { useEffect, useState } from "react";
 import PopUp from "../components/PopUp";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import {
-  deleteOTP,
-  generateOTP,
-  getSecret,
-  resendOTP,
-  verifyOTP,
-} from "../helpers/userHelperFunctions";
+import { getSecret } from "../helpers/userHelperFunctions";
 import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 import VerificationTimer from "../components/VerificationTimer";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useUserVerification } from "../hooks/useUserVerification";
 const OTPVerificationPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [OTP, setOTP] = useState("");
   const [secretValue, setSecretValue] = useState("");
-  const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
   const encryptedValue = Cookies.get("encrypted_cookie");
   const userEmail = CryptoJS.AES.decrypt(encryptedValue, secretValue).toString(
     CryptoJS.enc.Utf8
   );
-  const [remainingTime, setRemainingTime] = useLocalStorage(
-    300000,
-    "remainingTime"
-  );
+  const {
+    isActive,
+    setIsActive,
+    remainingTime,
+    setRemainingTime,
+    handleDeleteOTP,
+    isLoading,
+    handleResend,
+    handleVerifyOTP,
+  } = useUserVerification(userEmail, userEmail && true);
 
   useEffect(() => {
     const handleFetchSecret = async () => {
@@ -37,79 +36,18 @@ const OTPVerificationPage = () => {
     handleFetchSecret();
   }, []);
 
-  useEffect(() => {
-    const handleSentEmail = async () => {
-      if (!userEmail) return;
-      try {
-        setIsActive(true);
-        const data = await generateOTP(userEmail);
-
-        if (data) {
-          return toast.success(
-            "We have sent you an email with your verification code"
-          );
-        }
-      } catch (error) {
-        return toast(
-          "You already have an active OTP verification code sent to your email"
-        );
-      }
-    };
-
-    handleSentEmail();
-  }, [userEmail, setRemainingTime]);
-
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      localStorage.setItem("remainingTime", JSON.stringify(remainingTime));
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [remainingTime]);
-
-  const handleDeleteOTP = async () => {
-    await deleteOTP(userEmail);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { success, message } = await verifyOTP(userEmail, OTP);
+    const { success, message } = await handleVerifyOTP(OTP);
 
     if (!success) {
       return toast.error(`${message}`);
     }
 
     if (success) {
-      setIsActive(false);
-      setRemainingTime((prev) => (prev = 300000));
-      localStorage.removeItem("remainingTime");
       setOTP("");
       navigate("/password/reset-password");
-    }
-  };
-
-  const handleResend = async () => {
-    try {
-      setIsLoading(true);
-      const promise = resendOTP(userEmail);
-
-      await toast.promise(promise, {
-        loading: "Sending...",
-        success: "We have sent you an email with the verification code",
-        error: "Could not send you an email",
-      });
-      if (!isActive) {
-        setIsActive(true);
-      }
-    } catch (error) {
-      throw error;
-    } finally {
-      setIsLoading(false);
     }
   };
 

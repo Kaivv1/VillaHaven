@@ -16,9 +16,9 @@ const getUser = async (req, res, next) => {
 
     const { password, ...rest } = user._doc;
 
-    res.status(201).json({ data: rest });
+    return res.status(201).json({ data: rest });
   } catch (err) {
-    next(errorHandler(500, "Internal Server Error"));
+    return next(errorHandler(500, "Internal Server Error"));
   }
 };
 
@@ -34,11 +34,11 @@ const getUserByToken = async (req, res, next) => {
     if (user.avatar) {
       const avatarWithUrl = await getFile(user.avatar);
       const userWithAvatar = { ...rest, avatar: avatarWithUrl };
-      res.status(201).json(userWithAvatar);
+      return res.status(201).json(userWithAvatar);
     }
-    res.status(201).json({ ...rest });
+    return res.status(201).json({ ...rest });
   } catch (error) {
-    next(errorHandler(500, "Internal Server Error"));
+    returnnext(errorHandler(500, "Internal Server Error"));
   }
 };
 

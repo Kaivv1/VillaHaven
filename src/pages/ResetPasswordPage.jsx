@@ -1,19 +1,21 @@
+/*eslint no-useless-catch: */
 import { useState } from "react";
 import PopUp from "../components/PopUp";
-import { getSecret, resetPassword } from "../helpers/userHelperFunctions";
+import { getSecret } from "../helpers/userHelperFunctions";
 import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { useTogglePasswordVisibility } from "../hooks/useTogglePasswordVisibility";
+import { useUserVerification } from "../hooks/useUserVerification";
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [secretValue, setSecretValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { isLoading, handleResetPassword } = useUserVerification();
   const { toggleIconOne, toggleIconTwo, inputTypeOne, inputTypeTwo } =
     useTogglePasswordVisibility();
   const encryptedValue = Cookies.get("encrypted_cookie");
@@ -33,13 +35,14 @@ const ResetPasswordPage = () => {
   const handleReset = async (e) => {
     e.preventDefault();
     try {
-      setIsLoading(true);
-
       if (confirmPassword !== password) {
         return toast.error("Passwords not matching");
       }
 
-      const { success, message } = await resetPassword(userEmail, password);
+      const { success, message } = await handleResetPassword(
+        userEmail,
+        password
+      );
 
       if (!success) {
         return toast.error(`${message}`);
@@ -53,8 +56,6 @@ const ResetPasswordPage = () => {
       }
     } catch (error) {
       throw error;
-    } finally {
-      setIsLoading(false);
     }
   };
 

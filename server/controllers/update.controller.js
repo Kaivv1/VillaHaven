@@ -6,14 +6,11 @@ const sharp = require("sharp");
 const updateUser = async (req, res, next) => {
   try {
     const { userId } = req.user;
-
     if (userId) {
       const file = req.file;
       const imageName = generateImageName();
-
       if (file) {
         const user = await Register.findById(userId);
-
         if (user.avatar) {
           await deleteFile(user.avatar);
         }
@@ -24,7 +21,6 @@ const updateUser = async (req, res, next) => {
             fit: "contain",
           })
           .toBuffer();
-
         await uploadFile(buffer, imageName, file.mimetype);
 
         await Register.updateOne(
@@ -35,12 +31,12 @@ const updateUser = async (req, res, next) => {
         await Register.updateOne({ _id: userId }, req.body);
       }
 
-      res.status(201).json("User updated !");
+      return res.status(201).json("User updated !");
     } else {
-      next(errorHandler(401, "Wrong user id !"));
+      return next(errorHandler(401, "Wrong user id !"));
     }
   } catch (err) {
-    next(errorHandler(500, "Internal Server Error"));
+    return next(errorHandler(500, "Internal Server Error"));
   }
 };
 

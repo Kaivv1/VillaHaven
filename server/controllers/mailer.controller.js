@@ -52,7 +52,9 @@ const sendEmail = async (req, res, next) => {
         .status(201)
         .json({ msg: "A verification code has been sent to your email" });
     })
-    .catch((err) => next(errorHandler(500, "Something went wrong")));
+    .catch((err) => {
+      return next(errorHandler(500, "Something went wrong"));
+    });
 };
 
 module.exports = sendEmail;

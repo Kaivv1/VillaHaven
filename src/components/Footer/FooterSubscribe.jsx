@@ -3,12 +3,14 @@ import Button from "../Button";
 import EmailIcon from "@mui/icons-material/Email";
 import toast from "react-hot-toast";
 import { useFetchUser } from "../../hooks/useFetchUser";
+import { sendEmail } from "../../helpers/userHelperFunctions";
 
 const FooterSubscribe = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [firstName, setFirstName] = useState("");
   const { user } = useFetchUser();
+
   useEffect(() => {
     if (user) {
       setEmail(user?.email);
@@ -28,15 +30,12 @@ const FooterSubscribe = () => {
       subject: "Newsletter",
     };
 
-    const res = await fetch("http://localhost:4000/sendEmail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(message),
-    });
-    if (!res.ok)
+    const data = await sendEmail(message);
+    if (data.success === false) {
+      setIsLoading(false);
       return toast.error("Something went wrong, subscription failed");
+    }
 
-    await res.json();
     toast.success("You successfully subscribed to our newsletter");
     setIsLoading(false);
   };
@@ -58,6 +57,7 @@ const FooterSubscribe = () => {
           icon={<EmailIcon sx={{ fontSize: "1rem" }} />}
           isLoading={isLoading}
           isLoadingMsg="Sending..."
+          type="submit"
         >
           Subscribe
         </Button>

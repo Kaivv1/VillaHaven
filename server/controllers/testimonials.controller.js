@@ -10,9 +10,9 @@ const uploadTestimonial = async (req, res, next) => {
 
     await testimonial.save();
 
-    res.status(201).json("Testimonial uploaded");
+    return res.status(201).json("Testimonial uploaded");
   } catch (error) {
-    next(errorHandler(500, "Internal Server Error"));
+    return next(errorHandler(500, "Internal Server Error"));
   }
 };
 
@@ -22,9 +22,9 @@ const getTestimonials = async (req, res, next) => {
 
     if (!testimonials) next(errorHandler(404, "No testimonials found"));
 
-    res.status(201).json(testimonials);
+    return res.status(201).json(testimonials);
   } catch (error) {
-    next(errorHandler(500, "Internal Server Error"));
+    return next(errorHandler(500, "Internal Server Error"));
   }
 };
 

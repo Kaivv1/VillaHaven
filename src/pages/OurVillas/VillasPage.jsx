@@ -1,26 +1,18 @@
 import { useEffect, useState } from "react";
 import Villa from "../../components/Villa";
+import { fetchVillas } from "../../helpers/villaHelperFunctions";
 
 const VillasPage = () => {
   const [villas, setVillas] = useState([]);
 
   useEffect(() => {
-    const fetchVillas = async () => {
-      try {
-        const res = await fetch("http://localhost:4000/getvillas", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
-
-        const data = await res.json();
-        const updatedData = data.map((el) => el._doc);
-        setVillas(updatedData);
-      } catch (error) {
-        console.log(error);
-      }
+    const handleFetchVillas = async () => {
+      const data = await fetchVillas();
+      const updatedData = data.map((el) => el._doc);
+      setVillas(updatedData);
     };
 
-    fetchVillas();
+    handleFetchVillas();
   }, []);
 
   return (

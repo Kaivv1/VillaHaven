@@ -26,7 +26,7 @@
     }
 
     .facilities-btn {
-      @include btns(0.9rem 1.5rem, $color-brand--1);
+      @include linkBtns(0.9rem, $color-brand--1);
       display: flex;
       justify-content: center;
       align-items: center;

@@ -1,3 +1,5 @@
+/*eslint-disable react/prop-types */
+/*eslint no-unused-vars: */
 import { useEffect } from "react";
 
 const VerificationTimer = ({
@@ -29,14 +31,15 @@ const VerificationTimer = ({
     };
 
     if (isActive) {
-      timer = setInterval(() => {
+      timer = setInterval(async () => {
         updateTimer();
 
         if (remainingTime === 0) {
           setIsActive(false);
-          deleteOTP();
+          await deleteOTP();
           setRemainingTime((prev) => (prev = 300000));
           localStorage.removeItem("remainingTime");
+          localStorage.removeItem("isEditPass");
         }
       }, 1000);
     }

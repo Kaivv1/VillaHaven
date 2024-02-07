@@ -10,7 +10,6 @@ const auth = async (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = decodedToken;
-    console.log(decodedToken);
     next();
   } catch (err) {
     next(errorHandler(401, "Authentication failed"));

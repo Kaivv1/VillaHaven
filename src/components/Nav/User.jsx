@@ -46,7 +46,7 @@ const User = () => {
           <AccountCircleIcon fontSize="large" className="user-icon" />
         )}
       </span>
-      <p>Hello,{user?.firstName}</p>
+      <p>Hello, {user?.firstName}</p>
       <Button
         onClick={() => handleLogout()}
         icon={<LogoutIcon sx={{ fontSize: "1rem" }} />}
