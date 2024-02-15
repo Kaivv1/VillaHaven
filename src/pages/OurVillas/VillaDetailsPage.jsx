@@ -7,6 +7,13 @@ import StarRating from "../../ui/stars/StarRating";
 import Button from "../../components/Button";
 import EastIcon from "@mui/icons-material/East";
 import "leaflet/dist/leaflet.css";
+import BedIcon from "@mui/icons-material/Bed";
+import BathtubIcon from "@mui/icons-material/Bathtub";
+import GarageIcon from "@mui/icons-material/Garage";
+import PoolIcon from "@mui/icons-material/Pool";
+import FenceIcon from "@mui/icons-material/Fence";
+import ConstructionIcon from "@mui/icons-material/Construction";
+import PeopleIcon from "@mui/icons-material/People";
 import L from "leaflet";
 import { fetchVillaById } from "../../helpers/villaHelperFunctions";
 
@@ -74,10 +81,17 @@ const VillaDetailsPage = () => {
                 </span>
               )}
             </p>
-            <p>Bathroomes: {villa.bathrooms}</p>
-            <p>Bedrooms: {villa.bedrooms}</p>
-            <p>Garages: {villa.garages}</p>
             <p>
+              <BathtubIcon fontSize="medium" /> Bathrooms: {villa.bathrooms}
+            </p>
+            <p>
+              <BedIcon fontSize="medium" /> Bedrooms: {villa.bedrooms}
+            </p>
+            <p>
+              <GarageIcon fontSize="medium" /> Garages: {villa.garages}
+            </p>
+            <p>
+              <PoolIcon fontSize="medium" />
               Pool:{" "}
               {villa.pool ? (
                 <span style={{ color: "#26ad60", fontWeight: "bold" }}>
@@ -88,6 +102,7 @@ const VillaDetailsPage = () => {
               )}
             </p>
             <p>
+              <FenceIcon fontSize="medium" />
               Backyard:{" "}
               {villa.backyard ? (
                 <span style={{ color: "#26ad60", fontWeight: "bold" }}>
@@ -97,7 +112,13 @@ const VillaDetailsPage = () => {
                 <span style={{ color: "#dc2626", fontWeight: "bold" }}>No</span>
               )}
             </p>
-            <p>Year Built: {villa.yearBuilt}</p>
+            <p>
+              <ConstructionIcon fontSize="medium" /> Year Built:{" "}
+              {villa.yearBuilt}
+            </p>
+            <p>
+              <PeopleIcon fontSize="medium" /> Max Guests: {villa.maxGuests}
+            </p>
           </div>
           <h2>
             {villa.price},00$ <span className="slash"></span>
@@ -114,7 +135,7 @@ const VillaDetailsPage = () => {
             <Button
               icon={<EastIcon fontSize="small" />}
               disabled={!villa.propertyStatus}
-              to={`/booking/${villaID}`}
+              to={`/reservation/${villaID}`}
               type="link"
             >
               Book Now

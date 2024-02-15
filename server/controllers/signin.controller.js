@@ -10,7 +10,6 @@ const signin = async (req, res, next) => {
   try {
     const validUser = await Register.findOne({ email });
     if (!validUser) return next(errorHandler(401, "Invalid credentials"));
-
     const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) return next(errorHandler(401, "Invalid credentials"));
 

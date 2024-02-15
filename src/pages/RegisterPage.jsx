@@ -86,7 +86,7 @@ const RegisterPage = () => {
             />
           </div>
           <div>
-            <label>Gender</label>
+            <label htmlFor="gender">Gender</label>
             <div>
               <div>
                 <input

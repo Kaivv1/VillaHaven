@@ -12,9 +12,11 @@ import {
   OTPVerificationPage,
   ResetPasswordPage,
   FavouriteVillasPage,
-  BookingPage,
+  ReservationPage,
   UserProfile,
   UserReservations,
+  ReservationSuccess,
+  ReservationFailed,
 } from "./pages/exports";
 import Layout from "./Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -83,10 +85,26 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/booking/:villaID",
+        path: "/reservation/:villaID",
         element: (
           <ProtectedRoute>
-            <BookingPage />
+            <ReservationPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/reservation/:reservationID/success",
+        element: (
+          <ProtectedRoute>
+            <ReservationSuccess />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/reservation/failed",
+        element: (
+          <ProtectedRoute>
+            <ReservationFailed />
           </ProtectedRoute>
         ),
       },
@@ -103,7 +121,7 @@ const router = createBrowserRouter([
             element: <UserProfile />,
           },
           {
-            path: "/user/bookings",
+            path: "/user/reservations",
             element: <UserReservations />,
           },
         ],

@@ -52,6 +52,10 @@ const villaModel = new mongoose.Schema({
       type: String,
     },
   },
+  reservedDates: [{ startDate: { type: Date }, endDate: { type: Date } }],
+  maxGuests: {
+    typ: Number,
+  },
 });
 
 const Villa = new mongoose.model("Villa", villaModel);

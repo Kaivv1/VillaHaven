@@ -39,9 +39,15 @@ const UserProvider = ({ children }) => {
   const checkIsFavorite = (id) => {
     return favorites?.some((favorite) => favorite._id === id);
   };
+
   return (
     <UserContext.Provider
-      value={{ favorites, addFavorite, removeFavorite, checkIsFavorite }}
+      value={{
+        favorites,
+        addFavorite,
+        removeFavorite,
+        checkIsFavorite,
+      }}
     >
       {children}
     </UserContext.Provider>

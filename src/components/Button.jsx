@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Button = ({
   children,
@@ -13,11 +13,13 @@ const Button = ({
   type = "button",
   disabled,
 }) => {
+  const navigate = useNavigate();
+
   if (type === "button" || type === "submit") {
     return (
       <button
         className={className}
-        onClick={onClick}
+        onClick={to === "-1" ? () => navigate(-1) : onClick}
         disabled={isLoading || disabled}
         type={type}
       >

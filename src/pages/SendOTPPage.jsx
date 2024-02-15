@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { getUser } from "../helpers/userHelperFunctions";
+import { getUserByEmail } from "../helpers/userHelperFunctions";
 import toast from "react-hot-toast";
 import PopUp from "../components/PopUp";
 import Cookies from "js-cookie";
@@ -32,7 +32,7 @@ const SendOTPPage = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const data = await getUser(userEmail);
+      const data = await getUserByEmail(userEmail);
       if (data.success === false) return toast.error("Invalid email");
       Cookies.set("encrypted_cookie", encryptedValue);
       navigate("/password/verify-email");

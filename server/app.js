@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -25,6 +24,7 @@ const {
   deleteFavoriteVillaRouter,
   getVillaByIdRouter,
   updateVillaByIdRouter,
+  addReservedDatesToVillaRouter,
 } = require("./routes/villas.route");
 const {
   uploadTestimonialRouter,
@@ -32,22 +32,41 @@ const {
 } = require("./routes/testimonials.route");
 const { userRouter, userByTokenRouter } = require("./routes/getUser.route");
 const { createFAQRouter, getFAQsRouter } = require("./routes/FAQs.route");
-const { secretKeyRouter, secretEmailRouter } = require("./routes/secret.route");
+const {
+  secretKeyRouter,
+  secretEmailRouter,
+  secretStripeKeyRouter,
+  clientSecretRouter,
+} = require("./routes/secret.route");
 const registerRouter = require("./routes/registerRouter");
 const loginRouter = require("./routes/signin.route");
 const updateUserRouter = require("./routes/updateUser.route");
 const resetPassRouter = require("./routes/resetPassword.route");
 const sendEmailRouter = require("./routes/mailer.route");
 const passport = require("./passport-config/passportConfig");
+const {
+  createReservationRouter,
+  getReservationByIdRouter,
+} = require("./routes/reservation.route");
+
+const webhookRouter = require("./routes/webhook.route");
+const Reservation = require("./Models/Reservation");
 const app = express();
 
 app.use(passport.initialize());
 app.use(cors());
 app.use(logger("dev"));
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use((req, res, next) => {
+  if (req.originalUrl === "/webhook") {
+    next();
+  } else {
+    express.json()(req, res, next);
+  }
+});
 
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
@@ -73,6 +92,25 @@ app.use("/getFAQs", getFAQsRouter);
 app.use("/getappemail", secretEmailRouter);
 app.use("/villa", getVillaByIdRouter);
 app.use("/updatevilla", updateVillaByIdRouter);
+app.use("/create-reservation", createReservationRouter);
+app.use("/stripe-secret-key", secretStripeKeyRouter);
+app.use("/create-payment-intent", clientSecretRouter);
+app.use("/add-reserved-dates", addReservedDatesToVillaRouter);
+app.use("/get-reservation", getReservationByIdRouter);
+app.use("/webhook", webhookRouter);
+
+setInterval(async () => {
+  const expiredReservations = await Reservation.find({
+    status: "pending",
+    createdAt: { $lt: Date.now() - 400000 },
+  });
+
+  if (expiredReservations) {
+    expiredReservations.forEach(async (reservation) => {
+      await Reservation.deleteOne({ _id: reservation._id });
+    });
+  }
+}, 400000);
 
 app.use(function (err, req, res, next) {
   const message = err.message || "Internal Server Error";

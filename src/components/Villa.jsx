@@ -6,6 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { getMainPicture } from "../helpers/villaHelperFunctions";
 
 const Villa = ({ villa }) => {
   const { pictures, villaName, location, price, _id } = villa;
@@ -14,9 +15,7 @@ const Villa = ({ villa }) => {
   const navigate = useNavigate();
   const isFavorite = checkIsFavorite(_id);
 
-  const mainPicture = pictures
-    .filter((picture) => picture.includes("main-"))
-    .join("");
+  const mainPicture = getMainPicture(pictures);
 
   const handleAddFavorite = async (id) => {
     setIsLoading(true);

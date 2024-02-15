@@ -8,7 +8,8 @@ import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 
 const Layout = () => {
-  const { showModal, aboutVillaHavenData, setShowModal } = useModalData();
+  const { showVideoModal, aboutVillaHavenData, setShowVideoModal } =
+    useModalData();
   const [isAuthPages, setIsAuthPages] = useState(false);
   const { pathname } = useLocation();
 
@@ -32,12 +33,13 @@ const Layout = () => {
 
   return (
     <div className="layout">
-      {showModal && (
+      {showVideoModal && (
         <Modal
           video={aboutVillaHavenData[0].video}
-          onClose={() => setShowModal((showModal) => !showModal)}
+          onClose={() => setShowVideoModal((showVideoModal) => !showVideoModal)}
         />
       )}
+
       <Header>{!isAuthPages && <Navbar />}</Header>
 
       {isAuthPages ? (

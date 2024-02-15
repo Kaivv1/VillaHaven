@@ -1,10 +1,4 @@
-import Cookies from "js-cookie";
-
-export const getToken = async () => {
-  const token = Cookies.get("access_token");
-
-  return token;
-};
+import { getToken } from "./userHelperFunctions";
 
 export const fetchVillas = async () => {
   try {
@@ -34,9 +28,41 @@ export const fetchVillaById = async (villaID) => {
   }
 };
 
+export const updateVillaById = async (id, body) => {
+  try {
+    const res = await fetch(`http://localhost:4000/updatevilla/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const addNewVillaReservedDates = async (id, reservedDates) => {
+  try {
+    const res = await fetch(`http://localhost:4000/add-reserved-dates/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reservedDates),
+    });
+
+    const data = res.json();
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export const fetchFavoriteVillas = async () => {
   try {
-    const token = await getToken();
+    const token = getToken();
     if (!token) return;
     const res = await fetch("http://localhost:4000/getuserfavorites", {
       method: "GET",
@@ -92,4 +118,8 @@ export const removeUserFavorite = async (id) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const getMainPicture = (pictures) => {
+  return pictures?.filter((picture) => picture.includes("main-")).join("");
 };

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { getUserByToken } from "../helpers/userHelperFunctions";
-import Cookies from "js-cookie";
+import { getToken, getUserByToken } from "../helpers/userHelperFunctions";
 
 export const useFetchUser = () => {
-  const token = Cookies.get("access_token");
+  const token = getToken();
   const [data, setData] = useState({
     isLoading: false,
     user: null,

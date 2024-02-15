@@ -1,4 +1,5 @@
 @import "constants";
+@import "mixins";
 @import "villas";
 @import "user";
 @import "navBar";
@@ -11,6 +12,7 @@
 @import "contacts";
 @import "userLayout";
 @import "footer";
+@import "reservationPage";
 
 @font-face {
   font-family: "Open-sans";
@@ -85,6 +87,7 @@
     }
   }
 }
+
 .slider-container {
   position: relative;
   overflow: hidden;

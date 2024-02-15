@@ -7,26 +7,19 @@ import { useRefs } from "../contexts/RefContext";
 import { useIsInViewPort } from "../hooks/isInViewPort";
 import { useIsMobile } from "../hooks/useIsMobile";
 import Slider from "./Slider";
+import { useChangeDocumentOverflow } from "../hooks/useChangeDocumentOverflow";
 
 const SliderCounterShowcase = () => {
   const {
-    showModal,
-    setShowModal,
+    showVideoModal,
+    setShowVideoModal,
     aboutVillaHavenData: sliderData,
   } = useModalData();
   const { counterRef } = useRefs();
   const isIntersecting = useIsInViewPort(counterRef, "-300px");
   const isMobile = useIsMobile(600);
 
-  useEffect(() => {
-    if (showModal) {
-      document.body.style.overflow = "hidden";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [showModal]);
+  useChangeDocumentOverflow(showVideoModal);
 
   useEffect(() => {
     if (isIntersecting) {
@@ -57,7 +50,9 @@ const SliderCounterShowcase = () => {
               {i === 0 && (
                 <span
                   className="video-button"
-                  onClick={() => setShowModal((showModal) => !showModal)}
+                  onClick={() =>
+                    setShowVideoModal((showVideoModal) => !showVideoModal)
+                  }
                 >
                   <PlayArrowIcon
                     sx={{ fontSize: `${isMobile ? "3rem" : "4rem"}` }}

@@ -2,7 +2,7 @@ import HomePage from "./HomePage";
 import ErrorPage from "./ErrorPage";
 import ContactsPage from "./ContactPage";
 import AboutPage from "./AboutPage";
-import BookingPage from "./BookingPage";
+import ReservationPage from "./ReservationPage";
 import FavouriteVillasPage from "./FavouriteVillasPage";
 
 import VillaDetailsPage from "./OurVillas/VillaDetailsPage";
@@ -15,6 +15,8 @@ import OTPVerificationPage from "./OTPVerificationPage";
 import ResetPasswordPage from "./ResetPasswordPage";
 import UserProfile from "./UserProfile";
 import UserReservations from "./UserReservations";
+import ReservationSuccess from "./ReservationSuccess";
+import ReservationFailed from "./ReservationFailed";
 export {
   HomePage,
   ErrorPage,
@@ -28,7 +30,9 @@ export {
   OTPVerificationPage,
   ResetPasswordPage,
   FavouriteVillasPage,
-  BookingPage,
+  ReservationPage,
   UserProfile,
   UserReservations,
+  ReservationSuccess,
+  ReservationFailed,
 };

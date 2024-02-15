@@ -1,0 +1,324 @@
+@import "constants";
+@import "mixins";
+
+.reservation-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  position: relative;
+  form {
+    min-width: fit-content;
+    box-shadow: $box-shadow;
+    width: 60%;
+    background-color: $color-light;
+    border-radius: $border-radius;
+    padding: 2rem;
+    .reservation-wrapper {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      .reservation-left-side {
+        div {
+          img {
+            object-fit: cover;
+            margin-top: 0.2rem;
+            width: 18rem;
+            height: 18rem;
+            border-radius: $border-radius;
+          }
+        }
+      }
+
+      .reservation-right-side {
+        padding: 2rem 0rem 0.3rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+        .dates-guests {
+          display: flex;
+          justify-content: space-between;
+          gap: 0.5rem;
+          .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+
+            input {
+              @include inputFields();
+              width: unset;
+            }
+            .date-wrapper {
+              display: flex;
+              align-items: center;
+              position: relative;
+
+              .calendar-icon {
+                position: absolute;
+                top: 20%;
+                right: 3%;
+              }
+            }
+          }
+        }
+
+        .payment-method-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          p {
+            &:first-child {
+              font-weight: bold;
+            }
+          }
+          .payment-method-wrapper {
+            display: flex;
+            gap: 1.5rem;
+            .radio-input-wrapper {
+              display: flex;
+              align-items: center;
+              div {
+                display: flex;
+                align-items: center;
+                gap: 0.2rem;
+                label {
+                  margin-right: 0.5rem;
+                }
+              }
+            }
+          }
+        }
+        .reservation-calc {
+          display: grid;
+          grid-template-columns: repeat(3, auto);
+          background-color: #fff;
+          border-radius: $border-radius;
+          border: 2px solid $color-dark--2;
+
+          .calc-bar {
+            &:first-child,
+            &:nth-child(2) {
+              border-right: 2px solid $color-dark--2;
+            }
+
+            p {
+              text-align: center;
+              &:first-child {
+                font-weight: bold;
+                border-bottom: 2px solid $color-dark--2;
+                padding-top: 0.15rem;
+                padding-bottom: 0.15rem;
+                color: $color-dark--1;
+              }
+              &:nth-child(2) {
+                font-weight: bold;
+                color: $color-orange;
+                font-size: 1.3rem;
+                padding-top: 0.15rem;
+                padding-bottom: 0.15rem;
+              }
+            }
+          }
+          .total-price {
+            p {
+              &:first-child {
+                font-size: 1.2rem;
+                padding-bottom: 0rem;
+                padding-top: 0rem;
+              }
+              &:nth-child(2) {
+                font-size: 1.5rem;
+                padding-bottom: 0rem;
+                padding-top: 0rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .form-btns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+
+      button {
+        @include btns(0.8rem, $color-brand--1);
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        span {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .reservation-page-container {
+    form {
+      min-width: 50%;
+      padding: 1rem;
+      h2 {
+        text-align: center;
+      }
+      .reservation-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        .reservation-left-side {
+          display: flex;
+          justify-content: center;
+          div {
+            img {
+              margin-top: 0.5rem;
+              width: 15rem;
+              height: 15rem;
+            }
+          }
+        }
+        .reservation-right-side {
+          padding: 1rem 0rem 0rem 0rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          .dates-guests {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .input-wrapper {
+              input {
+                @include inputFields();
+              }
+              .date-wrapper {
+                width: fit-content;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 690px) {
+  .reservation-page-container {
+    form {
+      min-width: unset;
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .reservation-page-container {
+    form {
+      padding: 0.7rem;
+      .reservation-wrapper {
+        .reservation-left-side {
+          div {
+            img {
+              margin-top: 0.4rem;
+            }
+          }
+        }
+        .reservation-right-side {
+          .dates-guests {
+            .input-wrapper {
+              input {
+                @include inputFields();
+                width: 13.5rem;
+              }
+            }
+          }
+
+          .payment-method-container {
+            gap: 1rem;
+            .payment-method-wrapper {
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              gap: 0.5rem;
+            }
+          }
+          .reservation-calc {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            grid-template-rows: 1fr;
+            background-color: #fff;
+            border-radius: $border-radius;
+            border: 2px solid $color-dark--2;
+
+            .calc-bar {
+              p {
+                text-align: center;
+                &:first-child {
+                  padding-top: 0rem;
+                  padding-bottom: 0rem;
+                }
+                &:nth-child(2) {
+                  padding-top: 0rem;
+                  padding-bottom: 0rem;
+                  font-size: 1.1rem;
+                }
+              }
+            }
+            .total-price {
+              p {
+                &:first-child {
+                  font-size: 1rem;
+                  padding-bottom: 0rem;
+                  padding-top: 0rem;
+                }
+                &:nth-child(2) {
+                  font-size: 1.1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.reservation-success-container {
+  min-height: 60vh;
+  background-color: $color-dark--3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .message {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    span {
+      background-color: $color-green;
+      border-radius: 50%;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+    p {
+      font-weight: bold;
+    }
+    div {
+      margin-top: 1rem;
+      p {
+        font-weight: normal;
+        font-style: italic;
+        color: $color-brand--2;
+      }
+    }
+  }
+}

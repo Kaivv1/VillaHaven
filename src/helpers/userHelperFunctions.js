@@ -1,6 +1,13 @@
 /* eslint no-useless-catch: */
 
-export const getUser = async (email) => {
+import Cookies from "js-cookie";
+
+export const getToken = () => {
+  const token = Cookies.get("access_token");
+  return token;
+};
+
+export const getUserByEmail = async (email) => {
   try {
     const res = await fetch(`http://localhost:4000/user/${email}`, {
       method: "GET",
@@ -12,9 +19,9 @@ export const getUser = async (email) => {
     const data = await res.json();
     if (data.success === false) return;
 
-    return data;
+    return Promise.resolve(data);
   } catch (error) {
-    throw error;
+    return Promise.reject(error);
   }
 };
 
@@ -89,7 +96,7 @@ export const generateOTP = async (email) => {
 
     const {
       data: { firstName },
-    } = await getUser(email);
+    } = await getUserByEmail(email);
 
     const message = {
       name: firstName,
@@ -124,7 +131,7 @@ export const resendOTP = async (email) => {
 
     const {
       data: { firstName },
-    } = await getUser(email);
+    } = await getUserByEmail(email);
 
     const message = {
       name: firstName,

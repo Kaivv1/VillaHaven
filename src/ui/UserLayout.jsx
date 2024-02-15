@@ -15,7 +15,7 @@ const UserLayout = () => {
             </span>
             Account
           </NavLink>
-          <NavLink to="/user/bookings">
+          <NavLink to="/user/reservations">
             <span>
               <AirplaneTicketIcon fontSize="small" />
             </span>

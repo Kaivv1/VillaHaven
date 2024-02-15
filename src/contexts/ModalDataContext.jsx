@@ -1,3 +1,4 @@
+/*eslint-disable react/prop-types */
 import { createContext, useContext, useState } from "react";
 import {
   carouselPic1,
@@ -9,8 +10,7 @@ import {
 const ModalDataContext = createContext();
 
 const ModalDataProvider = ({ children }) => {
-  const [showModal, setShowModal] = useState(false);
-
+  const [showVideoModal, setShowVideoModal] = useState(false);
   const aboutVillaHavenData = [
     {
       picture: carouselVideo,
@@ -31,8 +31,8 @@ const ModalDataProvider = ({ children }) => {
   return (
     <ModalDataContext.Provider
       value={{
-        setShowModal,
-        showModal,
+        setShowVideoModal,
+        showVideoModal,
         aboutVillaHavenData,
       }}
     >

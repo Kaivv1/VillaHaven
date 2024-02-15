@@ -19,12 +19,18 @@ const BreadCrumbs = () => {
     "/contact": "CONTACTS",
     "/favorites": "FAVORITES",
     "/user/profile": "PROFILE",
-    "/user/bookings": "PROFILE",
+    "/user/reservations": "PROFILE",
+    "/reservation/:villaID": "VILLA RESERVATION",
   };
 
-  if (villaID) {
+  if (pathname === `/villas/${villaID}`) {
     pathnames.push(`/villas/${villaID}`);
     labels[`/villas/${villaID}`] = "VILLA DETAILS";
+  }
+
+  if (pathname === `/reservation/${villaID}`) {
+    pathnames.push(`/reservation/${villaID}`);
+    labels[`/reservation/${villaID}`] = "VILLA RESERVATION";
   }
 
   return (
@@ -41,16 +47,20 @@ const BreadCrumbs = () => {
         )}
         {pathnames.map((_, i) => (
           <li key={i}>
-            {pathnames.length - 1 > i && (
-              <FontAwesomeIcon
-                icon={faAngleRight}
-                style={{
-                  marginRight: `${
-                    pathname === `/villas/${villaID}` ? "5px" : ""
-                  }`,
-                }}
-              />
-            )}
+            {pathname === `/reservation/${villaID}`
+              ? pathnames.length - 2 > i && (
+                  <FontAwesomeIcon icon={faAngleRight} />
+                )
+              : pathnames.length - 1 > i && (
+                  <FontAwesomeIcon
+                    icon={faAngleRight}
+                    style={{
+                      marginRight: `${
+                        pathname === `/villas/${villaID}` ? "5px" : ""
+                      }`,
+                    }}
+                  />
+                )}
             <Link to={`/${pathnames.slice(0, i + 1).join("/")}`}>
               {labels[`/${pathnames.slice(0, i + 1).join("/")}`]}
             </Link>
