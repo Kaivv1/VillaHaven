@@ -31,12 +31,14 @@ const RegisterPage = () => {
       toast.error("Passwords not matching");
       return;
     }
+    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const newUser = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       gender: gender,
       password: password,
+      timezone: userTimezone,
     };
     await fetchData(
       "http://localhost:4000/register",

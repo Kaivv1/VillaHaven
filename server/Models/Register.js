@@ -33,6 +33,9 @@ const registerSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
+    timezone: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

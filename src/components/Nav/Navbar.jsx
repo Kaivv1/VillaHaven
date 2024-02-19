@@ -15,6 +15,7 @@ const Navbar = () => {
   const isMobile = useIsMobile(425);
   const hamburgerRef = useRef(null);
   const { villaID } = useParams();
+
   const handleToggleDropDown = () => {
     setIsClicked((prevIsClicked) => !prevIsClicked);
   };

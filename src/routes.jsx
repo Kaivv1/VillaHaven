@@ -114,7 +114,6 @@ const router = createBrowserRouter([
             <UserLayout />
           </ProtectedRoute>
         ),
-        errorElement: <ErrorPage />,
         children: [
           {
             path: "/user/profile",

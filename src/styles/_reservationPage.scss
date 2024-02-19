@@ -44,6 +44,12 @@
             flex-direction: column;
             gap: 0.1rem;
 
+            #reserved {
+              color: $color-orange;
+              &:hover {
+                cursor: pointer;
+              }
+            }
             input {
               @include inputFields();
               width: unset;
@@ -288,18 +294,23 @@
 }
 
 .reservation-success-container {
-  min-height: 60vh;
+  min-height: 80vh;
   background-color: $color-dark--3;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
   .message {
+    background-color: #fff;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 2rem;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    max-width: 40rem;
     span {
       background-color: $color-green;
       border-radius: 50%;
@@ -317,7 +328,32 @@
       p {
         font-weight: normal;
         font-style: italic;
-        color: $color-brand--2;
+        color: $color-dark--2;
+      }
+    }
+  }
+}
+
+.reservation-failed-container {
+  @extend .reservation-success-container;
+  .message {
+    @extend .message;
+    span {
+      background-color: $color-red;
+    }
+  }
+}
+
+@media (max-width: 395px) {
+  .reservation-success-container {
+    padding: 1rem;
+    .message {
+      padding: 1rem;
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 0.9rem;
       }
     }
   }

@@ -10,7 +10,7 @@
   text-transform: uppercase;
   transition: 0.2s ease-in-out;
   border-radius: $border-radius;
-
+  white-space: nowrap;
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -32,7 +32,7 @@
   border-radius: $border-radius;
   text-decoration: none;
   font-size: 0.9rem;
-
+  white-space: nowrap;
   &:visited {
     color: $color-dark--1;
   }

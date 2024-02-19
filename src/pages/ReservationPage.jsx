@@ -4,27 +4,28 @@ import {
   fetchVillaById,
   getMainPicture,
 } from "../helpers/villaHelperFunctions";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 import Button from "../components/Button";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import {
   calculateTotalPrice,
+  checkAvailability,
   createReservation,
 } from "../helpers/reservationHelpers";
 import { useFetchUser } from "../hooks/useFetchUser";
 import toast from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
 import { createPaymentIntent } from "../helpers/stripeHelperFunctions";
+import CustomDatePicker from "../components/CustomDatePicker";
 
 const ReservationPage = () => {
   const { villaID } = useParams();
   const [villa, setVilla] = useState({});
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [numberGuests, setNumberGuests] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("cash");
@@ -46,21 +47,38 @@ const ReservationPage = () => {
     fetchVilla();
   }, [villaID]);
 
+  const filterReservedDates = (date) => {
+    return !villa?.reservedDates.some((reservedDate) => {
+      const startDate = new Date(reservedDate?.startDate);
+      const endDate = new Date(reservedDate?.endDate);
+
+      return date >= startDate && endDate >= date;
+    });
+  };
+
+  const reservedDates = {
+    startDate: new Date(startDate),
+    endDate: new Date(endDate),
+  };
+
+  const reservation = {
+    villaId: villa._id,
+    paymentMethod,
+    reservedDates,
+    numberGuests,
+    totalPrice,
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const reservedDates = {
-      startDate,
-      endDate,
-    };
-    const reservation = {
-      villaId: villa._id,
-      paymentMethod,
-      reservedDates,
-      numberGuests,
-      totalPrice,
-    };
     if (paymentMethod === "cash") {
+      const isAvailable = await checkAvailability(reservedDates, villa._id);
+
+      if (!isAvailable) {
+        toast.error("Dates not available");
+        setIsLoading(false);
+        return;
+      }
       const { id } = await createReservation(
         { ...reservation, status: "success" },
         token
@@ -69,6 +87,14 @@ const ReservationPage = () => {
       navigate(`/reservation/${id}/success`);
     }
     if (paymentMethod === "card") {
+      const isAvailable = await checkAvailability(reservedDates, villa._id);
+
+      if (!isAvailable) {
+        toast.error("Dates not available");
+        setIsLoading(false);
+        return;
+      }
+
       const stripe = await loadStripe(
         "pk_test_51Oj0aLIq1IkY2m6yzNooQKyIELtxlrW1iWbReJvS30qR54c6rg6iHlotIpbJrNfzyZM0wDLYItYxUgQ155xb719G00c6tqMy7P"
       );
@@ -106,33 +132,24 @@ const ReservationPage = () => {
           </div>
           <div className="reservation-right-side">
             <div className="dates-guests">
-              <div className="input-wrapper">
-                <label>Check in</label>
-                <div className="date-wrapper">
-                  <DatePicker
-                    selected={startDate}
-                    minDate={new Date()}
-                    maxDate={endDate || null}
-                    dateFormat="yyyy-MM-dd"
-                    onChange={(date) => setStartDate(date)}
-                    required
-                  />
-                  <CalendarMonthIcon className="calendar-icon" />
-                </div>
-              </div>
-              <div className="input-wrapper">
-                <label>Check out</label>
-                <div className="date-wrapper">
-                  <DatePicker
-                    selected={endDate}
-                    minDate={startDate || new Date()}
-                    dateFormat="yyyy-MM-dd"
-                    onChange={(date) => setEndDate(date)}
-                    required
-                  />
-                  <CalendarMonthIcon className="calendar-icon" />
-                </div>
-              </div>
+              <CustomDatePicker
+                label="Check in"
+                selected={startDate}
+                minDate={new Date()}
+                maxDate={endDate || null}
+                dateFormat="yyyy-MM-dd"
+                onChange={(date) => setStartDate(date)}
+                filterDate={filterReservedDates}
+              />
+              <CustomDatePicker
+                label="Check out"
+                selected={endDate}
+                minDate={startDate || new Date()}
+                dateFormat="yyyy-MM-dd"
+                onChange={(date) => setEndDate(date)}
+                filterDate={filterReservedDates}
+              />
+
               <div className="input-wrapper">
                 <label htmlFor="guests">Number of guests</label>
                 <input

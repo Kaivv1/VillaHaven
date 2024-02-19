@@ -1,7 +1,7 @@
 /* eslint no-useless-catch: */
 
 import Cookies from "js-cookie";
-
+import moment from "moment-timezone";
 export const getToken = () => {
   const token = Cookies.get("access_token");
   return token;
@@ -210,4 +210,9 @@ export const resetPassword = async (email, password) => {
   } catch (error) {
     throw error;
   }
+};
+
+export const getCorrectDate = (date, timezone) => {
+  const newDate = moment(date).tz(timezone)?.toDate();
+  return newDate;
 };

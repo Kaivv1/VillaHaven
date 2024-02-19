@@ -135,6 +135,7 @@ const getVillaById = async (req, res, next) => {
       })
     );
     villa.pictures = picturesWithUrl;
+
     return res.status(200).json(villa);
   } catch (error) {
     return next(errorHandler(500, "Internal Server Error"));

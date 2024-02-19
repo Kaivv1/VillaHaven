@@ -25,5 +25,6 @@ export const useFetchUser = () => {
 
     fetchData();
   }, [token]);
+
   return data;
 };

@@ -2,11 +2,9 @@
 @import "mixins";
 
 .navbar-container {
+  background-color: $color-dark--1;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("../assets/more-images/main-header-background.jpeg") no-repeat;
-  background-size: cover;
-  background-position: center;
-
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -44,6 +42,7 @@
         right: 0%;
         z-index: 100;
         border-radius: $border-radius;
+        box-shadow: $box-shadow;
         li {
           border-bottom: 1px solid $color-dark--2;
           width: 100%;
@@ -97,6 +96,7 @@
       left: 0%;
       z-index: 100;
       border-radius: $border-radius;
+      box-shadow: $box-shadow;
 
       li {
         border-bottom: 1px solid $color-dark--2;

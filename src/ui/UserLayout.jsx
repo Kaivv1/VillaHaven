@@ -19,7 +19,7 @@ const UserLayout = () => {
             <span>
               <AirplaneTicketIcon fontSize="small" />
             </span>
-            Bookings
+            Reservations
           </NavLink>
         </nav>
         <main>

@@ -58,15 +58,26 @@ const deleteFile = async (fileName) => {
 };
 
 const getFile = async (fileName) => {
-  const params = {
-    Bucket: bucket.name,
-    Key: fileName,
+  let url = null;
+  let expiresAt = 0;
+
+  const generateSignedUrl = async () => {
+    const params = {
+      Bucket: bucket.name,
+      Key: fileName,
+    };
+    const command = new GetObjectCommand(params);
+    url = await getSignedUrl(s3, command, { expiresIn: 600000 });
+    expiresAt = Date.now() + 600000;
+
+    return url;
   };
-
-  const command = new GetObjectCommand(params);
-
-  const url = await getSignedUrl(s3, command, { expiresIn: 600000 });
-
+  const checkAndRenew = async () => {
+    if (!url || Date.now() >= expiresAt) {
+      await generateSignedUrl();
+    }
+  };
+  await checkAndRenew();
   return url;
 };
 
@@ -79,16 +90,3 @@ module.exports = {
   uploadFile,
   deleteFile,
 };
-
-// const params = {
-//   Bucket: bucket.name,
-//   Key: randomImageName(),
-//   Body: req.file.buffer,
-//   ContentType: req.file.mimetype,
-// };
-// const command = new PutObjectCommand(params);
-
-// await s3.send(command);
-
-// const command = new GetObjectCommand(params);
-// const url = await getSignedUrl(s3, command, { expiresIn: 3600 });

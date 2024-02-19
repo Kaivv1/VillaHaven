@@ -47,10 +47,17 @@ const passport = require("./passport-config/passportConfig");
 const {
   createReservationRouter,
   getReservationByIdRouter,
+  checkAvailabilityRouter,
+  getAllUserReservationsRouter,
+  deleteReservationByIdRouter,
 } = require("./routes/reservation.route");
 
 const webhookRouter = require("./routes/webhook.route");
 const Reservation = require("./Models/Reservation");
+const {
+  getImageRouter,
+  uploadImageRouter,
+} = require("./routes/s3Bucket.route");
 const app = express();
 
 app.use(passport.initialize());
@@ -97,6 +104,11 @@ app.use("/stripe-secret-key", secretStripeKeyRouter);
 app.use("/create-payment-intent", clientSecretRouter);
 app.use("/add-reserved-dates", addReservedDatesToVillaRouter);
 app.use("/get-reservation", getReservationByIdRouter);
+app.use("/get-image", getImageRouter);
+app.use("/upload-image", uploadImageRouter);
+app.use("/check-availability", checkAvailabilityRouter);
+app.use("/get-user-reservations", getAllUserReservationsRouter);
+app.use("/delete-reservation", deleteReservationByIdRouter);
 app.use("/webhook", webhookRouter);
 
 setInterval(async () => {

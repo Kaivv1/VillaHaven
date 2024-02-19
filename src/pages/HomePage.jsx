@@ -1,4 +1,3 @@
-import AboutVillaHaven from "../components/AboutVillaHaven";
 import OtherAmenities from "../components/Amenities/OtherAmenities";
 import Facilities from "../components/Facilities";
 import OurVillas from "../components/OurVillas";
@@ -7,7 +6,6 @@ const HomePage = () => {
   return (
     <>
       <OurVillas />
-      <AboutVillaHaven />
       <Facilities />
       <OtherAmenities />
       <Testimonials />

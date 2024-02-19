@@ -7,7 +7,7 @@
   flex-direction: column;
   .testimonial-header {
     text-align: center;
-    width: 70%;
+    width: 60%;
     h1 {
       margin-bottom: 1rem;
     }
@@ -91,6 +91,13 @@
 @media (max-width: 1300px) {
   .testimonials-container {
     padding: 3rem 3rem 5rem;
+  }
+}
+@media (max-width: 1200px) {
+  .testimonials-container {
+    .testimonial-header {
+      width: 70%;
+    }
   }
 }
 @media (max-width: 945px) {
