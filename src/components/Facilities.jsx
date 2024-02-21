@@ -22,9 +22,9 @@ const Facilities = () => {
             assumenda
           </p>
         </div>
-
         <Button
           className="facilities-btn"
+          type="link"
           icon={<EastIcon fontSize="small" />}
           to="/villas"
         >

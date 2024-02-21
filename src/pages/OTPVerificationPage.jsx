@@ -8,10 +8,12 @@ import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 import VerificationTimer from "../components/VerificationTimer";
 import { useUserVerification } from "../hooks/useUserVerification";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 const OTPVerificationPage = () => {
   const [OTP, setOTP] = useState("");
   const [secretValue, setSecretValue] = useState("");
   const navigate = useNavigate();
+  useChangeDocumentTitle("VerifyOTP");
   const encryptedValue = Cookies.get("encrypted_cookie");
   const userEmail = CryptoJS.AES.decrypt(encryptedValue, secretValue).toString(
     CryptoJS.enc.Utf8

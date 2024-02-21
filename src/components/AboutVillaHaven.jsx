@@ -7,6 +7,10 @@ import {
   partner4,
   partner5,
 } from "../assetsExports";
+import { Suspense, lazy } from "react";
+import Loader from "../ui/Loader";
+const LazyImage = lazy(() => import("./LazyImage"));
+
 const AboutVillaHaven = () => {
   const logos = [partner0, partner1, partner2, partner3, partner4, partner5];
   return (
@@ -35,7 +39,9 @@ const AboutVillaHaven = () => {
         <div>
           {logos.map((logo, i) => (
             <span key={i}>
-              <img src={logo} alt="" />
+              <Suspense fallback={<Loader />}>
+                <LazyImage src={logo} alt="" />
+              </Suspense>
             </span>
           ))}
         </div>

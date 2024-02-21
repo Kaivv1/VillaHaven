@@ -15,21 +15,18 @@
     h1 {
       color: #fff;
     }
-
     p {
       color: #fff;
       margin-top: 3.5rem;
       font-size: 1.1rem;
     }
   }
-
   .partners-logos {
     text-align: center;
     grid-area: b;
     h1 {
       color: #fff;
     }
-
     div {
       display: grid;
       grid-template-columns: repeat(3, 13rem);
@@ -43,7 +40,6 @@
       }
     }
   }
-
   .counter-wrapper {
     padding: 4rem;
     display: flex;
@@ -74,7 +70,6 @@
         flex-direction: column;
         font-weight: bold;
         gap: 0.4rem;
-
         span {
           &:first-child {
             font-size: 2rem;
@@ -87,7 +82,6 @@
               font-size: 2rem;
             }
           }
-
           &:nth-child(2) {
             color: $color-brand--2;
             font-size: 0.9rem;
@@ -106,10 +100,8 @@
       opacity: 1;
     }
   }
-
   .slider-wrapper {
     grid-area: d;
-
     .slides {
       .video-button {
         color: #fff;
@@ -137,23 +129,19 @@
       h1 {
         color: #fff;
       }
-
       p {
         margin-top: 2.2rem;
         font-size: 1rem;
       }
     }
-
     .partners-logos {
       div {
         grid-template-columns: repeat(3, 12rem);
       }
     }
-
     .counter-wrapper {
       padding: 4rem;
       gap: 2rem;
-
       .counter-container {
         div {
           span {
@@ -163,7 +151,6 @@
                 font-size: 2rem;
               }
             }
-
             &:nth-child(2) {
               font-size: 0.9rem;
             }
@@ -171,7 +158,6 @@
         }
       }
     }
-
     .slider-wrapper {
       padding: 3rem;
       .slides {
@@ -182,7 +168,6 @@
     }
   }
 }
-
 @media (max-width: 1240px) {
   .about-villa-haven-container {
     .slider-wrapper {
@@ -194,7 +179,6 @@
     }
   }
 }
-
 @media (max-width: 1024px) {
   .about-villa-haven-container {
     gap: 3rem;
@@ -226,17 +210,14 @@
         font-size: 1rem;
       }
     }
-
     .partners-logos {
       div {
         grid-template-columns: repeat(3, 10rem);
         grid-template-rows: 6rem;
       }
     }
-
     .counter-wrapper {
       padding: 0rem;
-
       .counter-container {
         div {
           span {
@@ -246,7 +227,6 @@
                 font-size: 1.7rem;
               }
             }
-
             &:nth-child(2) {
               font-size: 0.8rem;
             }
@@ -278,7 +258,6 @@
                 font-size: 1.6rem;
               }
             }
-
             &:nth-child(2) {
               font-size: 0.7rem;
             }
@@ -300,12 +279,10 @@
             padding: 0.1rem;
           }
         }
-
         .arrows {
           .arrow-next {
             right: 1.5%;
           }
-
           .arrow-previous {
             left: 1.5%;
           }
@@ -313,7 +290,6 @@
             padding: 0.25rem;
           }
         }
-
         .slides {
           .video-button {
             left: 44.2%;
@@ -323,7 +299,6 @@
     }
   }
 }
-
 @media (max-width: 609px) {
   .about-villa-haven-container {
     .slider-wrapper {
@@ -337,10 +312,10 @@
     }
   }
 }
-
 @media (max-width: 425px) {
   .about-villa-haven-container {
     padding: 2rem 1rem 1rem;
+    gap: 2rem;
     h1 {
       font-size: 1.6rem;
     }
@@ -350,7 +325,6 @@
         grid-template-rows: repeat(3, 8rem);
       }
     }
-
     .counter-wrapper {
       .counter-container {
         opacity: 1;
@@ -363,7 +337,6 @@
                 font-size: 1.2rem;
               }
             }
-
             &:nth-child(2) {
               font-size: 0.6rem;
             }
@@ -373,7 +346,6 @@
     }
   }
 }
-
 @media (max-width: 385px) {
   .about-villa-haven-container {
     .slider-wrapper {

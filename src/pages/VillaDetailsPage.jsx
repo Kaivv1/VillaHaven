@@ -1,10 +1,10 @@
 /*eslint no-unused-vars: */
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Slider from "../../components/Slider";
-import LocationSVG from "../../ui/svgs/LocationSVG";
-import StarRating from "../../ui/stars/StarRating";
-import Button from "../../components/Button";
+import Slider from "../components/Slider";
+import LocationSVG from "../ui/svgs/LocationSVG";
+import StarRating from "../ui/stars/StarRating";
+import Button from "../components/Button";
 import EastIcon from "@mui/icons-material/East";
 import "leaflet/dist/leaflet.css";
 import BedIcon from "@mui/icons-material/Bed";
@@ -15,13 +15,16 @@ import FenceIcon from "@mui/icons-material/Fence";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import PeopleIcon from "@mui/icons-material/People";
 import L from "leaflet";
-import { fetchVillaById } from "../../helpers/villaHelperFunctions";
+import { fetchVillaById } from "../helpers/villaHelperFunctions";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
+const LazyImage = lazy(() => import("../components/LazyImage"));
 
 const VillaDetailsPage = () => {
   const { villaID } = useParams();
   const [villa, setVilla] = useState({});
   const [coordinates, setCoordinates] = useState({});
   const [mapInitialized, setMapInitialize] = useState(false);
+  useChangeDocumentTitle(`Our Villas | ${villa?.villaName}`);
 
   useEffect(() => {
     const fetchVilla = async () => {
@@ -57,7 +60,7 @@ const VillaDetailsPage = () => {
       <div className="villa-details-wrapper">
         <Slider>
           {villa.pictures?.map((picture, i) => (
-            <img src={picture} alt="" key={i} />
+            <LazyImage src={picture} alt="" key={i} />
           ))}
         </Slider>
         <div className="villa-details">

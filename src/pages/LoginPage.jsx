@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { useTogglePasswordVisibility } from "../hooks/useTogglePasswordVisibility";
 import { useApi } from "../hooks/useApi";
 import PopUp from "../components/PopUp";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { toggleIconOne, inputTypeOne } = useTogglePasswordVisibility();
   const { isLoading, fetchData } = useApi();
-
+  useChangeDocumentTitle("Login");
   const handleSubmit = async (e) => {
     e.preventDefault();
 

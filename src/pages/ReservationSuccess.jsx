@@ -14,11 +14,13 @@ import {
   getUserByToken,
   sendEmail,
 } from "../helpers/userHelperFunctions";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 
 const ReservationSuccess = () => {
   const [time, setTime] = useState(10000);
   const navigate = useNavigate();
   const { reservationID } = useParams();
+  useChangeDocumentTitle("Reservation | Success");
   const token = getToken();
   const seconds = time / 1000;
 

@@ -9,6 +9,7 @@ import VerificationTimer from "../components/VerificationTimer";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { Link } from "react-router-dom";
 import { useTogglePasswordVisibility } from "../hooks/useTogglePasswordVisibility";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 const UserProfile = () => {
   const { user, token } = useFetchUser();
   const [isLoading, setIsLoading] = useState(false);
@@ -39,6 +40,7 @@ const UserProfile = () => {
   } = useUserVerification(userData.email, editPass);
   const { toggleIconOne, toggleIconTwo, inputTypeOne, inputTypeTwo } =
     useTogglePasswordVisibility();
+  useChangeDocumentTitle("User | Profile");
 
   useEffect(() => {
     if (user) {

@@ -6,6 +6,7 @@ import PopUp from "../components/PopUp";
 import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 import { useEffect } from "react";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 
 const SendOTPPage = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -13,6 +14,7 @@ const SendOTPPage = () => {
   const [secretValue, setSecretValue] = useState("");
   const encryptedValue = CryptoJS.AES.encrypt(userEmail, secretValue);
   const navigate = useNavigate();
+  useChangeDocumentTitle("SendOTP");
 
   useEffect(() => {
     const handleFetchSecret = async () => {

@@ -5,27 +5,22 @@
   min-height: 100vh;
   width: 100%;
   box-sizing: border-box;
-
   .favorite-villas-line {
     display: flex;
     justify-content: space-between;
     align-items: end;
     margin-bottom: 0.3rem;
-
     h1 {
       color: $color-dark--1;
     }
-
     span {
       font-weight: bold;
       color: $color-dark--1;
     }
   }
-
   hr {
     border-color: $color-dark--2;
   }
-
   .no-fav-villas-yet {
     text-align: center;
     margin-top: 2rem;
@@ -39,7 +34,6 @@
     gap: 4rem;
   }
 }
-
 @media (max-width: 1760px) {
   .favourite-villas--container {
     .favourite-villas--wrapper {
@@ -47,7 +41,6 @@
     }
   }
 }
-
 @media (max-width: 1300px) {
   .favourite-villas--container {
     padding: 2rem 2rem;
@@ -74,13 +67,22 @@
     .favourite-villas--wrapper {
       grid-template-columns: 24rem;
       justify-content: center;
-      .favourite-villa--container {
-        div {
-          &:first-of-type {
-            max-width: 30rem;
-          }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .favourite-villas--container {
+    padding: 2rem 0rem;
+    div {
+      &:first-child {
+        h1 {
+          font-size: 1.4rem;
         }
       }
+    }
+    .favourite-villas--wrapper {
+      grid-template-columns: auto;
+      justify-content: center;
     }
   }
 }

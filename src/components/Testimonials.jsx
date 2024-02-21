@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getTestimonials } from "../helpers/testimonialsHelperFunctions";
 import StarRating from "../ui/stars/StarRating";
 import Slider from "./Slider";
+
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
   useEffect(() => {
@@ -15,14 +16,6 @@ const Testimonials = () => {
 
   return (
     <div className="testimonials-container">
-      <div className="testimonial-header">
-        <h1>What our customers say about us</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum,
-          reiciendis aperiam accusantium animi odio ea facilis at assumenda est
-          quae autem, pariatur maiores sed laboriosam
-        </p>
-      </div>
       <div className="testimonials-wrapper">
         <Slider autoSlide={true}>
           {testimonials.map((testimonial) => (

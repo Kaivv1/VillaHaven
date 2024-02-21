@@ -3,10 +3,12 @@ import { getToken } from "../helpers/userHelperFunctions";
 import { getAllUserReservations } from "../helpers/reservationHelpers";
 import ReservationCard from "../components/ReservationCard";
 import Loader from "../ui/Loader";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 
 const UserReservations = () => {
   const [reservations, setReservations] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  useChangeDocumentTitle("User | Reservations");
   const token = getToken();
 
   useEffect(() => {

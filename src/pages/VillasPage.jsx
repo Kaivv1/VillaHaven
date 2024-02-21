@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import Villa from "../../components/Villa";
-import { fetchVillas } from "../../helpers/villaHelperFunctions";
+import Villa from "../components/Villa";
+import { fetchVillas } from "../helpers/villaHelperFunctions";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 
 const VillasPage = () => {
   const [villas, setVillas] = useState([]);
+  useChangeDocumentTitle("Our VIllas");
 
   useEffect(() => {
     const handleFetchVillas = async () => {

@@ -21,6 +21,7 @@ import toast from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
 import { createPaymentIntent } from "../helpers/stripeHelperFunctions";
 import CustomDatePicker from "../components/CustomDatePicker";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 
 const ReservationPage = () => {
   const { villaID } = useParams();
@@ -32,6 +33,7 @@ const ReservationPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { token } = useFetchUser();
+  useChangeDocumentTitle(`Reservation | ${villa?.villaName}`);
   const mainPicture = getMainPicture(villa.pictures);
   const { totalPrice, days } =
     villa.price !== undefined &&

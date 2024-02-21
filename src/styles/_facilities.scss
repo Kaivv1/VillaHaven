@@ -2,7 +2,7 @@
 @import "mixins";
 
 .facilities-container {
-  padding: 5rem 2rem 3rem;
+  padding: 3rem 2rem 3rem;
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -157,7 +157,7 @@
 }
 @media (max-width: 425px) {
   .facilities-container {
-    padding: 5rem 1rem 3rem;
+    padding: 3rem 1rem 3rem;
   }
 }
 @media (max-width: 390px) {

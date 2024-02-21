@@ -5,8 +5,8 @@ import AboutPage from "./AboutPage";
 import ReservationPage from "./ReservationPage";
 import FavouriteVillasPage from "./FavouriteVillasPage";
 
-import VillaDetailsPage from "./OurVillas/VillaDetailsPage";
-import VillasPage from "./OurVillas/VillasPage";
+import VillaDetailsPage from "./VillaDetailsPage";
+import VillasPage from "./VillasPage";
 
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";

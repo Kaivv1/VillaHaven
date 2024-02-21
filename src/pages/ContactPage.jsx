@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Accordion from "../components/Accordion";
 import SubmitQuestionForm from "../components/SubmitQuestionForm";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 const ContactPage = () => {
   const [FAQs, setFAQs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  useChangeDocumentTitle(`Contacts`);
   const faqs = document.querySelectorAll(".FAQ");
   const splitFAQs = (arr) => {
     const half = arr.length / 2;

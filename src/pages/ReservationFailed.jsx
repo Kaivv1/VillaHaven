@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 const ReservationFailed = () => {
   const [time, setTime] = useState(10000);
   const navigate = useNavigate();
+  useChangeDocumentTitle("Reservation | Failed");
   const seconds = time / 1000;
 
   useEffect(() => {

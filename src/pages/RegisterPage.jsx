@@ -5,18 +5,18 @@ import { useApi } from "../hooks/useApi";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 import PopUp from "../components/PopUp";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 const RegisterPage = () => {
-  const { toggleIconOne, toggleIconTwo, inputTypeOne, inputTypeTwo } =
-    useTogglePasswordVisibility();
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const { status, isLoading, fetchData } = useApi();
+  const { toggleIconOne, toggleIconTwo, inputTypeOne, inputTypeTwo } =
+    useTogglePasswordVisibility();
+  useChangeDocumentTitle("Register");
 
   useEffect(() => {
     if (status === 201) {

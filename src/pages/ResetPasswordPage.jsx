@@ -9,12 +9,14 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { useTogglePasswordVisibility } from "../hooks/useTogglePasswordVisibility";
 import { useUserVerification } from "../hooks/useUserVerification";
+import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [secretValue, setSecretValue] = useState("");
   const navigate = useNavigate();
+  useChangeDocumentTitle("Reset Password");
   const { isLoading, handleResetPassword } = useUserVerification();
   const { toggleIconOne, toggleIconTwo, inputTypeOne, inputTypeTwo } =
     useTogglePasswordVisibility();

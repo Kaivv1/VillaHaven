@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Counter from "./Counter";
 import { useModalData } from "../contexts/ModalDataContext";
-import "react-awesome-slider/dist/styles.css";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useRefs } from "../contexts/RefContext";
 import { useIsInViewPort } from "../hooks/isInViewPort";

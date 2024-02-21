@@ -19,6 +19,7 @@ const Modal = ({ video, onClose }) => {
 
   return (
     <div className="video-modal--container">
+      <button onClick={onClose}>&#x2715;</button>
       <div ref={ref}>
         <iframe
           src={video}
@@ -26,7 +27,6 @@ const Modal = ({ video, onClose }) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
-        <button onClick={onClose}>&#x2715;</button>
       </div>
     </div>
   );
