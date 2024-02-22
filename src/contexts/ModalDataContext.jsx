@@ -11,6 +11,7 @@ const ModalDataContext = createContext();
 
 const ModalDataProvider = ({ children }) => {
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const aboutVillaHavenData = [
     {
       picture: carouselVideo,
@@ -33,6 +34,8 @@ const ModalDataProvider = ({ children }) => {
       value={{
         setShowVideoModal,
         showVideoModal,
+        showConfirmModal,
+        setShowConfirmModal,
         aboutVillaHavenData,
       }}
     >

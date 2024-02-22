@@ -7,15 +7,6 @@ const ContactPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   useChangeDocumentTitle(`Contacts`);
-  const faqs = document.querySelectorAll(".FAQ");
-  const splitFAQs = (arr) => {
-    const half = arr.length / 2;
-    const column1 = FAQs.slice(0, half);
-    const column2 = FAQs.slice(half);
-
-    return [column1, column2];
-  };
-  const FAQsArr = splitFAQs(FAQs);
 
   useEffect(() => {
     const fetchFAQs = async () => {
@@ -34,39 +25,6 @@ const ContactPage = () => {
     fetchFAQs();
   }, []);
 
-  useEffect(() => {
-    const handleClick = (e) => {
-      e.stopPropagation();
-      const currentClickedAnswer = e.currentTarget.querySelector(".answer");
-      const currentClickedArrow = e.currentTarget.querySelector(".label");
-      faqs.forEach((faq) => {
-        const otherClickedAnswer = faq.querySelector(".answer");
-        const otherClickedArrow = faq.querySelector(".label");
-
-        if (
-          otherClickedAnswer !== currentClickedAnswer &&
-          otherClickedAnswer.classList.contains("active") &&
-          otherClickedArrow !== currentClickedArrow &&
-          otherClickedArrow.classList.contains("active")
-        ) {
-          otherClickedAnswer.classList.remove("active");
-          otherClickedArrow.classList.remove("active");
-        }
-      });
-      currentClickedAnswer.classList.toggle("active");
-      currentClickedArrow.classList.toggle("active");
-    };
-
-    faqs.forEach((faq) =>
-      faq.addEventListener("click", handleClick.bind(this))
-    );
-
-    return () => {
-      faqs.forEach((faq) =>
-        faq.removeEventListener("click", handleClick.bind(this))
-      );
-    };
-  }, [faqs]);
   return (
     <div className="contacts-container">
       <header>
@@ -80,11 +38,8 @@ const ContactPage = () => {
         </p>
       </header>
       <div className="accordions-wrapper">
-        {FAQsArr.map((FAQs, i) => (
-          <Accordion key={i} FAQs={FAQs} isLoading={isLoading} error={error} />
-        ))}
+        <Accordion FAQs={FAQs} isLoading={isLoading} error={error} />
       </div>
-
       <div className="support-wrapper">
         <div className="support-image"></div>
         <SubmitQuestionForm />

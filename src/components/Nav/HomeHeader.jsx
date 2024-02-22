@@ -55,17 +55,15 @@ const HomeHeader = () => {
         <p>Enjoy the finest stays</p>
         <h1>Find Your Best Villa House And Appartment</h1>
         <p>
-          Gravida vulputate aliquet tempor siteque sed pretium non urna sed etid
-          aenean haretra quam placerat adipiscing
+          Indulge in unparalleled luxury with VillaHaven as you explore our
+          curated selection of exquisite villa houses and apartments, ensuring a
+          delightful and unforgettable stay.
         </p>
       </div>
       <div className="right-side-header">
         <h3>Quick Booking</h3>
         {!isSmallLaptop && (
-          <p>
-            Diam et habitasse tortor cras donec urna eget dolor in turpis
-            venenatis eget.
-          </p>
+          <p>Swift reservations made simple. Quick booking with VillaHaven.</p>
         )}
         <form onSubmit={handleSubmit}>
           <div className="selector">

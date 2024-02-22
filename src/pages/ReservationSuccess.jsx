@@ -18,6 +18,7 @@ import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 
 const ReservationSuccess = () => {
   const [time, setTime] = useState(10000);
+  const [emailSent, setEmailSent] = useState(false);
   const navigate = useNavigate();
   const { reservationID } = useParams();
   useChangeDocumentTitle("Reservation | Success");
@@ -26,29 +27,29 @@ const ReservationSuccess = () => {
 
   useEffect(() => {
     const handleSuccessfullReservation = async () => {
-      const { villaId, reservedDates } = await getReservationById(
-        reservationID
-      );
-      const { villaName } = await fetchVillaById(villaId);
+      if (!emailSent) {
+        const { villaId, reservedDates } = await getReservationById(
+          reservationID
+        );
+        const { villaName } = await fetchVillaById(villaId);
+        const isAvailable = await checkAvailability(reservedDates[0], villaId);
+        if (!isAvailable) return;
 
-      const isAvailable = await checkAvailability(reservedDates[0], villaId);
+        const { firstName, email } = await getUserByToken(token);
+        await addNewVillaReservedDates(villaId, { reservedDates });
 
-      if (!isAvailable) return;
-
-      const { firstName, email } = await getUserByToken(token);
-      await addNewVillaReservedDates(villaId, { reservedDates });
-
-      const message = {
-        name: firstName,
-        userEmail: email,
-        text: "Thank you for choosing VillaHaven. Out support will contact you soon for further information.",
-        subject: `Your Reservation for ${villaName}`,
-      };
-      await sendEmail(message);
+        const message = {
+          name: firstName,
+          userEmail: email,
+          text: "Thank you for choosing VillaHaven. Our support will contact you soon for further information.",
+          subject: `Your Reservation for ${villaName}`,
+        };
+        await sendEmail(message);
+        setEmailSent(true);
+      }
     };
-
     handleSuccessfullReservation();
-  }, [reservationID, token]);
+  }, [reservationID, token, emailSent]);
 
   useEffect(() => {
     let timer;

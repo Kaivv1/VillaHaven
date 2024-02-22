@@ -43,7 +43,7 @@ const FooterSubscribe = () => {
   return (
     <div className="footer-subscribe">
       <h4>Join our newsletter</h4>
-      <p> Diam et habitasse tortor cras donec urna eget dolor in turpis</p>
+      <p> Stay updated. Join our newsletter for exclusive offers.</p>
       <form onSubmit={handleSubmit}>
         <input
           type="email"

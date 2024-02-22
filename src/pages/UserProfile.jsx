@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 import { useFetchUser } from "../hooks/useFetchUser";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Button from "../components/Button";
-import { updateUserByToken } from "../helpers/userHelperFunctions";
+import { deleteUser, updateUserByToken } from "../helpers/userHelperFunctions";
 import toast from "react-hot-toast";
 import { useUserVerification } from "../hooks/useUserVerification";
 import VerificationTimer from "../components/VerificationTimer";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTogglePasswordVisibility } from "../hooks/useTogglePasswordVisibility";
 import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
+import { useModalData } from "../contexts/ModalDataContext";
+import ConfirmModal from "../components/ConfirmModal";
+import { useChangeDocumentOverflow } from "../hooks/useChangeDocumentOverflow";
+import Cookies from "js-cookie";
+
 const UserProfile = () => {
   const { user, token } = useFetchUser();
   const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +32,7 @@ const UserProfile = () => {
     email: "",
     gender: "",
   });
+  const navigate = useNavigate();
   const {
     isActive,
     setIsActive,
@@ -40,6 +46,8 @@ const UserProfile = () => {
   } = useUserVerification(userData.email, editPass);
   const { toggleIconOne, toggleIconTwo, inputTypeOne, inputTypeTwo } =
     useTogglePasswordVisibility();
+  const { showConfirmModal, setShowConfirmModal } = useModalData();
+  useChangeDocumentOverflow(showConfirmModal);
   useChangeDocumentTitle("User | Profile");
 
   useEffect(() => {
@@ -55,12 +63,10 @@ const UserProfile = () => {
 
     if (file) {
       const reader = new FileReader();
-
       reader.onloadend = () => {
         setPreview(reader.result);
         setUserData((prev) => ({ ...prev, avatar: file }));
       };
-
       reader.readAsDataURL(file);
     }
   };
@@ -76,7 +82,6 @@ const UserProfile = () => {
     if (userData.avatar) {
       formData.append("avatar", userData.avatar);
     }
-
     try {
       await updateUserByToken(token, formData);
       toast.success("User profile updated successfully");
@@ -99,6 +104,7 @@ const UserProfile = () => {
       gender: user?.gender,
     }));
   };
+
   const handleChangePass = () => {
     setEditPass(true);
     setRemainingTime(300000);
@@ -112,10 +118,30 @@ const UserProfile = () => {
     handleDeleteOTP();
   };
 
+  const handleCancelConfirmModal = () => {
+    setShowConfirmModal(false);
+  };
+
+  const handleConfirm = async () => {
+    setIsLoading(true);
+    await deleteUser(token).then((data) => {
+      setShowConfirmModal(false);
+      if (!data.success) {
+        toast.error("There was a problem deleting your account!");
+        setIsLoading(false);
+      }
+      if (data.success) {
+        toast.success("Your account was deleted successfully");
+        setIsLoading(false);
+        Cookies.remove("access_token");
+        navigate("/login");
+      }
+    });
+  };
+
   const handleVerifySubmit = async (e) => {
     e.preventDefault();
     const { success, message } = await handleVerifyOTP(OTP);
-
     if (!success) {
       setOTP("");
       return toast.error(`${message}`);
@@ -140,16 +166,13 @@ const UserProfile = () => {
     if (password !== confirmPassword) {
       return toast.error("Passwords not matching");
     }
-
     const { success, message } = await handleResetPassword(
       userData.email,
       password
     );
-
     if (!success) {
       toast.error(message);
     }
-
     if (success) {
       toast.success(message);
       setPassword("");
@@ -157,6 +180,7 @@ const UserProfile = () => {
       setIsResetPass(false);
     }
   };
+  console.log(token);
   return (
     <div className="user-profile-container">
       <h1>Account Information</h1>
@@ -297,8 +321,7 @@ const UserProfile = () => {
               type="button"
               onClick={() => setEditWithoutPass(true)}
               className="edit-btn"
-              isLoading={editPass || isResetPass}
-              isLoadingMsg="Edit"
+              disabled={editPass || isResetPass || isLoading}
             >
               Edit
             </Button>
@@ -306,10 +329,20 @@ const UserProfile = () => {
               <Button
                 className="change-pass-btn"
                 onClick={() => handleChangePass()}
+                disabled={isLoading}
               >
                 Change password
               </Button>
             )}
+            <Button
+              className="delete-acc-btn"
+              disabled={editPass || isResetPass}
+              isLoading={isLoading}
+              isLoadingMsg="Deleting..."
+              onClick={() => setShowConfirmModal(true)}
+            >
+              Delete account
+            </Button>
           </div>
         )}
       </form>
@@ -412,6 +445,12 @@ const UserProfile = () => {
             </Button>
           </div>
         </form>
+      )}
+      {showConfirmModal && (
+        <ConfirmModal
+          onCancel={handleCancelConfirmModal}
+          onConfirm={handleConfirm}
+        />
       )}
     </div>
   );

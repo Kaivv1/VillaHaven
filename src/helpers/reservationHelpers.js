@@ -1,6 +1,9 @@
 export const calculateTotalPrice = (dailyPrice, startDate, endDate) => {
   const start = new Date(startDate);
   const end = new Date(endDate);
+
+  end.setDate(end.getDate() + 1);
+
   const timeDifference = end - start;
   const days = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
   const totalPrice = days * Number(dailyPrice);
@@ -84,10 +87,13 @@ export const getAllUserReservations = async (token) => {
   }
 };
 
-export const deleteReservationById = async (id) => {
+export const deleteReservationById = async (token, id) => {
   try {
     const res = await fetch(`http://localhost:4000/delete-reservation/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     const data = await res.json();

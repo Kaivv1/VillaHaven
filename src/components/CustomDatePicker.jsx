@@ -10,10 +10,9 @@ const CustomDatePicker = (props) => {
       <div>
         <label>{props.label}</label>
         <span id="reserved"> *</span>
-
         <Tooltip
           anchorSelect="#reserved"
-          content="If you cannot choose certain dates, it means they are reserved !"
+          content="If dates are in red, it means they are reserved !"
         />
       </div>
       <div className="date-wrapper">

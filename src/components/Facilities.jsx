@@ -17,9 +17,9 @@ const Facilities = () => {
         <div>
           <h1>Our facilities</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ad
-            aliquam ducimus omnis recusandae enim nam ea ipsum. Dicta aspernatur
-            assumenda
+            Immerse yourself in unparalleled luxury with VillaHaven&apos;s
+            world-class facilities, ensuring a seamless blend of comfort,
+            convenience, and indulgence throughout your stay.
           </p>
         </div>
         <Button

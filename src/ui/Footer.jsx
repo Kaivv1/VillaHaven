@@ -16,8 +16,9 @@ const Footer = () => {
           <div>
             <h3>VillaHaven.</h3>
             <p>
-              Diam et habitasse tortor cras donec urna eget dolor in turpis
-              venenatis eget pulnivar ipsum quisque non arcu nulla
+              Welcome to VillaHaven, your premier destination for unparalleled
+              luxury and tranquility, ensuring each stay is an unforgettable
+              experience.
             </p>
           </div>
           <FooterSubscribe />

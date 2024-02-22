@@ -26,8 +26,8 @@ const FooterSupportBox = () => {
       <div>
         <h4>Speak to us about your travel plans, we&apos;re here to help.</h4>
         <p>
-          Diam et habitasse tortor cras donec urna eget dolor in turpis
-          venenatis eget pulnivar ipsum quisque non arcu nulla
+          Share your travel dreams with us – our team is here to ensure your
+          VillaHaven experience is personalized and memorable.
         </p>
       </div>
       <Button

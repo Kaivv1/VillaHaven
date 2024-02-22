@@ -76,10 +76,12 @@ const VillaDetailsPage = () => {
               Status:{" "}
               {villa.propertyStatus ? (
                 <span style={{ color: "#26ad60", fontWeight: "bold" }}>
+                  {" "}
                   For Rent
                 </span>
               ) : (
                 <span style={{ color: "#dc2626", fontWeight: "bold" }}>
+                  {" "}
                   Maintenance
                 </span>
               )}

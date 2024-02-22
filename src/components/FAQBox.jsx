@@ -1,16 +1,16 @@
 /*eslint-disable react/prop-types */
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-const FAQBox = ({ FAQ }) => {
+const FAQBox = ({ FAQ, onToggle, selected, i }) => {
   const { question, answer } = FAQ;
 
   return (
-    <div className="FAQ">
-      <div className="label">
+    <div className="FAQ" onClick={() => onToggle(i)}>
+      <div className={`${selected === i ? "label active" : "label"}`}>
         <h3>{question}</h3>
         <KeyboardArrowDownIcon className="arrow-down" />
       </div>
-      <div className="answer">
-        <p>{answer}</p>
+      <div className={`${selected === i ? "answer show" : "answer"}`}>
+        {answer}
       </div>
     </div>
   );

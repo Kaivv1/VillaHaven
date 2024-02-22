@@ -212,6 +212,23 @@ export const resetPassword = async (email, password) => {
   }
 };
 
+export const deleteUser = async (token) => {
+  try {
+    const res = await fetch("http://localhost:4000/delete-user", {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export const getCorrectDate = (date, timezone) => {
   const newDate = moment(date).tz(timezone)?.toDate();
   return newDate;

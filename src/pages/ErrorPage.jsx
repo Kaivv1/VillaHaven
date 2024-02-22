@@ -1,5 +1,6 @@
 import Button from "../components/Button";
 import WestIcon from "@mui/icons-material/West";
+
 const ErrorPage = () => {
   return (
     <div className="error-page-container">
@@ -10,9 +11,9 @@ const ErrorPage = () => {
           Somethings gone missing. Sorry, we couldn&apos;t find the page you are
           looking for.
         </p>
-        <Button type="link" to="/">
+        <Button to="-1">
           <WestIcon fontSize="small" />
-          Go back to Homepage
+          Go back
         </Button>
       </div>
     </div>

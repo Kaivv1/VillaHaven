@@ -28,7 +28,6 @@
           }
         }
       }
-
       .reservation-right-side {
         padding: 2rem 0rem 0.3rem 2rem;
         display: flex;
@@ -43,8 +42,13 @@
             display: flex;
             flex-direction: column;
             gap: 0.1rem;
-
             #reserved {
+              color: $color-orange;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+            #maxGuests {
               color: $color-orange;
               &:hover {
                 cursor: pointer;
@@ -58,23 +62,26 @@
               display: flex;
               align-items: center;
               position: relative;
-
               .calendar-icon {
                 position: absolute;
                 top: 20%;
                 right: 3%;
               }
+              .disabled-date {
+                background-color: $color-light--red;
+                opacity: 0.4;
+                border-radius: $border-radius;
+                cursor: not-allowed;
+              }
             }
           }
         }
-
         .payment-method-container {
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
           gap: 0.5rem;
-
           p {
             &:first-child {
               font-weight: bold;
@@ -103,13 +110,11 @@
           background-color: #fff;
           border-radius: $border-radius;
           border: 2px solid $color-dark--2;
-
           .calc-bar {
             &:first-child,
             &:nth-child(2) {
               border-right: 2px solid $color-dark--2;
             }
-
             p {
               text-align: center;
               &:first-child {
@@ -145,13 +150,11 @@
         }
       }
     }
-
     .form-btns {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: 1rem;
-
       button {
         @include btns(0.8rem, $color-brand--1);
         border: none;
@@ -166,7 +169,6 @@
     }
   }
 }
-
 @media (max-width: 1100px) {
   .reservation-page-container {
     form {
@@ -234,6 +236,7 @@
           }
         }
         .reservation-right-side {
+          gap: 2rem;
           .dates-guests {
             .input-wrapper {
               input {
@@ -242,7 +245,6 @@
               }
             }
           }
-
           .payment-method-container {
             gap: 1rem;
             .payment-method-wrapper {
@@ -259,7 +261,6 @@
             background-color: #fff;
             border-radius: $border-radius;
             border: 2px solid $color-dark--2;
-
             .calc-bar {
               p {
                 text-align: center;
@@ -288,6 +289,9 @@
             }
           }
         }
+      }
+      .form-btns {
+        margin-top: 2rem;
       }
     }
   }

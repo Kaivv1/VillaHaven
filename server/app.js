@@ -30,7 +30,15 @@ const {
   uploadTestimonialRouter,
   getTestimonialsRouter,
 } = require("./routes/testimonials.route");
-const { userRouter, userByTokenRouter } = require("./routes/getUser.route");
+const {
+  userRouter,
+  userByTokenRouter,
+  registerRouter,
+  loginRouter,
+  updateUserRouter,
+  resetPassRouter,
+  deleteUserRouter,
+} = require("./routes/user.route");
 const { createFAQRouter, getFAQsRouter } = require("./routes/FAQs.route");
 const {
   secretKeyRouter,
@@ -38,10 +46,6 @@ const {
   secretStripeKeyRouter,
   clientSecretRouter,
 } = require("./routes/secret.route");
-const registerRouter = require("./routes/registerRouter");
-const loginRouter = require("./routes/signin.route");
-const updateUserRouter = require("./routes/updateUser.route");
-const resetPassRouter = require("./routes/resetPassword.route");
 const sendEmailRouter = require("./routes/mailer.route");
 const passport = require("./passport-config/passportConfig");
 const {
@@ -51,13 +55,13 @@ const {
   getAllUserReservationsRouter,
   deleteReservationByIdRouter,
 } = require("./routes/reservation.route");
-
 const webhookRouter = require("./routes/webhook.route");
 const Reservation = require("./Models/Reservation");
 const {
   getImageRouter,
   uploadImageRouter,
 } = require("./routes/s3Bucket.route");
+
 const app = express();
 
 app.use(passport.initialize());
@@ -109,6 +113,7 @@ app.use("/upload-image", uploadImageRouter);
 app.use("/check-availability", checkAvailabilityRouter);
 app.use("/get-user-reservations", getAllUserReservationsRouter);
 app.use("/delete-reservation", deleteReservationByIdRouter);
+app.use("/delete-user", deleteUserRouter);
 app.use("/webhook", webhookRouter);
 
 setInterval(async () => {

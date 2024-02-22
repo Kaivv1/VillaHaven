@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useEffect } from "react";
 import PopUp from "../components/PopUp";
 import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
+import { sendEmail } from "../helpers/userHelperFunctions";
 const RegisterPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -47,6 +48,13 @@ const RegisterPage = () => {
       newUser,
       "/login"
     );
+    const message = {
+      name: firstName,
+      userEmail: email,
+      text: "Welcome to VillaHaven! Your registration was successfull.",
+      subject: "Register",
+    };
+    await sendEmail(message);
   };
   return (
     <div className="register-container">

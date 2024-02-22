@@ -12,60 +12,52 @@
     }
   }
   .accordions-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 3rem 0rem;
     .accordion-container {
-      background-color: #fff;
-      padding: 3rem;
-      transition: all 0.3s ease-in-out;
-      box-shadow: $box-shadow;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      justify-content: space-between;
+      padding: 3rem 0rem;
       box-sizing: border-box;
-      height: 33rem;
       border-radius: $border-radius;
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: auto;
       .FAQ {
         cursor: pointer;
+        background-color: $color-light;
+        padding: 1rem;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        min-height: 5rem;
         .label {
+          transition: color 0.2s cubic-bezier(0, 1, 0, 1);
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
           margin-bottom: 0.5rem;
-
           .arrow-down {
+            transform: rotate(0deg);
             transition: transform 0.2s ease-in-out;
           }
         }
         .label.active {
-          h3 {
-            color: $color-brand--3;
-          }
+          transition: color 0.2s cubic-bezier(1, 0, 1, 0);
+          color: $color-brand--3;
           .arrow-down {
             transform: rotate(180deg);
             transition: transform 0.2s ease-in-out;
-            color: $color-brand--3;
           }
         }
         h3,
-        p {
+        .answer {
           padding-right: 2rem;
         }
         .answer {
           max-height: 0;
           overflow: hidden;
-          transition: max-height 0.2s ease-in-out;
-          p {
-            margin-bottom: 1rem;
-          }
+          transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
         }
-        .answer.active {
-          max-height: 10rem;
-          height: fit-content;
-          transition: max-height 0.3s ease-in-out;
+        .answer.show {
+          max-height: 99rem;
+          height: auto;
+          transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
         }
       }
     }
@@ -129,13 +121,6 @@
 @media (max-width: 1440px) {
   .contacts-container {
     padding: 3rem 5rem;
-    .accordions-wrapper {
-      gap: 1rem;
-
-      .accordion-container {
-        height: 35rem;
-      }
-    }
   }
 }
 @media (max-width: 1172px) {
@@ -143,12 +128,6 @@
     padding: 3rem;
     header {
       width: 70%;
-    }
-    .accordions-wrapper {
-      grid-template-columns: 1fr;
-      .accordion-container {
-        height: 28rem;
-      }
     }
     .support-wrapper {
       flex-direction: column;
@@ -160,10 +139,8 @@
         height: 30rem;
         background-size: cover;
       }
-
       .submitQuestionForm {
         border-top-right-radius: unset;
-
         border-bottom-left-radius: $border-radius;
         .form-header {
           text-align: center;
@@ -178,50 +155,30 @@
     header {
       width: 100%;
     }
-    .accordions-wrapper {
-      .accordion-container {
-        height: unset;
-      }
-    }
   }
 }
 @media (max-width: 565px) {
   .contacts-container {
-    .accordions-wrapper {
-      .accordion-container {
-        padding: 1rem;
-        .FAQ {
-          .label {
-            h3 {
-              font-size: 1.05rem;
-            }
+    .accordion-container {
+      padding: 1rem;
+      .FAQ {
+        .label {
+          h3 {
+            font-size: 1.05rem;
           }
-          .label.active {
-            h3 {
-              color: $color-brand--3;
-            }
-          }
-          h3,
-          p {
-            padding-right: 2rem;
-          }
-          .answer {
-            p {
-              margin-bottom: 1rem;
-              font-size: 0.95rem;
-            }
-          }
-          .answer.active {
-            max-height: 10rem;
-            height: fit-content;
-            transition: max-height 0.3s ease-in-out;
-          }
+        }
+        h3,
+        .answer {
+          padding-right: 2rem;
+        }
+        .answer {
+          margin-bottom: 1rem;
+          font-size: 0.95rem;
         }
       }
     }
   }
 }
-
 @media (max-width: 425px) {
   .contacts-container {
     .support-wrapper {

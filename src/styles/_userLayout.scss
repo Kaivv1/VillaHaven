@@ -54,12 +54,11 @@
         justify-content: center;
         align-items: center;
         .user-info-form {
-          margin: 1rem 0rem;
+          margin: 1rem 0rem 0rem;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
-
           input {
             &:disabled {
               cursor: not-allowed;
@@ -70,7 +69,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
             label {
               width: fit-content;
               display: inline-block;
@@ -87,7 +85,6 @@
                 width: 6rem;
                 height: 6rem;
               }
-
               &:hover {
                 .user-avatar,
                 .user-icon {
@@ -127,7 +124,6 @@
               @include inputFields();
             }
           }
-
           .gender-wrapper {
             p {
               font-weight: bold;
@@ -143,16 +139,13 @@
               }
             }
           }
-
           .form-btns {
             display: flex;
             flex-direction: column;
             gap: 0.2rem;
-
             .cancel-btn {
               @include btns(0.4rem 1rem, $color-light--red);
               color: #fff;
-
               &:hover {
                 background-color: $color-red;
               }
@@ -160,11 +153,9 @@
             .save-btn {
               @include btns(0.4rem 1rem, $color-green);
               color: #fff;
-
               &:hover {
                 background-color: $color-green-hover;
               }
-
               &:disabled {
                 opacity: 0.8;
               }
@@ -172,8 +163,10 @@
             .edit-btn {
               @extend .save-btn;
             }
-
             .change-pass-btn {
+              @extend .cancel-btn;
+            }
+            .delete-acc-btn {
               @extend .cancel-btn;
             }
           }
@@ -190,12 +183,10 @@
           justify-content: center;
           align-items: center;
           width: min-content;
-
           p {
             color: $color-dark--1;
             font-weight: bold;
           }
-
           .otp-expired {
             display: flex;
             gap: 0.5rem;
@@ -206,7 +197,6 @@
           form {
             @extend .user-info-form;
             margin: 0rem;
-
             .input-wrapper {
               margin-top: 0.3rem;
               gap: 0.1rem;
@@ -233,7 +223,6 @@
           .pass-wrapper {
             @extend .input-wrapper;
             position: relative;
-
             .pass-toggle-icon {
               position: absolute;
               top: 50%;
@@ -315,7 +304,6 @@
     }
   }
 }
-
 @media (max-width: 1440px) {
   .user-layout {
     .user-layout-wrapper {
@@ -332,7 +320,6 @@
     }
   }
 }
-
 @media (max-width: 740px) {
   .user-layout {
     .user-layout-wrapper {
@@ -347,7 +334,6 @@
           padding: 0.7rem;
         }
       }
-
       main {
         width: 100%;
         .user-profile-container {
@@ -378,7 +364,13 @@
     }
   }
 }
-
+@media (max-width: 700px) {
+  .user-layout {
+    .user-layout-wrapper {
+      padding: 0.7rem;
+    }
+  }
+}
 @media (max-width: 505px) {
   .user-layout {
     .user-layout-wrapper {

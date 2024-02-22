@@ -7,12 +7,18 @@ import {
   partner4,
   partner5,
 } from "../assetsExports";
+import Modal from "./Modal";
+import { useModalData } from "../contexts/ModalDataContext";
 import { Suspense, lazy } from "react";
 import Loader from "../ui/Loader";
+import { useChangeDocumentOverflow } from "../hooks/useChangeDocumentOverflow";
 const LazyImage = lazy(() => import("./LazyImage"));
 
 const AboutVillaHaven = () => {
   const logos = [partner0, partner1, partner2, partner3, partner4, partner5];
+  const { showVideoModal, aboutVillaHavenData, setShowVideoModal } =
+    useModalData();
+  useChangeDocumentOverflow(showVideoModal);
   return (
     <div className="about-villa-haven-container">
       <div>
@@ -47,6 +53,12 @@ const AboutVillaHaven = () => {
         </div>
       </div>
       <SliderCounterShowcase />
+      {showVideoModal && (
+        <Modal
+          video={aboutVillaHavenData[0].video}
+          onClose={() => setShowVideoModal((showVideoModal) => !showVideoModal)}
+        />
+      )}
     </div>
   );
 };

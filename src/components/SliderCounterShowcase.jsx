@@ -6,19 +6,12 @@ import { useRefs } from "../contexts/RefContext";
 import { useIsInViewPort } from "../hooks/isInViewPort";
 import { useIsMobile } from "../hooks/useIsMobile";
 import Slider from "./Slider";
-import { useChangeDocumentOverflow } from "../hooks/useChangeDocumentOverflow";
 
 const SliderCounterShowcase = () => {
-  const {
-    showVideoModal,
-    setShowVideoModal,
-    aboutVillaHavenData: sliderData,
-  } = useModalData();
+  const { setShowVideoModal, aboutVillaHavenData: sliderData } = useModalData();
   const { counterRef } = useRefs();
   const isIntersecting = useIsInViewPort(counterRef, "-300px");
   const isMobile = useIsMobile(600);
-
-  useChangeDocumentOverflow(showVideoModal);
 
   useEffect(() => {
     if (isIntersecting) {
@@ -34,9 +27,12 @@ const SliderCounterShowcase = () => {
       <div className="counter-wrapper" ref={counterRef}>
         <h1>access only the finest homes in the most desirable destinations</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat earum
-          dicta veniam asperiores modi ea natus voluptate, voluptatem, illum
-          harum
+          Experience transcendent luxury with VillaHaven, where opulence and
+          exclusivity unfold. Gain exclusive access to lavish homes in coveted
+          destinations, marking the genesis of an unparalleled lifestyle. Every
+          moment is an indulgence, every home a masterpiece of elegance. Join us
+          in a celebration of refined living, where sophistication meets
+          seamless comfort.
         </p>
         <Counter isIntersecting={isIntersecting} isMobile={isMobile} />
       </div>

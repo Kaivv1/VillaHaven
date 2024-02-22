@@ -108,7 +108,7 @@ const deleteReservationById = async (req, res, next) => {
 
     return res
       .status(200)
-      .json({ msg: "Reservation deleted successfully", status: 200 });
+      .json({ msg: "Reservation deleted successfully", success: true });
   } catch (error) {
     return next(errorHandler(500, "Internal Server Error"));
   }
@@ -119,12 +119,12 @@ const checkAvailability = async (req, res) => {
 
   const villa = await Villa.findById(villaId);
 
-  const chosenStartDate = chosenDates.startDate;
-  const chosenEndDate = chosenDates.endDate;
+  const chosenStartDate = new Date(chosenDates.startDate);
+  const chosenEndDate = new Date(chosenDates.endDate);
 
   const isAvailable = !villa.reservedDates.some((reservedDate) => {
-    const reservedStartDate = reservedDate.startDate;
-    const reservedEndDate = reservedDate.endDate;
+    const reservedStartDate = new Date(reservedDate.startDate);
+    const reservedEndDate = new Date(reservedDate.endDate);
 
     return (
       chosenStartDate <= reservedEndDate && chosenEndDate >= reservedStartDate

@@ -1,15 +1,11 @@
 import Navbar from "./components/Nav/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
-import Modal from "./components/Modal";
-import { useModalData } from "./contexts/ModalDataContext";
 import { useEffect, useState } from "react";
 import Main from "./ui/Main";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 
 const Layout = () => {
-  const { showVideoModal, aboutVillaHavenData, setShowVideoModal } =
-    useModalData();
   const [isAuthPages, setIsAuthPages] = useState(false);
   const { pathname } = useLocation();
 
@@ -33,13 +29,6 @@ const Layout = () => {
 
   return (
     <div className="layout">
-      {showVideoModal && (
-        <Modal
-          video={aboutVillaHavenData[0].video}
-          onClose={() => setShowVideoModal((showVideoModal) => !showVideoModal)}
-        />
-      )}
-
       <Header>{!isAuthPages && <Navbar />}</Header>
 
       {isAuthPages ? (

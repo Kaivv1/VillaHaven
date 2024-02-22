@@ -6,7 +6,7 @@ const app = require("../app");
 const server = http.createServer(app);
 
 (async () => {
-  const url = await ngrok
+  await ngrok
     .connect({
       addr: process.env.PORT || 4000,
       authtoken: process.env.NGROK_AUTH_TOKEN,

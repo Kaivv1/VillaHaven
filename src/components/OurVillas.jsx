@@ -24,8 +24,9 @@ const OurVillas = () => {
         <div>
           <h2>Our Villas</h2>
           <p>
-            Diam et habitasse tortor cras donec urna eget dolor in turpis
-            venenatis eget pulnivar ipsum quisque non arcu nulla
+            Discover a haven of elegance and comfort in our meticulously curated
+            villas, each designed to offer a sublime retreat and an
+            unforgettable getaway experience.
           </p>
         </div>
         <Button

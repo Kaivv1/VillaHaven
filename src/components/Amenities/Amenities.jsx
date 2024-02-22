@@ -43,9 +43,9 @@ const Amenities = () => {
         <div className="amenities-header">
           <h1>Amenities</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            obcaecati placeat, eveniet recusandae nam praesentium ea est culpa
-            rem cumque!
+            Experience peace of mind with our amenities, backed by trusted
+            partners, regular maintenance, and 24/7 support, ensuring your stay
+            is both comforting and effortlessly enjoyable.
           </p>
         </div>
 

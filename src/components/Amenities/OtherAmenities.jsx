@@ -44,9 +44,11 @@ const OtherAmenities = () => {
       <div>
         <h1>Other amenities</h1>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident
-          consequuntur commodi ipsum, obcaecati id reprehenderit neque labore,
-          iste
+          Embrace a lifestyle of opulence with our premium amenities, where
+          every detail is tailored to elevate your experience. From
+          state-of-the-art fitness centers to rejuvenating spa retreats,
+          VillaHaven ensures your stay is infused with unmatched comfort and
+          luxury.
         </p>
       </div>
 
