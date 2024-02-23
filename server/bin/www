@@ -1,20 +1,20 @@
 /* eslint no-unused-vars: */
 /* eslint no-undef: */
 const http = require("http");
-const ngrok = require("@ngrok/ngrok");
+// const ngrok = require("@ngrok/ngrok");
 const app = require("../app");
 const server = http.createServer(app);
 
-(async () => {
-  await ngrok
-    .connect({
-      addr: process.env.PORT || 4000,
-      authtoken: process.env.NGROK_AUTH_TOKEN,
-    })
-    .then((listener) =>
-      console.log(`Ingress established at: ${listener.url()}`)
-    );
-})();
+// (async () => {
+//   await ngrok
+//     .connect({
+//       addr: process.env.PORT || 4000,
+//       authtoken: process.env.NGROK_AUTH_TOKEN,
+//     })
+//     .then((listener) =>
+//       console.log(`Ingress established at: ${listener.url()}`)
+//     );
+// })();
 
 const port = normalizePort(process.env.PORT || "4000");
 server.listen(port);
