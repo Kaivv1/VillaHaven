@@ -79,6 +79,15 @@ app.use((req, res, next) => {
   }
 });
 
+const router = express.Router();
+
+router.get("/", async (req, res, next) => {
+  return res.status(200).json({
+    title: "Express Testing",
+    message: "The app is working properly!",
+  });
+});
+
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/user", userRouter);
