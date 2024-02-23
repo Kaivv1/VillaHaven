@@ -2,7 +2,7 @@
 /* eslint no-undef: */
 const http = require("http");
 // const ngrok = require("@ngrok/ngrok");
-const app = require("../app");
+const app = require("./app");
 const server = http.createServer(app);
 
 // (async () => {
