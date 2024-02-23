@@ -14,7 +14,7 @@ const {
   verifyOTPRouter,
   resendOTPRouter,
   deleteOTPRouter,
-} = require("./routes/OTP.route");
+} = require("../routes/OTP.route");
 const {
   getVillasRouter,
   uploadVillasRouter,
@@ -24,11 +24,11 @@ const {
   getVillaByIdRouter,
   updateVillaByIdRouter,
   addReservedDatesToVillaRouter,
-} = require("./routes/villas.route");
+} = require("../routes/villas.route");
 const {
   uploadTestimonialRouter,
   getTestimonialsRouter,
-} = require("./routes/testimonials.route");
+} = require("../routes/testimonials.route");
 const {
   userRouter,
   userByTokenRouter,
@@ -37,29 +37,29 @@ const {
   updateUserRouter,
   resetPassRouter,
   deleteUserRouter,
-} = require("./routes/user.route");
-const { createFAQRouter, getFAQsRouter } = require("./routes/FAQs.route");
+} = require("../routes/user.route");
+const { createFAQRouter, getFAQsRouter } = require("../routes/FAQs.route");
 const {
   secretKeyRouter,
   secretEmailRouter,
   secretStripeKeyRouter,
   clientSecretRouter,
-} = require("./routes/secret.route");
-const sendEmailRouter = require("./routes/mailer.route");
-const passport = require("./passport-config/passportConfig");
+} = require("../routes/secret.route");
+const sendEmailRouter = require("../routes/mailer.route");
+const passport = require("../passport-config/passportConfig");
 const {
   createReservationRouter,
   getReservationByIdRouter,
   checkAvailabilityRouter,
   getAllUserReservationsRouter,
   deleteReservationByIdRouter,
-} = require("./routes/reservation.route");
-const webhookRouter = require("./routes/webhook.route");
-const Reservation = require("./Models/Reservation");
+} = require("../routes/reservation.route");
+const webhookRouter = require("../routes/webhook.route");
+const Reservation = require("../Models/Reservation");
 const {
   getImageRouter,
   uploadImageRouter,
-} = require("./routes/s3Bucket.route");
+} = require("../routes/s3Bucket.route");
 
 const app = express();
 
