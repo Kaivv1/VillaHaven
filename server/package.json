@@ -4,7 +4,8 @@
   "main": "app.js",
   "private": true,
   "scripts": {
-    "start": "nodemon ./app.js"
+    "start": "nodemon ./app.js",
+    "build": "babel . -d dist --source-type script"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.501.0",
@@ -34,5 +35,10 @@
     "sharp": "^0.33.2",
     "stripe": "^14.16.0",
     "universal-cookie": "^6.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9"
   }
 }
