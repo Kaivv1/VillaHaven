@@ -148,6 +148,20 @@ app.use(function (err, req, res, next) {
   });
 });
 
+const port = process.env.PORT || 4000;
+app.listen(port, () => console.log(`Listening to port ${port}`));
+
+// // (async () => {
+// //   await ngrok
+// //     .connect({
+// //       addr: process.env.PORT || 4000,
+// //       authtoken: process.env.NGROK_AUTH_TOKEN,
+// //     })
+// //     .then((listener) =>
+// //       console.log(`Ingress established at: ${listener.url()}`)
+// //     );
+// // })();
+
 mongoose
   .connect(process.env.MONGO)
   .then(() => console.log("Connected to database"))

@@ -4,7 +4,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start": "nodemon ./app.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.501.0",
