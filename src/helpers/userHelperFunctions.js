@@ -1,12 +1,56 @@
 /* eslint no-useless-catch: */
-
 import Cookies from "js-cookie";
 import moment from "moment-timezone";
+
 export const getToken = () => {
   const token = Cookies.get("access_token");
   return token;
 };
+const setToken = (newToken) => {
+  Cookies.set("access_token", newToken);
+};
 
+export const register = async (body) => {
+  try {
+    const res = await fetch("http://localhost:4000/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const login = async (body) => {
+  try {
+    const res = await fetch("http://localhost:4000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const authorization = res.headers.get("Authorization");
+
+    if (authorization) {
+      const newToken = authorization.split(" ")[1];
+      setToken(newToken);
+    }
+
+    const data = await res.json();
+
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
 export const getUserByEmail = async (email) => {
   try {
     const res = await fetch(`http://localhost:4000/user/${email}`, {

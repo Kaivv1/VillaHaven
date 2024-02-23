@@ -1,28 +1,39 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTogglePasswordVisibility } from "../hooks/useTogglePasswordVisibility";
-import { useApi } from "../hooks/useApi";
 import PopUp from "../components/PopUp";
 import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
+import { login } from "../helpers/userHelperFunctions";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const { toggleIconOne, inputTypeOne } = useTogglePasswordVisibility();
-  const { isLoading, fetchData } = useApi();
   useChangeDocumentTitle("Login");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const user = {
       email: email,
       password: password,
     };
 
-    await fetchData("http://localhost:4000/login", "POST", {}, user, "/");
+    const data = await login(user);
 
-    setEmail("");
-    setPassword("");
+    if (!data.success) {
+      setIsLoading(false);
+      return toast.error(data.message);
+    }
+
+    if (data.success) {
+      setIsLoading(false);
+      navigate("/");
+    }
   };
 
   return (

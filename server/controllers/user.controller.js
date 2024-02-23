@@ -19,7 +19,9 @@ const registerUser = async (req, res, next) => {
     const existingUser = await Register.findOne({ email });
     if (existingUser) return next(errorHandler(400, "User already exists"));
     await newUser.save();
-    return res.status(201).json({ msg: "User created successfully" });
+    return res
+      .status(201)
+      .json({ msg: "User created successfully", success: true });
   } catch (error) {
     return next(errorHandler(500, "Internal Server Error"));
   }
@@ -39,7 +41,7 @@ const signin = async (req, res, next) => {
     res.setHeader("Access-Control-Expose-Headers", "Authorization");
     res.setHeader("Authorization", `Bearer ${token}`);
 
-    return res.status(200).json({ data: rest });
+    return res.status(200).json({ data: rest, success: true });
   } catch (err) {
     return next(errorHandler(505, "Internal Server Error"));
   }
