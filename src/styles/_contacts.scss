@@ -13,7 +13,7 @@
   }
   .accordions-wrapper {
     .accordion-container {
-      padding: 3rem 0rem;
+      padding: 3rem 25rem;
       box-sizing: border-box;
       border-radius: $border-radius;
       display: grid;
@@ -25,7 +25,6 @@
         padding: 1rem;
         border-radius: $border-radius;
         box-shadow: $box-shadow;
-        min-height: 5rem;
         .label {
           transition: color 0.2s cubic-bezier(0, 1, 0, 1);
           display: flex;
