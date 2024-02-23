@@ -81,13 +81,13 @@ app.use((req, res, next) => {
 
 const router = express.Router();
 
-router.get("/api/test", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   return res.status(200).json({
     title: "Express Testing",
     message: "The app is working properly!",
   });
 });
-
+app.use("/home", router);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/user", userRouter);
