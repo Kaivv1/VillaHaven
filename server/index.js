@@ -68,7 +68,7 @@ app.use(
   cors({
     origin: [
       "https://villahaven.onrender.com/webhook",
-      "https://main--villahaven.netlify.app",
+      "https://villahaven.netlify.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
