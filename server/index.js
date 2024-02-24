@@ -64,7 +64,16 @@ const {
 const app = express();
 
 app.use(passport.initialize());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://villahaven.onrender.com/webhook",
+      "https://main--villahaven.netlify.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
