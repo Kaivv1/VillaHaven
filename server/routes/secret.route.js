@@ -55,8 +55,8 @@ clientSecretRouter.post("/", auth, verifyAuth, async (req, res) => {
     payment_method_types: ["card"],
     line_items: lineItems,
     mode: "payment",
-    success_url: `http://localhost:3000/reservation/${newReservation._id}/success`,
-    cancel_url: "http://localhost:3000/reservation/failed",
+    success_url: `https://main--villahaven.netlify.app/reservation/${newReservation._id}/success`,
+    cancel_url: "https://main--villahaven.netlify.app/reservation/failed",
   });
 
   await Reservation.updateOne(
