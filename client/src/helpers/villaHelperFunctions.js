@@ -2,7 +2,7 @@ import { getToken } from "./userHelperFunctions";
 
 export const fetchVillas = async () => {
   try {
-    const res = await fetch("http://localhost:4000/getvillas", {
+    const res = await fetch("https://villa-haven-api.vercel.app/get-villas", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -17,7 +17,9 @@ export const fetchVillas = async () => {
 
 export const fetchVillaById = async (villaID) => {
   try {
-    const res = await fetch(`http://localhost:4000/villa/${villaID}`);
+    const res = await fetch(
+      `https://villa-haven-api.vercel.app/villa/${villaID}`
+    );
 
     const data = await res.json();
     if (data === false) return;
@@ -30,11 +32,14 @@ export const fetchVillaById = async (villaID) => {
 
 export const updateVillaById = async (id, body) => {
   try {
-    const res = await fetch(`http://localhost:4000/updatevilla/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+    const res = await fetch(
+      `https://villa-haven-api.vercel.app/update-villa/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      }
+    );
 
     const data = await res.json();
 
@@ -46,11 +51,14 @@ export const updateVillaById = async (id, body) => {
 
 export const addNewVillaReservedDates = async (id, reservedDates) => {
   try {
-    const res = await fetch(`http://localhost:4000/add-reserved-dates/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(reservedDates),
-    });
+    const res = await fetch(
+      `https://villa-haven-api.vercel.app/add-reserved-dates/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reservedDates),
+      }
+    );
 
     const data = res.json();
 
@@ -64,13 +72,16 @@ export const fetchFavoriteVillas = async () => {
   try {
     const token = getToken();
     if (!token) return;
-    const res = await fetch("http://localhost:4000/getuserfavorites", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "https://villa-haven-api.vercel.app/get-user-favorites",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     if (!res.ok) return;
 
     const data = await res.json();
@@ -88,13 +99,16 @@ export const setUserFavorite = async (id) => {
   try {
     const token = await getToken();
     if (!token) return;
-    const res = await fetch(`http://localhost:4000/setfavoritevilla/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      `https://villa-haven-api.vercel.app/set-favorite-villa/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     await res.json();
   } catch (error) {
@@ -106,13 +120,16 @@ export const removeUserFavorite = async (id) => {
   try {
     const token = await getToken();
     if (!token) return;
-    const res = await fetch(`http://localhost:4000/removefavoritevilla/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      `https://villa-haven-api.vercel.app/remove-favorite-villa/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     await res.json();
   } catch (error) {

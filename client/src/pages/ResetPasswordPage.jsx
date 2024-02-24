@@ -40,7 +40,6 @@ const ResetPasswordPage = () => {
       if (confirmPassword !== password) {
         return toast.error("Passwords not matching");
       }
-
       const { success, message } = await handleResetPassword(
         userEmail,
         password

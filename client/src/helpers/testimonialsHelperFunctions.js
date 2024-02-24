@@ -1,11 +1,14 @@
 export const getTestimonials = async () => {
   try {
-    const res = await fetch("http://localhost:4000/gettestimonials", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://villa-haven-api.vercel.app/get-testimonials",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!res.ok) return;
 

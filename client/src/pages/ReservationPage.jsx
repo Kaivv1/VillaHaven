@@ -4,11 +4,9 @@ import {
   fetchVillaById,
   getMainPicture,
 } from "../helpers/villaHelperFunctions";
-
 import Button from "../components/Button";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
-
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import {
