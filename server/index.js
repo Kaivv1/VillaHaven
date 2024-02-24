@@ -66,7 +66,7 @@ const app = express();
 app.use(passport.initialize());
 app.use(
   cors({
-    origin: ["*"],
+    origin: ["https://villa-haven-client.vercel.app"],
     methods: ["POST", "GET", "DELETE", "PUT"],
     credentials: true,
   })
