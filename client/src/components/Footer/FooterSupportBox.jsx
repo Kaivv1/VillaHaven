@@ -6,7 +6,9 @@ const FooterSupportBox = () => {
   const [appEmail, setAppEmail] = useState("");
   useEffect(() => {
     const fetchAppEmail = async () => {
-      const res = await fetch("http://localhost:4000/getappemail");
+      const res = await fetch(
+        "https://villa-haven-api.vercel.app/get-app-email"
+      );
       if (!res.ok) return;
       const data = await res.json();
       setAppEmail(data.app_email);
