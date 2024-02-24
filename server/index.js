@@ -66,10 +66,7 @@ const app = express();
 app.use(passport.initialize());
 app.use(
   cors({
-    origin: [
-      "https://villahaven.onrender.com/webhook",
-      "https://villa-haven.vercel.app",
-    ],
+    origin: ["https://villa-haven.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

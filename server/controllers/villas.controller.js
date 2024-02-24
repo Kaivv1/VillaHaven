@@ -113,7 +113,6 @@ const removeFavoriteVilla = async (req, res, next) => {
       { _id: userId },
       { $pull: { favorites: villaId } }
     );
-    Register.delete;
     return res.status(201).json("Successfully removed from favorites");
   } catch (error) {
     return next(errorHandler(500, error));
@@ -146,7 +145,6 @@ const updateVillaById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const body = req.body;
-    console.log(body);
     const villa = await Villa.updateOne({ _id: id }, body);
 
     return res.status(200).json({ msg: "Villa Updated Successfully", villa });

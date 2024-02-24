@@ -50,7 +50,6 @@ const signin = async (req, res, next) => {
 const getUser = async (req, res, next) => {
   try {
     const { email } = req.params;
-    console.log(email);
     if (!email) return next(errorHandler(501, "Invalid credentials"));
 
     const user = await Register.findOne({ email });

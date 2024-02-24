@@ -180,7 +180,6 @@ const UserProfile = () => {
       setIsResetPass(false);
     }
   };
-  console.log(token);
   return (
     <div className="user-profile-container">
       <h1>Account Information</h1>

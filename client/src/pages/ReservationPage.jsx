@@ -82,7 +82,6 @@ const ReservationPage = () => {
     setIsLoading(true);
     if (paymentMethod === "cash") {
       const isAvailable = await checkAvailability(reservedDates, villa._id);
-      console.log(isAvailable);
       if (!isAvailable) {
         toast.error("Dates not available");
         setIsLoading(false);
