@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import Sass from "sass";
+import ViteSassPlugin from "vite-plugin-sass";
 import Autoprefixer from "autoprefixer";
 
 export default defineConfig({
-  plugins: [react(), Sass({}), Autoprefixer()],
+  plugins: [react(), ViteSassPlugin(), Autoprefixer()],
 });
