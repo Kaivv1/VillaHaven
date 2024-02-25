@@ -31,15 +31,10 @@ const Slider = ({ children: slides, autoSlide = false, interval = 4000 }) => {
       >
         {slides}
       </div>
-      <div className="arrows">
+      <div className="slide-count-wrapper">
         <button className="arrow-previous" onClick={() => handlePrevious()}>
           <ArrowBackIosNewIcon />
         </button>
-        <button className="arrow-next" onClick={() => handleNext()}>
-          <ArrowForwardIosIcon />
-        </button>
-      </div>
-      <div className="slide-count-wrapper">
         <div className="slide-count">
           {slides?.map((_, i) => (
             <div
@@ -50,6 +45,9 @@ const Slider = ({ children: slides, autoSlide = false, interval = 4000 }) => {
             ></div>
           ))}
         </div>
+        <button className="arrow-next" onClick={() => handleNext()}>
+          <ArrowForwardIosIcon />
+        </button>
       </div>
     </div>
   );

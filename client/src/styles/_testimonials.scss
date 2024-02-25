@@ -21,12 +21,12 @@
         .testimonial-container {
           box-sizing: border-box;
           height: inherit;
-          padding: 4rem 6rem;
+          padding: 3rem 3rem 0rem 3rem;
           min-width: 100%;
           display: flex;
           flex-direction: column;
+          justify-content: center;
           gap: 1rem;
-
           .testimonial-comma {
             &:after {
               content: url("../assets/more-images/quote-icon.png");
@@ -58,7 +58,6 @@
                   font-weight: bold;
                   letter-spacing: 0rem;
                 }
-
                 &:nth-child(2) {
                   color: $color-brand--3;
                   letter-spacing: 0.1rem;
@@ -74,50 +73,22 @@
     }
   }
 }
-
-@media (max-width: 1300px) {
-  .testimonials-container {
-    padding: 3rem 3rem 5rem;
-  }
-}
-@media (max-width: 1200px) {
-  .testimonials-container {
-    .testimonial-header {
-      width: 70%;
-    }
-  }
-}
-@media (max-width: 945px) {
+@media (max-width: 990px) {
   .testimonials-container {
     padding: 3rem 0rem 5rem;
-
+  }
+}
+@media (max-width: 830px) {
+  .testimonials-container {
     .testimonials-wrapper {
       .slider-container {
         width: 100%;
         max-width: 40rem;
-        .slides {
-          .testimonial-container {
-            padding: 4rem 4rem;
-          }
-        }
       }
     }
   }
 }
-@media (max-width: 816px) {
-  .testimonials-container {
-    .testimonial-header {
-      width: 100%;
-      h1 {
-        font-size: 1.6rem;
-      }
-      p {
-        font-size: 0.95rem;
-      }
-    }
-  }
-}
-@media (max-width: 711px) {
+@media (max-width: 670px) {
   .testimonials-container {
     .testimonials-wrapper {
       .slider-container {
@@ -131,36 +102,9 @@
     .testimonials-wrapper {
       .slider-container {
         width: 29rem;
-        .arrows {
-          .arrow-next {
-            top: 46%;
-            right: 1%;
-          }
-          .arrow-previous {
-            top: 46%;
-            left: 1%;
-          }
-          button {
-            padding: 0rem;
-            opacity: 1;
-            background-color: transparent;
-          }
-        }
-        .slide-count-wrapper {
-          .slide-count {
-            gap: 0.5rem;
-            div {
-              width: 0.6rem;
-              height: 0.6rem;
-            }
-          }
-          .count-active {
-            padding: 0.1rem;
-          }
-        }
         .slides {
           .testimonial-container {
-            padding: 2.5rem;
+            padding: 2.5rem 2.5rem 0rem;
             gap: 0.7rem;
             h2 {
               font-size: 1.4rem;
@@ -181,12 +125,23 @@
                   &:first-child {
                     font-size: 1.2rem;
                   }
-
                   &:nth-child(2) {
                     font-size: 0.8rem;
                   }
                 }
               }
+            }
+          }
+        }
+        .slide-count-wrapper {
+          .slide-count {
+            gap: 0.5rem;
+            div {
+              width: 0.6rem;
+              height: 0.6rem;
+            }
+            .count-active {
+              padding: 0.1rem;
             }
           }
         }
@@ -200,15 +155,13 @@
     .testimonials-wrapper {
       .slider-container {
         width: 22rem;
-        .arrows {
-          .arrow-next {
-            top: 93%;
-            right: 30%;
+        .slides {
+          .testimonial-container {
+            box-sizing: border-box;
+            justify-content: center;
           }
-          .arrow-previous {
-            top: 93%;
-            left: 30%;
-          }
+        }
+        .slide-count-wrapper {
           button {
             padding: 0rem;
             opacity: 1;
@@ -217,13 +170,6 @@
             svg {
               font-size: 1.3rem;
             }
-          }
-        }
-        .slides {
-          .testimonial-container {
-            padding: 2.5rem 2.5rem 4rem;
-            box-sizing: border-box;
-            justify-content: center;
           }
         }
       }
@@ -237,7 +183,7 @@
         width: 18.5rem;
         .slides {
           .testimonial-container {
-            padding: 1rem 1rem 3rem;
+            padding: 1rem 1rem 0rem;
           }
         }
       }
