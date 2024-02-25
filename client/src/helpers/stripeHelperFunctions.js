@@ -1,6 +1,8 @@
 export const getSecretKey = async () => {
   try {
-    const res = await fetch("http://localhost:4000/stripe-secret-key");
+    const res = await fetch(
+      "https://villahaven.onrender.com/stripe-secret-key"
+    );
 
     const data = await res.json();
 
@@ -12,17 +14,20 @@ export const getSecretKey = async () => {
 
 export const createPaymentIntent = async (villa, reservation, token) => {
   try {
-    const res = await fetch("http://localhost:4000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        villa,
-        reservation,
-      }),
-    });
+    const res = await fetch(
+      "https://villahaven.onrender.com/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          villa,
+          reservation,
+        }),
+      }
+    );
 
     const data = await res.json();
     return Promise.resolve(data);

@@ -12,7 +12,7 @@ const ContactPage = () => {
     const fetchFAQs = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:4000/get-FAQs");
+        const res = await fetch("https://villahaven.onrender.com/get-FAQs");
 
         const data = await res.json();
         setFAQs(data.data);

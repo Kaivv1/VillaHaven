@@ -12,7 +12,7 @@ const setToken = (newToken) => {
 
 export const register = async (body) => {
   try {
-    const res = await fetch("http://localhost:4000/register", {
+    const res = await fetch("https://villahaven.onrender.com/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const register = async (body) => {
 
 export const login = async (body) => {
   try {
-    const res = await fetch("http://localhost:4000/login", {
+    const res = await fetch("https://villahaven.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const login = async (body) => {
 };
 export const getUserByEmail = async (email) => {
   try {
-    const res = await fetch(`http://localhost:4000/user/${email}`, {
+    const res = await fetch(`https://villahaven.onrender.com/user/${email}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export const getUserByEmail = async (email) => {
 export const getUserByToken = async (token) => {
   try {
     if (!token) return;
-    const res = await fetch(`http://localhost:4000/get-user`, {
+    const res = await fetch(`https://villahaven.onrender.com/get-user`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export const getUserByToken = async (token) => {
 export const updateUserByToken = async (token, body) => {
   try {
     if (!token) return;
-    const res = await fetch("http://localhost:4000/update-user", {
+    const res = await fetch("https://villahaven.onrender.com/update-user", {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -108,7 +108,7 @@ export const updateUserByToken = async (token, body) => {
 
 export const sendEmail = async (message) => {
   try {
-    const res = await fetch("http://localhost:4000/send-email", {
+    const res = await fetch("https://villahaven.onrender.com/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(message),
@@ -125,7 +125,7 @@ export const sendEmail = async (message) => {
 export const generateOTP = async (email) => {
   try {
     const codeResponse = await fetch(
-      `http://localhost:4000/generate-OTP?email=${email}`,
+      `https://villahaven.onrender.com/generate-OTP?email=${email}`,
       {
         method: "GET",
         headers: {
@@ -162,7 +162,7 @@ export const generateOTP = async (email) => {
 export const resendOTP = async (email) => {
   try {
     const codeResponse = await fetch(
-      `http://localhost:4000/resend-OTP?email=${email}`,
+      `https://villahaven.onrender.com/resend-OTP?email=${email}`,
       {
         method: "GET",
         headers: {
@@ -194,12 +194,15 @@ export const resendOTP = async (email) => {
 
 export const deleteOTP = async (email) => {
   try {
-    const res = await fetch(`http://localhost:4000/delete-OTP?email=${email}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://villahaven.onrender.com/delete-OTP?email=${email}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     await res.json();
   } catch (error) {
@@ -210,7 +213,7 @@ export const deleteOTP = async (email) => {
 export const verifyOTP = async (email, code) => {
   try {
     const res = await fetch(
-      `http://localhost:4000/verify-OTP?email=${email}&code=${code}`,
+      `https://villahaven.onrender.com/verify-OTP?email=${email}&code=${code}`,
       {
         method: "GET",
         headers: {
@@ -228,7 +231,7 @@ export const verifyOTP = async (email, code) => {
 
 export const getSecret = async () => {
   try {
-    const res = await fetch("http://localhost:4000/secret");
+    const res = await fetch("https://villahaven.onrender.com/secret");
 
     const { secret_value } = await res.json();
 
@@ -240,7 +243,7 @@ export const getSecret = async () => {
 
 export const resetPassword = async (email, password) => {
   try {
-    const res = await fetch("http://localhost:4000/reset-password", {
+    const res = await fetch("https://villahaven.onrender.com/reset-password", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -258,7 +261,7 @@ export const resetPassword = async (email, password) => {
 
 export const deleteUser = async (token) => {
   try {
-    const res = await fetch("http://localhost:4000/delete-user", {
+    const res = await fetch("https://villahaven.onrender.com/delete-user", {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

@@ -1,6 +1,8 @@
 export const getImage = async (imageName) => {
   try {
-    const res = await fetch(`http://localhost:4000/get-image/${imageName}`);
+    const res = await fetch(
+      `https://villahaven.onrender.com/get-image/${imageName}`
+    );
 
     const { imageUrl } = await res.json();
 

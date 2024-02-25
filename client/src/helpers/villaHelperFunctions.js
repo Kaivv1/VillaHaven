@@ -2,7 +2,7 @@ import { getToken } from "./userHelperFunctions";
 
 export const fetchVillas = async () => {
   try {
-    const res = await fetch("http://localhost:4000/get-villas", {
+    const res = await fetch("https://villahaven.onrender.com/get-villas", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -17,7 +17,7 @@ export const fetchVillas = async () => {
 
 export const fetchVillaById = async (villaID) => {
   try {
-    const res = await fetch(`http://localhost:4000/villa/${villaID}`);
+    const res = await fetch(`https://villahaven.onrender.com/villa/${villaID}`);
 
     const data = await res.json();
     if (data === false) return;
@@ -30,11 +30,14 @@ export const fetchVillaById = async (villaID) => {
 
 export const updateVillaById = async (id, body) => {
   try {
-    const res = await fetch(`http://localhost:4000/update-villa/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+    const res = await fetch(
+      `https://villahaven.onrender.com/update-villa/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      }
+    );
 
     const data = await res.json();
 
@@ -46,11 +49,14 @@ export const updateVillaById = async (id, body) => {
 
 export const addNewVillaReservedDates = async (id, reservedDates) => {
   try {
-    const res = await fetch(`http://localhost:4000/add-reserved-dates/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(reservedDates),
-    });
+    const res = await fetch(
+      `https://villahaven.onrender.com/add-reserved-dates/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reservedDates),
+      }
+    );
 
     const data = res.json();
 
@@ -64,13 +70,16 @@ export const fetchFavoriteVillas = async () => {
   try {
     const token = getToken();
     if (!token) return;
-    const res = await fetch("http://localhost:4000/get-user-favorites", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "https://villahaven.onrender.com/get-user-favorites",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     if (!res.ok) return;
 
     const data = await res.json();
@@ -88,13 +97,16 @@ export const setUserFavorite = async (id) => {
   try {
     const token = await getToken();
     if (!token) return;
-    const res = await fetch(`http://localhost:4000/set-favorite-villa/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      `https://villahaven.onrender.com/set-favorite-villa/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     await res.json();
   } catch (error) {
@@ -107,7 +119,7 @@ export const removeUserFavorite = async (id) => {
     const token = await getToken();
     if (!token) return;
     const res = await fetch(
-      `http://localhost:4000/remove-favorite-villa/${id}`,
+      `https://villahaven.onrender.com/remove-favorite-villa/${id}`,
       {
         method: "PUT",
         headers: {
