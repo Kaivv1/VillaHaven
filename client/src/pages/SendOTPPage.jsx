@@ -19,7 +19,7 @@ const SendOTPPage = () => {
   useEffect(() => {
     const handleFetchSecret = async () => {
       try {
-        const res = await fetch("https://villahaven.onrender.com/secret");
+        const res = await fetch("http://localhost:4000/secret");
 
         const { secret_value } = await res.json();
         setSecretValue(secret_value);

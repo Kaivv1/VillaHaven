@@ -12,17 +12,14 @@ export const calculateTotalPrice = (dailyPrice, startDate, endDate) => {
 };
 
 export const checkIsAvailable = async (check) => {
-  const res = await fetch(
-    "https://villahaven.onrender.com/check-availability",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chosenDates: check.chosenDates,
-        villaId: check.villaId,
-      }),
-    }
-  );
+  const res = await fetch("http://localhost:4000/check-availability", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chosenDates: check.chosenDates,
+      villaId: check.villaId,
+    }),
+  });
 
   const { isAvailable } = await res.json();
 
@@ -44,17 +41,14 @@ export const checkAvailability = async (reservedDates, villaId) => {
 
 export const createReservation = async (body, token) => {
   try {
-    const res = await fetch(
-      "https://villahaven.onrender.com/create-reservation",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-      }
-    );
+    const res = await fetch("http://localhost:4000/create-reservation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(body),
+    });
 
     const data = await res.json();
     return Promise.resolve(data);
@@ -65,9 +59,7 @@ export const createReservation = async (body, token) => {
 
 export const getReservationById = async (id) => {
   try {
-    const res = await fetch(
-      `https://villahaven.onrender.com/get-reservation/${id}`
-    );
+    const res = await fetch(`http://localhost:4000/get-reservation/${id}`);
 
     const data = await res.json();
 
@@ -79,16 +71,13 @@ export const getReservationById = async (id) => {
 
 export const getAllUserReservations = async (token) => {
   try {
-    const res = await fetch(
-      "https://villahaven.onrender.com/get-user-reservations",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch("http://localhost:4000/get-user-reservations", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     const data = await res.json();
 
@@ -100,15 +89,12 @@ export const getAllUserReservations = async (token) => {
 
 export const deleteReservationById = async (token, id) => {
   try {
-    const res = await fetch(
-      `https://villahaven.onrender.com/delete-reservation/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`http://localhost:4000/delete-reservation/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     const data = await res.json();
 

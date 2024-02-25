@@ -1,14 +1,11 @@
 export const getTestimonials = async () => {
   try {
-    const res = await fetch(
-      "https://villahaven.onrender.com/get-testimonials",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch("http://localhost:4000/get-testimonials", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!res.ok) return;
 
