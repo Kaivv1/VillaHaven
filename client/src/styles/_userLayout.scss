@@ -33,6 +33,14 @@
         transition: all 0.2s ease-in-out;
         &:visited {
           color: $color-dark--1;
+          text-decoration: none;
+        }
+        &:link {
+          color: $color-dark--1;
+          text-decoration: none;
+        }
+        &:active {
+          color: $color-dark--1;
         }
         &:hover {
           background-color: $color-brand--1-hover;

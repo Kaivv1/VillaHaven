@@ -49,7 +49,7 @@ const RegisterPage = () => {
       const message = {
         name: firstName,
         userEmail: email,
-        text: "Welcome to VillaHaven! Your registration was successfull.",
+        text: "Welcome to VillaHaven! Your registration was successful.",
         subject: "Register",
       };
       await sendEmail(message);

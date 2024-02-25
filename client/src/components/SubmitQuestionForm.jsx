@@ -27,7 +27,7 @@ const SubmitQuestionForm = () => {
     const message = {
       name: fullName,
       userEmail: email,
-      text: "We have recieved your email, our support team will contact with you!",
+      text: "We have recieved your email, our support team will contact you when they open it!",
       subject: "Question",
     };
 

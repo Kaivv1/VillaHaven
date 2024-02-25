@@ -223,9 +223,9 @@ export const verifyOTP = async (email, code) => {
     );
     const data = await res.json();
 
-    return data;
+    return Promise.resolve(data);
   } catch (error) {
-    throw error;
+    return Promise.reject(error);
   }
 };
 
@@ -235,9 +235,9 @@ export const getSecret = async () => {
 
     const { secret_value } = await res.json();
 
-    return { secret_value };
+    return Promise.resolve({ secret_value });
   } catch (error) {
-    throw error;
+    return Promise.reject(error);
   }
 };
 
@@ -253,9 +253,9 @@ export const resetPassword = async (email, password) => {
 
     const data = await res.json();
 
-    return data;
+    return Promise.resolve(data);
   } catch (error) {
-    throw error;
+    return Promise.reject(error);
   }
 };
 

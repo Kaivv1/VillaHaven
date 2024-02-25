@@ -36,7 +36,13 @@
   &:visited {
     color: $color-dark--1;
   }
-
+  &:link {
+    color: $color-dark--1;
+    text-decoration: none;
+  }
+  &:active {
+    color: $color-dark--1;
+  }
   &:hover {
     background-color: $color-brand--1-hover;
   }

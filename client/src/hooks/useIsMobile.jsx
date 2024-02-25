@@ -2,25 +2,42 @@ import { useEffect } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 export const useIsMobile = (width) => {
+  // const [isMobile, setIsMobile] = useLocalStorage(
+  //   window.matchMedia(`(max-width:${width})px`).matches,
+  //   "isMobile"
+  // );
+
+  // useEffect(() => {
+  //   const mediaQuery = window.matchMedia(`(max-width:${width}px)`);
+
+  //   const handleMediaQuery = (e) => {
+  //     setIsMobile(e.matches);
+  //   };
+
+  //   mediaQuery.addEventListener("change", handleMediaQuery);
+
+  //   return () => {
+  //     mediaQuery.removeEventListener("change", handleMediaQuery);
+  //     localStorage.removeItem("isMobile");
+  //   };
+  // }, [width, setIsMobile]);
   const [isMobile, setIsMobile] = useLocalStorage(
-    window.matchMedia(`(max-width:${width})px`).matches,
+    window.innerWidth <= width,
     "isMobile"
   );
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(`(max-width:${width}px)`);
-
-    const handleMediaQuery = (e) => {
-      setIsMobile(e.matches);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= width);
     };
 
-    mediaQuery.addEventListener("change", handleMediaQuery);
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaQuery);
-      localStorage.removeItem("isMobile");
+      window.removeEventListener("resize", handleResize);
     };
   }, [width, setIsMobile]);
-
   return isMobile;
 };

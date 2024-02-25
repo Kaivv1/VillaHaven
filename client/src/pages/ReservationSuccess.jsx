@@ -68,7 +68,7 @@ const ReservationSuccess = () => {
   return (
     <div className="reservation-success-container">
       <div className="message">
-        <h1>Your reservation was successfull!</h1>
+        <h1>Your reservation was successful!</h1>
         <span>
           <DoneIcon fontSize="large" />
         </span>

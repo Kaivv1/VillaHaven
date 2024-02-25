@@ -25,7 +25,7 @@ const ReservationFailed = () => {
   return (
     <div className="reservation-failed-container">
       <div className="message">
-        <h1>Payment was canceled. Your reservation was unsuccessfull!</h1>
+        <h1>Payment was canceled. Your reservation was unsuccessful!</h1>
         <span>
           <CloseIcon fontSize="large" />
         </span>
