@@ -111,7 +111,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: brightness(15%);
+  backdrop-filter: brightness(40%);
   z-index: 1000;
   overflow: hidden;
   .confirm-modal-wrapper {
@@ -143,6 +143,17 @@
         &:hover {
           background-color: $color-green-hover;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .confirm-modal-container {
+    .confirm-modal-wrapper {
+      p {
+      }
+      div {
       }
     }
   }

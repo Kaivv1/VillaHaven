@@ -36,11 +36,13 @@ const UserReservations = () => {
       <h1>Your Reservations</h1>
       {reservations.length !== 0 && !isLoading && (
         <div className="user-reservations-wrapper">
-          {reservations?.map((reservation, i) => (
+          {reservations?.map((reservation) => (
             <ReservationCard
               reservation={reservation}
-              onCancel={handleDeleteReservation}
-              key={i}
+              onCancel={() =>
+                handleDeleteReservation(reservation.reservationId)
+              }
+              key={reservation.reservationId}
             />
           ))}
         </div>

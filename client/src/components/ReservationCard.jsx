@@ -1,13 +1,10 @@
 /*eslint-disable react/prop-types */
 import moment from "moment-timezone";
-
 import { getCorrectDate, getToken } from "../helpers/userHelperFunctions";
 import Button from "./Button";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { deleteReservationById } from "../helpers/reservationHelpers";
-import { useModalData } from "../contexts/ModalDataContext";
-import ConfirmModal from "./ConfirmModal";
 
 const ReservationCard = ({ reservation, onCancel }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,18 +19,16 @@ const ReservationCard = ({ reservation, onCancel }) => {
     reservationId,
   } = reservation;
   const token = getToken();
-  const { showConfirmModal, setShowConfirmModal } = useModalData();
   const arrivalFullDate = getCorrectDate(new Date(startDate), userTimezone);
   const departureFullDate = getCorrectDate(new Date(endDate), userTimezone);
   const arrivalFormated = moment(arrivalFullDate).format("MM-D-Y");
   const departureFormated = moment(departureFullDate).format("MM-D-Y");
 
-  const handleCancelReservation = async (id) => {
+  const handleCancelReservation = async () => {
     setIsLoading(true);
-    await deleteReservationById(token, id).then((data) => {
-      setShowConfirmModal(false);
+    await deleteReservationById(token, reservationId).then((data) => {
       if (data.success) {
-        onCancel(id);
+        onCancel();
         setIsLoading(false);
         return toast.success("Reservation canceled");
       }
@@ -44,9 +39,6 @@ const ReservationCard = ({ reservation, onCancel }) => {
     });
   };
 
-  const handleCancelShowModal = () => {
-    setShowConfirmModal(false);
-  };
   return (
     <div className="reservation-card-container">
       <h2>{villaName}</h2>
@@ -67,17 +59,11 @@ const ReservationCard = ({ reservation, onCancel }) => {
         <Button
           isLoading={isLoading}
           isLoadingMsg="Canceling..."
-          onClick={() => setShowConfirmModal(true)}
+          onClick={async () => await handleCancelReservation()}
         >
           Cancel reservation
         </Button>
       </div>
-      {showConfirmModal && (
-        <ConfirmModal
-          onCancel={handleCancelShowModal}
-          onConfirm={async () => await handleCancelReservation(reservationId)}
-        />
-      )}
     </div>
   );
 };
