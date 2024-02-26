@@ -12,19 +12,18 @@
     }
   }
   .accordions-wrapper {
+    padding: 3rem 20rem;
+    min-height: 45vh;
     .accordion-container {
-      padding: 3rem 25rem;
       box-sizing: border-box;
       border-radius: $border-radius;
-      display: grid;
-      gap: 0.5rem;
-      grid-template-columns: auto;
       .FAQ {
         cursor: pointer;
         background-color: $color-light;
         padding: 1rem;
         border-radius: $border-radius;
         box-shadow: $box-shadow;
+        margin-bottom: 0.5rem;
         .label {
           transition: color 0.2s cubic-bezier(0, 1, 0, 1);
           display: flex;
@@ -115,11 +114,21 @@
 @media (max-width: 1752px) {
   .contacts-container {
     padding: 3rem 10rem;
+    .accordions-wrapper {
+      padding: 3rem 15rem;
+    }
   }
 }
 @media (max-width: 1440px) {
   .contacts-container {
     padding: 3rem 5rem;
+  }
+}
+@media (max-width: 1440px) {
+  .contacts-container {
+    .accordions-wrapper {
+      padding: 3rem 10rem;
+    }
   }
 }
 @media (max-width: 1172px) {
@@ -148,6 +157,13 @@
     }
   }
 }
+@media (max-width: 1000px) {
+  .contacts-container {
+    .accordions-wrapper {
+      padding: 3rem 0rem;
+    }
+  }
+}
 @media (max-width: 768px) {
   .contacts-container {
     padding: 1rem;
@@ -159,7 +175,6 @@
 @media (max-width: 565px) {
   .contacts-container {
     .accordion-container {
-      padding: 1rem;
       .FAQ {
         .label {
           h3 {
@@ -169,9 +184,6 @@
         h3,
         .answer {
           padding-right: 2rem;
-        }
-        .answer {
-          margin-bottom: 1rem;
           font-size: 0.95rem;
         }
       }

@@ -3,7 +3,7 @@
   display: grid;
   background-color: $color-dark--1;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   padding: 3rem;
   grid-template-columns: repeat(2, minmax(20rem, 45rem));
   grid-template-areas:
@@ -31,7 +31,7 @@
       display: grid;
       grid-template-columns: repeat(3, 13rem);
       gap: 1rem;
-      grid-template-rows: 9rem;
+      grid-template-rows: 5rem;
       justify-content: center;
       span {
         img {
@@ -102,13 +102,30 @@
   }
   .slider-wrapper {
     grid-area: d;
-    .slides {
-      .video-button {
-        color: #fff;
-        position: absolute;
-        top: 43%;
-        left: 45%;
-        cursor: pointer;
+    .slider-container {
+      .slides {
+        .video-button {
+          color: #fff;
+          position: absolute;
+          top: 43%;
+          left: 45%;
+          cursor: pointer;
+        }
+      }
+      .slide-count-wrapper {
+        button {
+          background-color: transparent;
+          color: $color-light;
+          &:hover {
+            opacity: 1;
+            cursor: pointer;
+          }
+        }
+        .slide-count {
+          div {
+            background-color: $color-light;
+          }
+        }
       }
     }
   }
@@ -140,7 +157,7 @@
       }
     }
     .counter-wrapper {
-      padding: 4rem;
+      padding: 0rem;
       gap: 2rem;
       .counter-container {
         div {
@@ -279,17 +296,6 @@
             padding: 0.1rem;
           }
         }
-        .arrows {
-          .arrow-next {
-            right: 1.5%;
-          }
-          .arrow-previous {
-            left: 1.5%;
-          }
-          button {
-            padding: 0.25rem;
-          }
-        }
         .slides {
           .video-button {
             left: 44.2%;
@@ -322,7 +328,7 @@
     .partners-logos {
       div {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 8rem);
+        grid-template-rows: repeat(3, 7rem);
       }
     }
     .counter-wrapper {

@@ -32,14 +32,9 @@ const AboutVillaHaven = () => {
           tour, VillaHaven is your premier destination for creating cherished
           memories.VillaHaven isn&apos;t just a booking platform; it&apos;s a
           promise of unparalleled comfort, a celebration of life&apos;s special
-          moments, and a gateway to a world where luxury meets leisure. Join the
-          growing community of discerning travelers who have chosen VillaHaven
-          for their vacations, weddings, events, and tours. Embrace the
-          extraordinary - your adventure awaits! Begin your journey today and
-          unlock a world of possibilities.
+          moments, and a gateway to a world where luxury meets leisure.
         </p>
       </div>
-
       <div className="partners-logos">
         <h1>Our Partners</h1>
         <div>

@@ -400,6 +400,18 @@
 @media (max-width: 425px) {
   .villa-details-container {
     .villa-details-wrapper {
+      .slide-count-wrapper {
+        .slide-count {
+          gap: 0.5rem;
+          div {
+            width: 0.6rem;
+            height: 0.6rem;
+          }
+        }
+        .count-active {
+          padding: 0.1rem;
+        }
+      }
       .villa-details {
         .location {
           font-size: 0.8rem;

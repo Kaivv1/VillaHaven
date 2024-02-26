@@ -254,6 +254,7 @@
     }
   }
 }
+
 @media (max-width: 425px) {
   .other-amenities-container {
     padding: 3rem 1rem 3rem;
@@ -272,6 +273,23 @@
         &:nth-child(4),
         &:nth-child(6) {
           transform: translateY(0%);
+        }
+      }
+    }
+  }
+  .amenities-container {
+    .amenities-wrapper {
+      .amenities-card-wrapper {
+        .amenities-card {
+          opacity: 1;
+          &:nth-child(2),
+          &:nth-child(4) {
+            transform: translateX(0%);
+          }
+          &:nth-child(1),
+          &:nth-child(3) {
+            transform: translateX(0%);
+          }
         }
       }
     }
