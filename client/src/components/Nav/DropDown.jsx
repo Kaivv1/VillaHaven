@@ -77,7 +77,7 @@ const DropDown = () => {
         </Link>
       </li>
       <li>
-        <Link onClick={handleLogout}>
+        <Link onClick={() => handleLogout()}>
           <span>
             <LogoutIcon fontSize="small" />
           </span>
