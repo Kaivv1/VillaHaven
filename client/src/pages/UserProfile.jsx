@@ -447,8 +447,8 @@ const UserProfile = () => {
       )}
       {showConfirmModal && (
         <ConfirmModal
-          onCancel={handleCancelConfirmModal}
-          onConfirm={handleConfirm}
+          onCancel={() => handleCancelConfirmModal()}
+          onConfirm={async () => await handleConfirm()}
         />
       )}
     </div>

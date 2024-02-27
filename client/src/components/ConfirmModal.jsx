@@ -8,13 +8,10 @@ const ConfirmModal = ({ onCancel, onConfirm }) => {
       <div className="confirm-modal-wrapper">
         <p>Are you sure you want to continue this action ?</p>
         <div>
-          <Button onClick={() => onCancel()} className="cancel-btn">
+          <Button onClick={onCancel} className="cancel-btn">
             Cancel
           </Button>
-          <Button
-            onClick={async () => await onConfirm()}
-            className="confirm-btn"
-          >
+          <Button onClick={onConfirm} className="confirm-btn">
             Confirm
           </Button>
         </div>

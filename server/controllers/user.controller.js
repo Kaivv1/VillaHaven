@@ -124,7 +124,7 @@ const updateUser = async (req, res, next) => {
 const deleteUser = async (req, res, next) => {
   try {
     const { userId } = req.user;
-    const user = await Register.findById({ _id: userId });
+    const user = await Register.findById(userId);
     if (!user) return next(errorHandler(404, "No user with that id"));
 
     if (user.avatar) {
