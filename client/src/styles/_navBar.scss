@@ -44,6 +44,8 @@
           border-bottom: 1px solid $color-dark--2;
           width: 100%;
           transition: all 0.2s ease-in-out;
+          display: flex;
+          align-items: center;
           &:first-of-type {
             &:hover {
               border-top-left-radius: $border-radius;
@@ -71,6 +73,29 @@
           }
           &:hover {
             background-color: $color-brand--1;
+          }
+          button {
+            padding: 0.5rem 0.6rem;
+            color: $color-dark--1;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            gap: 0.3rem;
+            width: 100%;
+            border: none;
+            font-size: 1rem;
+            align-items: center;
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+            span {
+              display: flex;
+              align-items: center;
+            }
+            &:hover {
+              border-bottom-left-radius: $border-radius;
+              border-bottom-right-radius: $border-radius;
+              background-color: $color-brand--1;
+            }
           }
         }
       }

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
@@ -15,7 +15,7 @@ const DropDown = () => {
 
   const handleLogout = () => {
     Cookies.remove("access_token");
-    navigate("/login");
+    return navigate("/login");
   };
 
   return (
@@ -31,7 +31,7 @@ const DropDown = () => {
       <li>
         <Link to="/favorites">
           <span>
-            <BookmarkIcon fontSize="small" />
+            <FavoriteIcon fontSize="small" />
           </span>
           Favorites
         </Link>
@@ -77,12 +77,12 @@ const DropDown = () => {
         </Link>
       </li>
       <li>
-        <Link onClick={() => handleLogout()}>
+        <button onClick={() => handleLogout()}>
           <span>
             <LogoutIcon fontSize="small" />
           </span>
           Logout
-        </Link>
+        </button>
       </li>
     </ul>
   );
