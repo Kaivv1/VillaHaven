@@ -13,7 +13,7 @@ export const calculateTotalPrice = (dailyPrice, startDate, endDate) => {
 
 export const checkIsAvailable = async (check) => {
   const res = await fetch(
-    "https://villa-haven-api.vercel.app//check-availability",
+    "https://villa-haven-api.vercel.app/check-availability",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -45,7 +45,7 @@ export const checkAvailability = async (reservedDates, villaId) => {
 export const createReservation = async (body, token) => {
   try {
     const res = await fetch(
-      "https://villa-haven-api.vercel.app//create-reservation",
+      "https://villa-haven-api.vercel.app/create-reservation",
       {
         method: "POST",
         headers: {
@@ -66,7 +66,7 @@ export const createReservation = async (body, token) => {
 export const getReservationById = async (id) => {
   try {
     const res = await fetch(
-      `https://villa-haven-api.vercel.app//get-reservation/${id}`
+      `https://villa-haven-api.vercel.app/get-reservation/${id}`
     );
 
     const data = await res.json();
@@ -80,7 +80,7 @@ export const getReservationById = async (id) => {
 export const getAllUserReservations = async (token) => {
   try {
     const res = await fetch(
-      "https://villa-haven-api.vercel.app//get-user-reservations",
+      "https://villa-haven-api.vercel.app/get-user-reservations",
       {
         method: "GET",
         headers: {
@@ -101,7 +101,7 @@ export const getAllUserReservations = async (token) => {
 export const deleteReservationById = async (token, id) => {
   try {
     const res = await fetch(
-      `https://villa-haven-api.vercel.app//delete-reservation/${id}`,
+      `https://villa-haven-api.vercel.app/delete-reservation/${id}`,
       {
         method: "DELETE",
         headers: {

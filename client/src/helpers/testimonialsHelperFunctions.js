@@ -1,7 +1,7 @@
 export const getTestimonials = async () => {
   try {
     const res = await fetch(
-      "https://villa-haven-api.vercel.app//get-testimonials",
+      "https://villa-haven-api.vercel.app/get-testimonials",
       {
         method: "GET",
         headers: {

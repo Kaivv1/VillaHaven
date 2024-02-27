@@ -2,7 +2,7 @@ import { getToken } from "./userHelperFunctions";
 
 export const fetchVillas = async () => {
   try {
-    const res = await fetch("https://villa-haven-api.vercel.app//get-villas", {
+    const res = await fetch("https://villa-haven-api.vercel.app/get-villas", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -18,7 +18,7 @@ export const fetchVillas = async () => {
 export const fetchVillaById = async (villaID) => {
   try {
     const res = await fetch(
-      `https://villa-haven-api.vercel.app//villa/${villaID}`
+      `https://villa-haven-api.vercel.app/villa/${villaID}`
     );
 
     const data = await res.json();
@@ -33,7 +33,7 @@ export const fetchVillaById = async (villaID) => {
 export const updateVillaById = async (id, body) => {
   try {
     const res = await fetch(
-      `https://villa-haven-api.vercel.app//update-villa/${id}`,
+      `https://villa-haven-api.vercel.app/update-villa/${id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -52,7 +52,7 @@ export const updateVillaById = async (id, body) => {
 export const addNewVillaReservedDates = async (id, reservedDates) => {
   try {
     const res = await fetch(
-      `https://villa-haven-api.vercel.app//add-reserved-dates/${id}`,
+      `https://villa-haven-api.vercel.app/add-reserved-dates/${id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -73,7 +73,7 @@ export const fetchFavoriteVillas = async () => {
     const token = getToken();
     if (!token) return;
     const res = await fetch(
-      "https://villa-haven-api.vercel.app//get-user-favorites",
+      "https://villa-haven-api.vercel.app/get-user-favorites",
       {
         method: "GET",
         headers: {
@@ -100,7 +100,7 @@ export const setUserFavorite = async (id) => {
     const token = await getToken();
     if (!token) return;
     const res = await fetch(
-      `https://villa-haven-api.vercel.app//set-favorite-villa/${id}`,
+      `https://villa-haven-api.vercel.app/set-favorite-villa/${id}`,
       {
         method: "PUT",
         headers: {
@@ -121,7 +121,7 @@ export const removeUserFavorite = async (id) => {
     const token = await getToken();
     if (!token) return;
     const res = await fetch(
-      `https://villa-haven-api.vercel.app//remove-favorite-villa/${id}`,
+      `https://villa-haven-api.vercel.app/remove-favorite-villa/${id}`,
       {
         method: "PUT",
         headers: {
