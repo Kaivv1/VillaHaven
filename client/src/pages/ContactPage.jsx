@@ -12,7 +12,7 @@ const ContactPage = () => {
     const fetchFAQs = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch("https://villahaven.onrender.com/get-FAQs");
+        const res = await fetch("https://villa-haven-api.vercel.app//get-FAQs");
 
         const data = await res.json();
         setFAQs(data.data);

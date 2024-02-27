@@ -1,7 +1,7 @@
 export const getSecretKey = async () => {
   try {
     const res = await fetch(
-      "https://villahaven.onrender.com/stripe-secret-key"
+      "https://villa-haven-api.vercel.app//stripe-secret-key"
     );
 
     const data = await res.json();
@@ -15,7 +15,7 @@ export const getSecretKey = async () => {
 export const createPaymentIntent = async (villa, reservation, token) => {
   try {
     const res = await fetch(
-      "https://villahaven.onrender.com/create-payment-intent",
+      "https://villa-haven-api.vercel.app//create-payment-intent",
       {
         method: "POST",
         headers: {

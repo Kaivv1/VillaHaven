@@ -1,7 +1,7 @@
 export const getImage = async (imageName) => {
   try {
     const res = await fetch(
-      `https://villahaven.onrender.com/get-image/${imageName}`
+      `https://villa-haven-api.vercel.app//get-image/${imageName}`
     );
 
     const { imageUrl } = await res.json();
