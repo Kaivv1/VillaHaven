@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import LocationSVG from "../ui/svgs/LocationSVG";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router";
@@ -34,7 +34,7 @@ const Villa = ({ villa }) => {
             className="bookmark-btn"
             disabled={isLoading}
           >
-            <BookmarkIcon /> <span>Saved</span>
+            <FavoriteIcon /> <span>Added</span>
           </button>
         ) : (
           <button
@@ -42,8 +42,8 @@ const Villa = ({ villa }) => {
             className="bookmark-btn"
             disabled={isLoading}
           >
-            <BookmarkBorderIcon />
-            {isLoading ? <span>Saving..</span> : <span>Save</span>}
+            <FavoriteBorderIcon />
+            {isLoading ? <span>Adding..</span> : <span>Add</span>}
           </button>
         )}
         <button
