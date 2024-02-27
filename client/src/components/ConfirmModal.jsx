@@ -11,7 +11,10 @@ const ConfirmModal = ({ onCancel, onConfirm }) => {
           <Button onClick={() => onCancel()} className="cancel-btn">
             Cancel
           </Button>
-          <Button onClick={() => onConfirm()} className="confirm-btn">
+          <Button
+            onClick={async () => await onConfirm()}
+            className="confirm-btn"
+          >
             Confirm
           </Button>
         </div>
