@@ -59,6 +59,7 @@ const Reservation = require("./Models/Reservation");
 const {
   getImageRouter,
   uploadImageRouter,
+  deleteImageRouter,
 } = require("./routes/s3Bucket.route");
 
 const app = express();
@@ -128,6 +129,7 @@ app.use("/check-availability", checkAvailabilityRouter);
 app.use("/get-user-reservations", getAllUserReservationsRouter);
 app.use("/delete-reservation", deleteReservationByIdRouter);
 app.use("/delete-user", deleteUserRouter);
+app.use("/delete-user-avatar", deleteImageRouter);
 app.use("/webhook", webhookRouter);
 
 setInterval(async () => {

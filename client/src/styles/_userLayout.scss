@@ -77,6 +77,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
             label {
               width: fit-content;
               display: inline-block;
@@ -118,6 +119,20 @@
             }
             #avatar {
               display: none;
+            }
+            .remove-avatar-btn {
+              border: none;
+              background-color: transparent;
+              color: $color-red;
+              font-weight: bold;
+              font-size: 1rem;
+              position: absolute;
+              top: 0;
+              right: 7.3rem;
+              cursor: pointer;
+              &:disabled {
+                cursor: not-allowed;
+              }
             }
           }
           .input-wrapper {

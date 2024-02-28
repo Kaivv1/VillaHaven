@@ -14,6 +14,7 @@ import { useModalData } from "../contexts/ModalDataContext";
 import ConfirmModal from "../components/ConfirmModal";
 import { useChangeDocumentOverflow } from "../hooks/useChangeDocumentOverflow";
 import Cookies from "js-cookie";
+import { deleteImage } from "../helpers/s3BucketHelpers";
 
 const UserProfile = () => {
   const { user, token } = useFetchUser();
@@ -102,6 +103,7 @@ const UserProfile = () => {
       firstName: user?.firstName,
       lastName: user?.lastName,
       gender: user?.gender,
+      avatar: user?.avatar,
     }));
   };
 
@@ -160,6 +162,17 @@ const UserProfile = () => {
     setConfirmPassword("");
   };
 
+  const handleDeleteImage = async () => {
+    await deleteImage(token);
+    setPreview();
+    setUserData((prev) => ({ ...prev, avatar: null }));
+  };
+  const handleCancelPreview = () => {
+    setPreview();
+    if (!user?.avatar) {
+      setUserData((prev) => ({ ...prev, avatar: null }));
+    }
+  };
   const handleResetPassSubmit = async (e) => {
     e.preventDefault();
 
@@ -180,6 +193,7 @@ const UserProfile = () => {
       setIsResetPass(false);
     }
   };
+
   return (
     <div className="user-profile-container">
       <h1>Account Information</h1>
@@ -194,10 +208,10 @@ const UserProfile = () => {
             className={!editWithoutPass ? "disabled" : ""}
           >
             {preview && <img src={preview} alt="" className="user-avatar" />}
-            {user?.avatar && !preview && (
-              <img src={user?.avatar} alt="" className="user-avatar" />
+            {userData?.avatar && !preview && (
+              <img src={userData?.avatar} alt="" className="user-avatar" />
             )}
-            {!user?.avatar && !preview && (
+            {!userData?.avatar && !preview && (
               <AccountCircleIcon fontSize="large" className="user-icon" />
             )}
           </label>
@@ -209,6 +223,25 @@ const UserProfile = () => {
             accept="image/*"
             disabled={!editWithoutPass}
           />
+          {preview && (
+            <button
+              className="remove-avatar-btn"
+              onClick={() => handleCancelPreview()}
+              disabled={!editWithoutPass}
+            >
+              &#10005;
+            </button>
+          )}
+          {userData?.avatar && !preview && (
+            <button
+              className="remove-avatar-btn"
+              type="button"
+              onClick={async () => await handleDeleteImage()}
+              disabled={!editWithoutPass}
+            >
+              &#10005;
+            </button>
+          )}
         </div>
         <div className="input-wrapper">
           <label htmlFor="email">Email</label>
