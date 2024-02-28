@@ -21,6 +21,6 @@ VillaHaven is a villa booking site powered by the MERN (MongoDB, Express.js, Rea
   - Cancel a reservation with a simple process.
 
 - **Email Notifications:**
-  - Receive email notifications for significant actions, ensuring you stay informed.
+  - Receive email notifications for significant actions, ensuring you stay informed. (Use real email for better demonstration)
 
 ## [Live Demo](https://villa-haven.vercel.app/)
