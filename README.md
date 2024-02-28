@@ -16,6 +16,7 @@ VillaHaven is a villa booking site powered by the MERN (MongoDB, Express.js, Rea
   - Safely delete your account when needed.
   
 - **View and Manage Reservations:**
+  - Create a reservation by choosing a payment method.
   - Access a list of your reservations.
   - Cancel a reservation with a simple process.
 
