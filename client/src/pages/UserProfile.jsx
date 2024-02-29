@@ -214,6 +214,25 @@ const UserProfile = () => {
             {!userData?.avatar && !preview && (
               <AccountCircleIcon fontSize="large" className="user-icon" />
             )}
+            {preview && (
+              <button
+                className="remove-avatar-btn"
+                onClick={() => handleCancelPreview()}
+                disabled={!editWithoutPass}
+              >
+                &#10005;
+              </button>
+            )}
+            {userData?.avatar && !preview && (
+              <button
+                className="remove-avatar-btn"
+                type="button"
+                onClick={async () => await handleDeleteImage()}
+                disabled={!editWithoutPass}
+              >
+                &#10005;
+              </button>
+            )}
           </label>
           <input
             name="avatar"
@@ -223,25 +242,6 @@ const UserProfile = () => {
             accept="image/*"
             disabled={!editWithoutPass}
           />
-          {preview && (
-            <button
-              className="remove-avatar-btn"
-              onClick={() => handleCancelPreview()}
-              disabled={!editWithoutPass}
-            >
-              &#10005;
-            </button>
-          )}
-          {userData?.avatar && !preview && (
-            <button
-              className="remove-avatar-btn"
-              type="button"
-              onClick={async () => await handleDeleteImage()}
-              disabled={!editWithoutPass}
-            >
-              &#10005;
-            </button>
-          )}
         </div>
         <div className="input-wrapper">
           <label htmlFor="email">Email</label>

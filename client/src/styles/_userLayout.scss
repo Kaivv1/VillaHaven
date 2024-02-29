@@ -113,26 +113,26 @@
                   border-radius: 50%;
                 }
               }
+              .remove-avatar-btn {
+                border: none;
+                background-color: transparent;
+                color: $color-red;
+                font-weight: bold;
+                font-size: 1rem;
+                position: absolute;
+                top: -0.3rem;
+                right: -1.3rem;
+                cursor: pointer;
+                &:disabled {
+                  cursor: not-allowed;
+                }
+              }
             }
             label.disabled {
               cursor: not-allowed;
             }
             #avatar {
               display: none;
-            }
-            .remove-avatar-btn {
-              border: none;
-              background-color: transparent;
-              color: $color-red;
-              font-weight: bold;
-              font-size: 1rem;
-              position: absolute;
-              top: 0;
-              right: 7.3rem;
-              cursor: pointer;
-              &:disabled {
-                cursor: not-allowed;
-              }
             }
           }
           .input-wrapper {
