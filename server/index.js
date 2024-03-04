@@ -1,7 +1,6 @@
 /* eslint no-unused-vars: */
 /* eslint no-undef: */
 const express = require("express");
-const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
@@ -75,7 +74,6 @@ app.use(
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
   if (req.originalUrl === "/webhook") {
@@ -85,7 +83,6 @@ app.use((req, res, next) => {
   }
 });
 
-app.use("/home", router);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/user", userRouter);
