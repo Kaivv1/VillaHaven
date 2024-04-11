@@ -9,10 +9,7 @@ import {
 } from "../assetsExports";
 import Modal from "./Modal";
 import { useModalData } from "../contexts/ModalDataContext";
-import { Suspense, lazy } from "react";
-import Loader from "../ui/Loader";
 import { useChangeDocumentOverflow } from "../hooks/useChangeDocumentOverflow";
-const LazyImage = lazy(() => import("./LazyImage"));
 
 const AboutVillaHaven = () => {
   const logos = [partner0, partner1, partner2, partner3, partner4, partner5];
@@ -40,9 +37,7 @@ const AboutVillaHaven = () => {
         <div>
           {logos.map((logo, i) => (
             <span key={i}>
-              <Suspense fallback={<Loader />}>
-                <LazyImage src={logo} alt="" />
-              </Suspense>
+              <img src={logo} alt="" />
             </span>
           ))}
         </div>

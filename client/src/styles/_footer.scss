@@ -4,7 +4,7 @@
 footer {
   background-color: $color-dark--1;
   padding: 6rem 15rem 1.5rem;
-  color: $color-light;
+  color: $color-dark--3;
   .footer-wrapper {
     border-bottom: 1px solid $color-dark--2;
     display: flex;
@@ -128,7 +128,7 @@ footer {
 
 .footer-btn {
   @include btns(0.8rem, $color-dark--1);
-  color: $color-light;
+  color: $color-dark--3;
   display: flex;
   gap: 0.5rem;
   justify-content: center;

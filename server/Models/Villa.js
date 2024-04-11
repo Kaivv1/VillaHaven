@@ -44,17 +44,9 @@ const villaModel = new mongoose.Schema({
   description: {
     type: String,
   },
-  coordinates: {
-    lat: {
-      type: String,
-    },
-    lng: {
-      type: String,
-    },
-  },
   reservedDates: [{ startDate: { type: Date }, endDate: { type: Date } }],
   maxGuests: {
-    typ: Number,
+    type: Number,
   },
 });
 

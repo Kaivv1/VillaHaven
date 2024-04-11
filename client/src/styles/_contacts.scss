@@ -13,7 +13,7 @@
   }
   .accordions-wrapper {
     padding: 3rem 20rem;
-    min-height: 45vh;
+    min-height: 50vh;
     .accordion-container {
       box-sizing: border-box;
       border-radius: $border-radius;
@@ -85,7 +85,7 @@
       border-top-right-radius: $border-radius;
       border-bottom-right-radius: $border-radius;
       .form-header {
-        color: #fff;
+        color: $color-dark--3;
         h2 {
           margin-bottom: 0.5rem;
         }

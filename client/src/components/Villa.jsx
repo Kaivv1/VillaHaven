@@ -5,10 +5,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router";
-import { Suspense, lazy, useState } from "react";
+import { useState } from "react";
 import { getMainPicture } from "../helpers/villaHelperFunctions";
-import Loader from "../ui/Loader";
-const LazyImage = lazy(() => import("./LazyImage"));
 
 const Villa = ({ villa }) => {
   const { pictures, villaName, location, price, _id } = villa;
@@ -25,9 +23,7 @@ const Villa = ({ villa }) => {
   return (
     <div className="villa-container">
       <div>
-        <Suspense fallback={<Loader />}>
-          <LazyImage src={mainPicture} alt={villaName} />
-        </Suspense>
+        <img src={mainPicture} alt={villaName} />
         {isFavorite ? (
           <button
             onClick={() => removeFavorite(_id)}

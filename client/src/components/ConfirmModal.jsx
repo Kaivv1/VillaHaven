@@ -1,5 +1,4 @@
 /*eslint-disable react/prop-types */
-
 import Button from "./Button";
 
 const ConfirmModal = ({ onCancel, onConfirm }) => {

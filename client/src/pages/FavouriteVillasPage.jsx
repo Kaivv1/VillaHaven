@@ -5,6 +5,7 @@ import { useChangeDocumentTitle } from "../hooks/useChangeDocumentTitle";
 const FavouriteVillasPage = () => {
   const { favorites } = useUser();
   useChangeDocumentTitle("Favorites");
+
   return (
     <div className="favourite-villas--container">
       <div className="favorite-villas-line">
