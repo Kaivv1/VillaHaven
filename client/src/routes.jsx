@@ -1,4 +1,4 @@
-import { createHashRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import {
   HomePage,
   ErrorPage,
@@ -22,7 +22,7 @@ import Layout from "./Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UserLayout from "./ui/UserLayout";
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     element: <Layout />,
     errorElement: <ErrorPage />,

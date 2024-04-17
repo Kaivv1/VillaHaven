@@ -55,7 +55,7 @@ clientSecretRouter.post("/", auth, verifyAuth, async (req, res) => {
     payment_method_types: ["card"],
     line_items: lineItems,
     mode: "payment",
-    success_url: `https://villa-haven.vercel.app/#/reservation/${newReservation._id}/success`,
+    success_url: `https://villa-haven.vercel.app/reservation/${newReservation._id}/success`,
     cancel_url: "https://villa-haven.vercel.app/reservation/failed",
   });
 
