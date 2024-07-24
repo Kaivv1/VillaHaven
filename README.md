@@ -1,7 +1,5 @@
 # VillaHaven - Villa Booking Site
 
-VillaHaven is a villa booking site powered by the MERN (MongoDB, Express.js, React, Node.js) stack and AWS S3 Bucket for storing images.
-
 ## Features:
 
 - **Authentication:**
