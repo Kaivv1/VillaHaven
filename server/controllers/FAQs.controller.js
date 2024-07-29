@@ -12,7 +12,7 @@ const createFAQ = async (req, res, next) => {
       .status(200)
       .json({ msg: "Frequently asked question created successfully" });
   } catch (error) {
-    return next(errorHandler(404, "FAQ creation failed"));
+    return next(errorHandler(500, "FAQ creation failed"));
   }
 };
 
