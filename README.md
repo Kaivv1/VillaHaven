@@ -21,4 +21,3 @@
 - **Email Notifications:**
   - Receive email notifications for certain actions, ensuring you stay informed. (Use real email for better demonstration)
 
-## [Live Demo](https://villa-haven.vercel.app/)
