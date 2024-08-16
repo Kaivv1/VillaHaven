@@ -1,4 +1,4 @@
-# VillaHaven - Villa Booking Site
+# VillaHaven
 
 ## Features:
 
